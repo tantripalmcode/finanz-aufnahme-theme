@@ -12,6 +12,7 @@ function sc_budi_benefit_tabs($atts, $content = null)
     $atts = shortcode_atts([
         'widget_class' => '',
         'css'          => '',
+        'image_max_width' => '250px',
     ], $atts);
 
     $widget_class  = sc_merge_css($atts['css'], $atts['widget_class']);
@@ -48,7 +49,7 @@ function sc_budi_benefit_tabs($atts, $content = null)
 
                 <!-- Floating Icon Container (only one, will be updated by JavaScript) -->
                 <div class="budi-benefit-tabs__floating-icon-container">
-                    <?php 
+                    <?php
                     // Show floating icon only for the first active tab
                     $first_item = $sc_benefit_tabs[0] ?? null;
                     if ($first_item && isset($first_item['floating_icon']) && $first_item['floating_icon']) {
@@ -67,11 +68,14 @@ function sc_budi_benefit_tabs($atts, $content = null)
                         $title                  = $item['title'];
                         $content_text           = $item['content'];
                         $button                 = vc_build_link($item['button']);
+                        $button_position        = isset($item['button_position']) ? $item['button_position'] : 'left';
                         $image                  = $item['image'];
                         $image_position         = isset($item['image_position']) ? $item['image_position'] : 'right';
+                        $image_max_width        = isset($item['image_max_width']) ? $item['image_max_width'] : '250px';
                         $floating_icon          = isset($item['floating_icon']) ? $item['floating_icon'] : '';
                         $icon_position          = isset($item['icon_position']) ? $item['icon_position'] : 'right';
                         $floating_icon_width    = isset($item['floating_icon_width']) ? $item['floating_icon_width'] : '80px';
+                        $button_alignment       = isset($item['button_alignment']) ? $item['button_alignment'] : 'left';
                         $active_class           = $index === 0 ? 'active' : '';
 
                         $button_url             = $button['url'] ?: '';
@@ -79,15 +83,16 @@ function sc_budi_benefit_tabs($atts, $content = null)
                         $button_text            = $button['title'] ?: 'Jetzt App downloaden';
 
                         // Determine column order based on image position
-                        $content_col_class      = $image_position === 'left' ? 'col-lg-6 order-lg-2' : 'col-lg-6 order-lg-1';
-                        $image_col_class        = $image_position === 'left' ? 'col-lg-6 order-lg-1' : 'col-lg-6 order-lg-2';
+                        $content_col_class      = $image_position === 'left' ? 'col-lg-7 order-lg-2' : 'col-lg-7 order-lg-1';
+                        $image_col_class        = $image_position === 'left' ? 'col-lg-5 order-lg-1' : 'col-lg-5 order-lg-2';
                     ?>
 
-                        <div class="budi-benefit-tabs__content-item <?php echo $active_class; ?>" 
-                             data-tab="<?php echo $index; ?>"
-                             data-floating-icon="<?php echo $floating_icon ? wp_get_attachment_url($floating_icon) : ''; ?>"
-                             data-icon-position="<?php echo esc_attr($icon_position); ?>"
-                             data-icon-width="<?php echo esc_attr($floating_icon_width); ?>">
+                        <div class="budi-benefit-tabs__content-item <?php echo $active_class; ?>"
+                            data-tab="<?php echo $index; ?>"
+                            data-floating-icon="<?php echo $floating_icon ? wp_get_attachment_url($floating_icon) : ''; ?>"
+                            data-icon-position="<?php echo esc_attr($icon_position); ?>"
+                            data-icon-width="<?php echo esc_attr($floating_icon_width); ?>"
+                            data-image-position="<?php echo esc_attr($image_position); ?>">
                             <div class="row ">
                                 <!-- Content Column -->
                                 <div class="<?php echo $content_col_class; ?>">
@@ -97,12 +102,12 @@ function sc_budi_benefit_tabs($atts, $content = null)
                                             <?php echo do_shortcode($title); ?>
                                         </h2>
 
-                                        <div class="budi-benefit-tabs__description mb-4 flex-grow-1">
+                                        <div class="budi-benefit-tabs__description <?php echo $button_url && $button_position === 'left' ? 'mb-4' : ''; ?> flex-grow-1">
                                             <?php echo wpautop(do_shortcode($content_text)); ?>
                                         </div>
 
-                                        <?php if ($button_url) : ?>
-                                            <div class="budi-benefit-tabs__button-wrapper">
+                                        <?php if ($button_url && $button_position === 'left') : ?>
+                                            <div class="budi-benefit-tabs__button-wrapper text-<?php echo esc_attr($button_alignment); ?>">
                                                 <a href="<?php echo esc_url($button_url); ?>"
                                                     class="budi-benefit-tabs__button btn btn-outline-primary"
                                                     <?php if ($button_target) echo 'target="' . esc_attr($button_target) . '"'; ?>>
@@ -115,9 +120,21 @@ function sc_budi_benefit_tabs($atts, $content = null)
 
                                 <!-- Image Column -->
                                 <div class="<?php echo $image_col_class; ?>">
-                                    <div class="budi-benefit-tabs__image-wrapper">
-                                        <?php if ($image) : ?>
-                                            <?php echo wp_get_attachment_image($image, 'large', false, ['class' => 'budi-benefit-tabs__image img-fluid']); ?>
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="budi-benefit-tabs__image-wrapper flex-grow-1 <?php echo $button_url && $button_position === 'right' ? 'mb-5' : ''; ?>">
+                                            <?php if ($image) : ?>
+                                                <?php echo wp_get_attachment_image($image, 'large', false, ['class' => 'budi-benefit-tabs__image img-fluid', 'style' => 'max-width: ' . esc_attr($image_max_width) . ';']); ?>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <?php if ($button_url && $button_position === 'right') : ?>
+                                            <div class="budi-benefit-tabs__button-wrapper mt-4 text-<?php echo esc_attr($button_alignment); ?>">
+                                                <a href="<?php echo esc_url($button_url); ?>"
+                                                    class="budi-benefit-tabs__button btn btn-outline-primary"
+                                                    <?php if ($button_target) echo 'target="' . esc_attr($button_target) . '"'; ?>>
+                                                    <?php echo esc_html($button_text); ?>
+                                                </a>
+                                            </div>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -154,6 +171,15 @@ add_action('vc_before_init', function () {
                 'type' => 'textfield',
                 'heading' => __('Custom Widget Class', _BUDI_TEXT_DOMAIN),
                 'param_name' => 'widget_class',
+                'group' => $widget_group,
+                'admin_label' => true,
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => __('Image Max Width', _BUDI_TEXT_DOMAIN),
+                'param_name' => 'image_max_width',
+                'value' => '250px',
+                'description' => __('Set the maximum width for the images (e.g., 250px, 300px, 50%)', _BUDI_TEXT_DOMAIN),
                 'group' => $widget_group,
                 'admin_label' => true,
             ),
