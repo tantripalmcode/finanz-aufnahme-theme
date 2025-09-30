@@ -1,0 +1,135 @@
+.budi-kontakt-tab__wrapper{
+    color: rgba(17, 17, 18, 0.6);
+}
+
+.budi-kontakt-tab__image {
+    height: 100%;
+    background-position: bottom center;
+    background-size: cover;
+}
+
+.budi-kontakt-tab__right {
+    background-color: var(--color-main);
+    padding: 65px 40px 40px 40px;
+}
+
+.budi-kontakt-tab__buttons {
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    padding: 2px;
+}
+
+.budi-kontakt-tab__button {
+    padding: 9px 20px;
+    border-radius: 20px;
+}
+
+.budi-kontakt-tab__button:hover {
+    color: var(--color-main);
+}
+
+.budi-kontakt-tab__button.active {
+    background-color: var(--color-sub);
+    color: #ffffff;
+}
+
+.budi-kontakt-tab__info-text p{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.meetergo-iframe{
+    height: 575px !important;
+    background-color: #fff;
+    margin-bottom: 24px;
+}
+
+@media(max-width: 400px) {
+    .meetergo-iframe{
+        height: 600px !important;
+    }
+}
+
+.meetergo-iframe iframe{
+    min-height: auto !important;
+}
+
+@media only screen and (max-width: 1100px) {
+    .budi-kontakt-tab__button{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .budi-kontakt-tab__image {
+        height: 100vw;
+    }
+
+    .budi-kontakt-tab__button{
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .budi-kontakt-tab__right {
+        padding: 20px;
+    }
+
+    /* .budi-kontakt-tab__right-inner {
+        padding: 25px;
+        background-color: var(--color-main);
+    } */
+
+    .budi-kontakt-tab__buttons {
+        width: 100%;
+        margin-bottom: 30px;
+        /* background-color: var(--color-main); */
+    }
+
+    .budi-kontakt-tab__buttons li{
+        width: 50%;
+    }
+
+    .budi-kontakt-tab__button{
+        padding: 9px 10px;
+        font-size: 14px;
+        /* color: #ffffff; */
+    }
+}
+
+.budi-kontakt-tab__info-text{
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 576px) {
+    .meetergo-iframe{
+        min-width: 100% !important;
+    }
+    .budi-kontakt-tab__buttons li{
+        width: 45%;
+    }
+
+    .budi-kontakt-tab__buttons li:last-child{
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .budi-kontakt-tab__button {
+        font-size: 12px;
+    }
+}
+
+.budi-kontakt-tab__wrapper .codedropz-upload-handler{
+    border: 1px solid rgba(17, 17, 18, 0.1);
+}
+
+.budi-kontakt-tab__wrapper .codedropz-upload-inner h3,
+.budi-kontakt-tab__wrapper .codedropz-upload-inner a{
+    font-size: 18px;
+    color: rgba(17, 17, 18, 0.6);
+}

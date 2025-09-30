@@ -1,0 +1,19 @@
+.budi-icon-lists__item-inner {
+    gap: 10px;
+}
+
+.budi-icon-lists__icon svg {
+    display: block;
+}
+
+/* Animation */
+.budi-icon-list__section .budi-icon-lists__item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.budi-icon-list__section .budi-icon-lists__item.show {
+    opacity: 1;
+    transform: translateY(0);
+}

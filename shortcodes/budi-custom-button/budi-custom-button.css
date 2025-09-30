@@ -1,0 +1,26 @@
+.budi-button-container a.btn {
+    background: var(--button-color);
+    color: var(--button-text-color);
+    transition: all 500ms;
+    border-radius: var(--button-corners);
+    padding: 12px 33px 14px !important;
+    font-size: 18px !important;
+    font-weight: 700;
+}
+
+.budi-button-container a.btn:hover{
+    background: var(--button-hover-color);
+    color: var(--button-hover-text-color);
+}
+
+.budi-button-container a.btn .budi-arrow-icon{
+    width: 51px;
+    height: 19px;
+    background-image: url("data:image/svg+xml,%3Csvg width='51' height='19' viewBox='0 0 51 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50.654 8.87882L43.563 3.69695C43.0935 3.3656 42.3454 3.37511 41.8919 3.71821C41.4496 4.05288 41.4496 4.5835 41.8919 4.91817L46.9655 8.6258H26.1818C25.5291 8.62576 25 9.01241 25 9.48939C25 9.96636 25.5291 10.353 26.1818 10.353H46.9655L41.8919 14.0606C41.4224 14.392 41.4094 14.9388 41.8628 15.2818C42.3163 15.6249 43.0645 15.6344 43.5339 15.303C43.5438 15.2961 43.5535 15.289 43.563 15.2818L50.6539 10.1C51.1153 9.76273 51.1153 9.21604 50.654 8.87882Z' fill='white'/%3E%3Cline y1='9.8' x2='48' y2='9.8' stroke='white' stroke-width='2.4'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    position: relative;
+    top: 3px;
+    margin: 0 20px;
+}

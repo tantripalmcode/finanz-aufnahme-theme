@@ -1,0 +1,130 @@
+/* CTA Box Widget Styles */
+.cta-box-widget {
+    position: relative;
+    background: linear-gradient(180deg, rgba(13, 78, 119, 0.76) 0%, rgba(7, 50, 78, 0.95) 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    padding: 32px;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-box-widget>div {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-box-widget::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(13, 78, 119, 0.76) 0%, rgba(7, 50, 78, 0.95) 100%);
+    z-index: 1;
+}
+
+/* Social Media Section */
+.cta-social-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+}
+
+.cta-top-text {
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.social-media-icons {
+    display: flex;
+    gap: var(--social-gap, 15px);
+    align-items: center;
+}
+
+.social-media-icons .social-media-icon {
+    width: var(--social-size, 24px);
+    height: var(--social-size, 24px);
+    background-color: var(--social-color, #ff0000);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.social-media-icons .social-media-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.social-media-icons .social-media-icon svg,
+.social-media-icons .social-media-icon i {
+    color: #ffffff;
+    font-size: calc(var(--social-size, 24px) * 0.6);
+}
+
+/* Main Content Section */
+.cta-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+}
+
+.cta-main-content .cta-headline {
+    color: #ffffff;
+    font-size: 32px;
+}
+
+.cta-supporting-text {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+/* CTA Button Section */
+.cta-button-section {
+    margin-top: 24px;
+}
+
+.cta-button-section a {
+    display: block;
+}
+
+
+/* Custom styling for social media icons in CTA context */
+.cta-social-icons {
+    gap: 6px !important;
+}
+
+.cta-social-icons a {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-sub);
+    border-radius: 100%;
+    transition: all 0.3s ease;
+}
+
+.cta-social-icons a:hover {
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 767px) {
+    .cta-box-widget {
+        padding: 30px 20px;
+    }
+}

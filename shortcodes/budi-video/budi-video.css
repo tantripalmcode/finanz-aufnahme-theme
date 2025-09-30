@@ -1,0 +1,101 @@
+/* BUDI VIDEO WIDGET CSS */
+.budi-video-play-button {
+    max-width: 150px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    cursor: pointer;
+}
+
+.budi-video__wrapper video,
+.budi-video__wrapper iframe {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+}
+
+/* Video Title */
+.budi-video-poster-clip.budi-video__title {
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media only screen and (max-width: 767px) {
+    .budi-video__wrapper iframe {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .budi-video__wrapper iframe.budi-youtube {
+        min-height: 280px;
+    }
+}
+
+.budi-video__wrapper {
+    z-index: 2;
+}
+
+.budi-video__wrapper .budi-video-wrapper {
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.budi-video__wrapper .budi-video-wrapper::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(11, 55, 83, 0.05) 0%, #0B3753 100%);
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+}
+
+.budi-video__wrapper.budi-video-playing .budi-video-wrapper::before {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.budi-video__wrapper .budi-video-content__container {
+    position: absolute;
+    margin: 0 auto;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    color: #ffffff;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease-in-out;
+}
+
+.budi-video__wrapper.budi-video-playing .budi-video-content__container {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.budi-video__wrapper .budi-video__sub-title {
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.budi-video__wrapper .budi-video__title::after {
+    content: '';
+    width: calc(100% + 40px);
+    height: 40px;
+    left: -20px;
+    background-color: var(--color-sub);
+    position: absolute;
+    bottom: -16px;
+    border-radius: 10px;
+    z-index: -1;
+}

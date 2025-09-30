@@ -1,0 +1,367 @@
+.budi-contact-form-progress-bar__wrapper {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 0px 25px 0px #00000026;
+    display: flex;
+    overflow: hidden;
+}
+
+.budi-contact-form-progress-bar__title {
+    margin-bottom: 18px;
+}
+
+.budi-contact-form-progress-bar__form {
+    padding: 55px 90px;
+    flex: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.budi-contact-form-progress-bar__form form {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.budi-contact-form-progress-bar__image img {
+    width: 100%;
+    max-width: 425px;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* ---- Container / label ---- */
+.budi-cfpb-radio-dropdowns {
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.budi-cfpb-radio-dropdowns label {
+    width: 100%;
+    margin-bottom: 0;
+    background-color: #E6EDF699;
+    padding: 17px 35px 16px 16px;
+    color: #1B1B1B73;
+    position: relative;
+    cursor: pointer;
+    display: block;
+    transition: all 0.15s ease;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.budi-cfpb-radio-dropdowns.has-selection label {
+    color: #535353;
+}
+
+/* Focus styles for keyboard navigation */
+.budi-cfpb-radio-dropdowns:focus-within label {
+    outline: 2px solid blue;
+    /* outline-offset: 2px; */
+}
+
+.budi-cfpb-radio-dropdowns label::after {
+    content: '';
+    width: 13px;
+    height: 6px;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='8' viewBox='0 0 16 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.2393 1L7.6195 7L0.999736 1' stroke='%231B1B1B' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.15s ease;
+}
+
+/* Add clear/reset icon */
+.budi-cfpb-radio-dropdowns label::before {
+    content: '✕';
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #93c5fd;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    font-weight: bold;
+}
+
+/* Show clear icon when dropdown is open */
+.budi-cfpb-radio-dropdowns.open label::before {
+    opacity: 1;
+}
+
+/* Add dotted line effect when dropdown is open */
+.budi-cfpb-radio-dropdowns.open label {
+    border-bottom: 2px dotted #93c5fd;
+}
+
+/* Rotate arrow when open */
+.budi-cfpb-radio-dropdowns.open label::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.budi-cfpb-radio-dropdowns p {
+    margin: 0;
+}
+
+/* Hide radio items by default */
+.budi-cfpb-radio-dropdowns .budi-cfpb-radio-items {
+    display: none;
+    background-color: #E6EDF699;
+    position: relative;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    z-index: 10;
+}
+
+/* .budi-cfpb-radio-dropdowns:has(.cf7mls-invalid) label {
+    border-color: red !important;
+} */
+
+/* Show radio items when dropdown is open */
+.budi-cfpb-radio-dropdowns.open .budi-cfpb-radio-items {
+    display: block;
+}
+
+/* Make the radio list stack like a dropdown */
+.budi-cfpb-radio-dropdowns .wpcf7-radio {
+    display: block;
+}
+
+.budi-cfpb-radio-dropdowns .wpcf7-list-item {
+    position: relative;
+    display: block;
+    margin: 0;
+    /* remove CF7's inline gaps */
+}
+
+.budi-cfpb-form-group {
+    margin-bottom: 14px;
+}
+
+.budi-contact-form-progress-bar__form .wpcf7 .wpcf7-text,
+.budi-contact-form-progress-bar__form .wpcf7 .wpcf7-textarea {
+    padding: 15px !important;
+    border: 0 !important;
+    background: #E6EDF699 !important;
+    color: #535353;
+}
+
+.budi-contact-form-progress-bar__form .wpcf7 .wpcf7-textarea {
+    width: 100%;
+    height: 125px;
+}
+
+/* The visible row */
+.budi-cfpb-radio-dropdowns .wpcf7-list-item-label {
+    display: block;
+    padding: 12px 16px;
+    border-top: none;
+    transition: background .15s ease;
+    cursor: pointer;
+}
+
+/* Make the input cover the whole row (click anywhere) */
+.budi-cfpb-radio-dropdowns .wpcf7-list-item input[type="radio"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    /* invisible, but still clickable */
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Hover + focus */
+.budi-cfpb-radio-dropdowns .wpcf7-list-item:hover .wpcf7-list-item-label {
+    background: #f3f6fb;
+}
+
+.budi-cfpb-radio-dropdowns .wpcf7-list-item input[type="radio"]:focus+.wpcf7-list-item-label {
+    outline: 2px solid blue;
+    /* accessible focus ring */
+    outline-offset: 2px;
+}
+
+/* Checked state (selected row) */
+.budi-cfpb-radio-dropdowns .wpcf7-list-item input[type="radio"]:checked+.wpcf7-list-item-label {
+    background: #C4D1E399;
+}
+
+/* Error states */
+.budi-cfpb-radio-dropdowns.has-error {
+    border: 2px solid #dc2626;
+    background-color: #fef2f2;
+}
+
+.budi-cfpb-radio-dropdowns.has-error label {
+    color: #dc2626;
+}
+
+.budi-cfpb-radio-dropdowns.has-error label::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='8' viewBox='0 0 16 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.2393 1L7.6195 7L0.999736 1' stroke='%23dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+}
+
+/* Error message styling */
+.budi-cfpb-radio-dropdowns .wpcf7-not-valid-tip[role="alert"]{
+    display: none;
+}
+/* .budi-cfpb-radio-dropdowns .wpcf7-not-valid-tip {
+    display: none;
+    color: #dc2626;
+    font-size: 14px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    position: relative;
+} */
+
+.budi-cfpb-radio-dropdowns.has-error .wpcf7-not-valid-tip {
+    display: block;
+}
+
+/* Error message arrow */
+/* .budi-cfpb-radio-dropdowns .wpcf7-not-valid-tip::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #fecaca;
+}
+
+
+.budi-cfpb-radio-dropdowns .wpcf7-not-valid-tip::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #fef2f2;
+} */
+
+/* Form Buttons */
+.budi-contact-form-progress-bar__form .cf7mls-btns {
+    margin-top: 50px;
+    min-height: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.budi-contact-form-progress-bar__form .action-button {
+    min-width: 0 !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+    color: var(--color-sub) !important;
+    position: relative;
+    padding: 0 !important;
+}
+
+.budi-contact-form-progress-bar__form .cf7mls_btn.cf7mls_next {
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='24' viewBox='0 0 30 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M29.4275 10.892L23.5312 6.17505L22.6475 6.88205L28.42 11.5H0V12.5H28.4175L22.6463 17.117L23.53 17.824L29.4275 13.106C30.19 12.496 30.19 11.502 29.4275 10.892Z' fill='%23BD0926'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 50px !important;
+}
+
+.budi-contact-form-progress-bar__form .cf7mls_btn.cf7mls_next img {
+    filter: brightness(0.1);
+}
+
+/* Thank you block */
+.budi-contact-form-progress-bar__thank-you-wrapper {
+    display: none;
+}
+
+.budi-contact-form-progress-bar__thank-you-wrapper .budi-multistep-form__progress {
+    margin-bottom: 140px;
+}
+
+.budi-contact-form-progress-bar__form .cf7mls-btns-last-step {
+    display: none !important;
+}
+
+.budi-cfpb-form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+div.wpcf7 .budi-cfpb-form-buttons .wpcf7-submit {
+    width: auto;
+    margin: 0 !important;
+    background: linear-gradient(90deg, #E7623A 0%, #BD0926 100%) !important;
+    padding: 10px 30px !important;
+    border-radius: 100px !important;
+    font-size: 18px !important;
+}
+
+div.wpcf7 .budi-cfpb-form-buttons .wpcf7-submit:hover {
+    background: linear-gradient(90deg, #BD0926 0%, #BD0926 100%) !important;
+}
+
+.budi-cfpb-form-buttons .wpcf7-spinner {
+    position: absolute;
+    right: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .budi-contact-form-progress-bar__form {
+        min-width: 60%;
+        padding: 30px 45px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .budi-contact-form-progress-bar__form {
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .budi-contact-form-progress-bar__wrapper {
+        box-shadow: none;
+        flex-direction: column;
+    }
+
+    .budi-contact-form-progress-bar__form {
+        padding: 0;
+        padding-bottom: 30px;
+    }
+
+    .budi-contact-form-progress-bar__image img {
+        width: 100%;
+        max-height: 320px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .budi-contact-form-progress-bar__form .cf7mls-btns,
+    .budi-cfpb-form-buttons {
+        margin-top: 30px;
+    }
+
+    .budi-contact-form-progress-bar__image {
+        top: 60px;
+        width: 100%;
+    }
+}

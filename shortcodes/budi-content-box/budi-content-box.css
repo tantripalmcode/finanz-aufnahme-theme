@@ -1,0 +1,17 @@
+.budi-content-box__wrapper.h-100 .budi-content-box__description {
+  height: 100%;
+  color: var(--body-text-color);
+}
+
+.budi-content-box__wrapper > *:not(:last-child),
+.budi-content-box__wrapper > .budi-top > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.budi-content-box__wrapper .budi-content-box__button {
+  z-index: 3;
+}
+
+a.budi-content-box__wrapper:hover .budi-content-box__button {
+  text-decoration: none !important;
+}

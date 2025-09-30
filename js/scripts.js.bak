@@ -1,0 +1,672 @@
+(function ($) {
+  const $document = $(document);
+  const $window = $(window);
+  const $body = $("body");
+  let debounceTimeout;
+
+  /**
+   * Debounce function
+   */
+  function debounce(func, delay) {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(func, delay);
+  }
+
+  /**
+   * Add a class to the body when scrolling
+   */
+  function setBodyClassOnScroll() {
+    function handleScroll() {
+      let scroll = $window.scrollTop();
+      $body.toggleClass("budi-scrolled", scroll >= 20);
+    }
+
+    handleScroll(); // Initial check on page load
+
+    $window.scroll(function () {
+      debounce(handleScroll, 100); // Debounce scroll event
+    });
+  }
+
+  /**
+   * Close multi step form
+   */
+  function close_multistep_form() {
+    $(document).on("click", ".bj-step-form-close", function (e) {
+      e.preventDefault();
+
+      $(".fieldset-cf7mls")
+        .removeClass("cf7mls_current_fs cf7mls_back_fs")
+        .filter('[data-cf7mls-order="0"]')
+        .addClass("cf7mls_current_fs");
+
+      $(this).closest("form.wpcf7-form").trigger("reset");
+      $("#budi-multistep-form-done").addClass("d-none");
+      $(".wpcf7").removeClass("d-none");
+      $(".wpcf7 .wpcf7-form").removeClass("sent").addClass("init");
+      $(".wpcf7 .wpcf7-response-output").html("");
+    });
+  }
+
+  /**
+   * Set Padding top of content when the header is fixed
+   */
+  function setPaddingTopPageContent() {
+    const $hero = $("#hero");
+    const $header = $("#simplistic-header");
+
+    function updatePadding() {
+      const headerHeight = $header.outerHeight();
+      if ($(window).width() > 767) {
+        $hero.css("padding-top", headerHeight);
+      } else {
+        $hero.css("padding-top", 0);
+      }
+    }
+
+    $window.on("load resize", updatePadding);
+    updatePadding(); // Initial call to set padding on page load
+  }
+
+  /**
+   * Check all tag a html when the a href is go to external site then make it open new tab
+   */
+  function openNewTabForExternalUrl() {
+    $document.ready(function () {
+      // Select all anchor tags on the page
+      $("a").each(function () {
+        var link = $(this).attr("href");
+
+        // Check if the link is external
+        if (
+          link &&
+          link.startsWith("http") &&
+          !link.includes(window.location.hostname)
+        ) {
+          // Open external links in a new tab
+          $(this).attr("target", "_blank");
+        }
+      });
+    });
+  }
+
+  /**
+   * Selects the value of the Jobtitle and and select this Job from the hidden Select Job Field
+   */
+  function setJobTitleForEmail() {
+    if (jQuery(".budi-job-detail__title h1").length > 0) {
+      const jobTitle = jQuery(".budi-job-detail__title h1").text().trim();
+      const selectField = jQuery(".budi-job-position-field .wpcf7-select");
+
+      selectField.find("option").each(function () {
+        if (jQuery(this).text().trim() === jobTitle) {
+          jQuery(this).prop("selected", true);
+          return false;
+        }
+      });
+
+      selectField.trigger("change");
+    }
+  }
+
+  /**
+   * Mobile Menu Button
+   */
+  function menuMobileButton() {
+    function open_simplistic_mobile_menu() {
+      $(".budi-simplistic-popup-menu__wrapper").addClass("budi-opened");
+    }
+
+    function close_simplistic_mobile_menu() {
+      $(".budi-simplistic-popup-menu__wrapper").removeClass("budi-opened");
+    }
+
+    $document.on(
+      "click",
+      ".simplistic-menu-mobile-hamburger-inner",
+      function (e) {
+        open_simplistic_mobile_menu();
+      }
+    );
+
+    $document.on(
+      "click",
+      ".budi-close-menu, .budi-simplistic-popup-menu__wrapper li a, #mainmenu-mobile a[href*='#']:not([href='#'])",
+      function (e) {
+        if ($(e.target).closest("#menu-item-4978").length === 0) {
+          close_simplistic_mobile_menu();
+        }
+      }
+    );
+  }
+
+  /**
+   * Custom WP Bakery Default Accordion
+   */
+  function customAccordionWPBakery() {
+    $document.on(
+      "click",
+      ".vc_tta-panel.vc_active .vc_tta-panel-heading",
+      function (e) {
+        e.preventDefault();
+        const $this = $(this);
+        const $vc_panel = $this.parents(".vc_tta-panel");
+        $vc_panel.removeClass("vc_active");
+        $vc_panel.addClass("vc_animating");
+        $vc_panel.find(".vc_tta-panel-body").slideUp(300, function () {
+          $vc_panel.removeClass("vc_animating");
+        });
+      }
+    );
+  }
+
+  /**
+   * Arrow Logo
+   */
+  function arrowLogoCompanyOption() {
+    $document.on("click", ".budi-simplistic-logo__arrow", function (e) {
+      e.preventDefault();
+      const $this = $(this);
+      $this.toggleClass("budi-opened");
+      $this
+        .parent()
+        .find(".budi-simplistic-company__other")
+        .toggleClass("budi-opened");
+    });
+  }
+
+  /**
+   * Auto selected job in form when on single job page
+   */
+  function autoSelectedJobForm() {
+    if ($("body").hasClass("single-job")) {
+      const jobTitle = $(".budi-job-detail__title").text().trim();
+      $("select[name='job_position']").val(jobTitle);
+    }
+  }
+
+  /**
+   * Contact Form Checkbox
+   */
+  function contactFormCheckbox() {
+    $document.on("click", ".budi-select-service__button", function (e) {
+      e.preventDefault();
+      const $this = $(this);
+      const $checkboxContainer = $this.siblings(
+        ".budi-select-service__checkboxs"
+      );
+      $this.toggleClass("budi-opened");
+      $checkboxContainer.slideToggle(300);
+    });
+
+    // Function to close all open dropdowns
+    function closeDropdowns() {
+      $(".budi-select-service__button.budi-opened").each(function () {
+        const $this = $(this);
+        const $checkboxContainer = $this.siblings(
+          ".budi-select-service__checkboxs"
+        );
+        $this.removeClass("budi-opened");
+        $checkboxContainer.slideUp(300);
+      });
+    }
+
+    // Click event listener for document to close dropdowns when clicking outside
+    $document.on("click", function (e) {
+      const $target = $(e.target);
+
+      // Check if the click was outside the button and the checkbox container
+      if (
+        !$target.closest(".budi-select-service__button").length &&
+        !$target.closest(".budi-select-service__checkboxs").length
+      ) {
+        closeDropdowns();
+      }
+    });
+
+    // Onchange checkbox
+    $document.on(
+      "change",
+      '.budi-select-service__checkboxs input[type="checkbox"]',
+      function () {
+        const $checkboxes = $(
+          '.budi-select-service__checkboxs input[type="checkbox"]'
+        );
+        const checkedCount = $checkboxes.filter(":checked").length;
+        const $chosen = $(".budi-select-service__choosen");
+
+        if (checkedCount > 0) {
+          $chosen.removeClass("d-none").find("span").text(checkedCount);
+          $(
+            ".budi-select-service__button-wrapper .wpcf7-not-valid-tip"
+          ).remove();
+        } else {
+          $chosen.addClass("d-none");
+          $(".budi-select-service__checkboxs .wpcf7-not-valid-tip").remove();
+        }
+      }
+    );
+  }
+
+  /**
+   * Contact form validation
+   */
+  function contactFormValidation() {
+    document.addEventListener(
+      "wpcf7submit",
+      function (event) {
+        if ("12" == event.detail.contactFormId) {
+          setTimeout(() => {
+            const valid_tip = $(
+              ".budi-select-service__checkboxs .wpcf7-not-valid-tip"
+            ).text();
+            $(".budi-select-service__checkboxs .wpcf7-not-valid-tip").remove();
+            $(
+              ".budi-select-service__button-wrapper .wpcf7-not-valid-tip"
+            ).remove();
+            if (valid_tip !== "") {
+              $(".budi-select-service__button-wrapper").append(
+                '<span class="wpcf7-not-valid-tip" aria-hidden="true">' +
+                  valid_tip +
+                  "</span>"
+              );
+            }
+          }, 100);
+        }
+      },
+      false
+    );
+  }
+
+  /**
+   * Floating Logo
+   */
+  function FloatingLogo() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const wrappers = document.querySelectorAll(
+        ".budi-floating-logo__img .wpb_wrapper"
+      );
+
+      wrappers.forEach((wrapper) => {
+        const images = wrapper.querySelectorAll(".wpb_single_image");
+
+        if (images.length > 0) {
+          const radius = 12; // Reduced radius for smaller movement
+          const speed = 0.005; // Reduced speed for smoother animation
+
+          const totalWidth = Array.from(images).reduce(
+            (sum, img) => sum + img.offsetWidth,
+            0
+          );
+          const availableSpace = wrapper.offsetWidth - totalWidth;
+          const gap = availableSpace / (images.length + 1);
+
+          let currentX = gap;
+
+          images.forEach((image) => {
+            const initialX = currentX;
+            const initialY = (wrapper.offsetHeight - image.offsetHeight) / 2;
+
+            let angle = Math.random() * 2 * Math.PI; // Random starting angle
+            const direction = Math.random() < 0.5 ? 1 : -1;
+            const delay = Math.random() * 2000; // Reduced max delay to 2000ms
+
+            setTimeout(() => {
+              function animate() {
+                angle += speed * direction;
+                angle = angle % (2 * Math.PI); // Keep angle within 0 to 2π
+
+                const x = initialX + radius * Math.cos(angle);
+                const y = initialY + radius * Math.sin(angle);
+
+                // Use CSS transitions for smoother movement
+                image.style.transition = "transform 0.5s ease-out";
+                image.style.transform = `translate(${x - initialX}px, ${
+                  y - initialY
+                }px)`;
+
+                requestAnimationFrame(animate);
+              }
+
+              animate();
+            }, delay);
+
+            currentX += image.offsetWidth + gap;
+          });
+        }
+      });
+    });
+  }
+
+  /**
+   * Function scroll animation text nav
+   */
+  function scrollAnimationTextNav() {
+    var $navElements = $(".budi-scroll-animation__nav");
+
+    $(window).on("scroll", function () {
+      let y = $(window).scrollTop();
+      let windowWidth = $(window).width();
+      let windowHeight = $(window).height();
+      let heightNavWrapper;
+
+      if (windowWidth < 767) {
+        heightNavWrapper = 135;
+      } else if (windowWidth >= 767 && windowWidth < 992) {
+        heightNavWrapper = 145; // New value for the specified range
+      } else {
+        heightNavWrapper = 165;
+      }
+
+      $navElements.css("top", "-" + heightNavWrapper);
+      $navElements.each(function () {
+        var $this = $(this);
+        var elementPosition = $this.offset().top;
+
+        if (y > elementPosition - (windowHeight - 200)) {
+          var offset = Math.max(
+            0,
+            Math.min(0, (y - elementPosition) / 2 - heightNavWrapper)
+          );
+          // $this.css("top", offset + "px");
+
+          // console.log(offset);
+
+          if (offset === 0) {
+            $this.addClass("budi-normal-position");
+          }
+
+          // else {
+          //   $this.removeClass("budi-normal-position");
+          // }
+        } else if (y < elementPosition - 1000) {
+          var transitionOffset = Math.max(
+            -heightNavWrapper,
+            (y - (elementPosition + windowHeight)) / 2
+          );
+
+          $this
+            // .css("top", transitionOffset + "px")
+            .removeClass("budi-normal-position");
+        }
+      });
+    });
+  }
+
+  function scrollAnimationTextNavRefactored() {
+    var $navElements = $(".budi-scroll-animation__nav");
+
+    $navElements.each(function () {
+      var $this = $(this);
+      $this.addClass("budi-normal-position");
+    });
+
+    return;
+
+    $(window).on("scroll", function () {
+      let y = $(window).scrollTop();
+      let windowWidth = $(window).width();
+      let windowHeight = $(window).height();
+      let heightNavWrapper;
+
+      $navElements.css("top", "-" + heightNavWrapper);
+      $navElements.each(function () {
+        var $this = $(this);
+        var elementPosition = $this.offset().top;
+
+        if (y > elementPosition - (windowHeight - 200)) {
+          var offset = Math.max(
+            0,
+            Math.min(0, (y - elementPosition) / 2 - heightNavWrapper)
+          );
+          // $this.css("top", offset + "px");
+
+          // console.log(offset);
+
+          if (offset === 0) {
+            $this.addClass("budi-normal-position");
+          }
+
+          // else {
+          //   $this.removeClass("budi-normal-position");
+          // }
+        } else if (y < elementPosition - 1000) {
+          var transitionOffset = Math.max(
+            -heightNavWrapper,
+            (y - (elementPosition + windowHeight)) / 2
+          );
+
+          $this
+            // .css("top", transitionOffset + "px")
+            .removeClass("budi-normal-position");
+        }
+      });
+    });
+  }
+
+  /**
+   * Function scroll animation text nav
+   */
+  function scrollAnimationTextNavMicha() {
+    $(window).on("scroll", function () {
+      refreshAnimations();
+    });
+
+    refreshAnimations();
+  }
+
+  function refreshAnimations() {
+    var $sections = $("section.vc_section.section-scroll-stop");
+    let $scrollY = $(window).scrollTop();
+    // console.log($scrollY)
+    let $windowHeight = $(window).height();
+
+    $sections.each(function () {
+      var $section = $(this);
+      var $id = $section.attr("id");
+
+      if (typeof $id == "undefined") {
+        return;
+      }
+
+      var $sectionTop = $section.offset().top;
+      var $sectionHeight = $section.height();
+      var $bottomOfSection = $sectionTop + $sectionHeight;
+      var $headline = $section.find(".animate-headline");
+      var $headlineChevron = $section.find(
+        ".animate-headline .headline-chevron"
+      );
+
+      var $pixelsOfSectionVisible = Math.min(
+        $scrollY + $windowHeight - $sectionTop,
+        $sectionHeight
+      );
+      var $percent = ($pixelsOfSectionVisible / $sectionHeight) * 100.0;
+      var $percent = ($pixelsOfSectionVisible / 400) * 100.0; // 400px is max
+
+      if ($pixelsOfSectionVisible > 0 && $scrollY < $bottomOfSection) {
+        $headline.css(
+          "animation-delay",
+          "calc(" + parseFloat($percent / 100) + " * -1s)"
+        );
+        $headlineChevron.css(
+          "animation-delay",
+          "calc(" + parseFloat($percent / 100) + " * -1s)"
+        );
+
+        // console.log(
+        //   $id +
+        //     ": " +
+        //     $pixelsOfSectionVisible +
+        //     "px  " +
+        //     $percent +
+        //     " AD: " +
+        //     $headline.css("animation-delay")
+        // );
+      }
+    });
+  }
+
+  /**
+   * Initialize JS Function
+   */
+  setBodyClassOnScroll();
+  setPaddingTopPageContent();
+  openNewTabForExternalUrl();
+  menuMobileButton();
+  customAccordionWPBakery();
+  arrowLogoCompanyOption();
+  autoSelectedJobForm();
+  contactFormCheckbox();
+  contactFormValidation();
+  FloatingLogo();
+  setJobTitleForEmail();
+  scrollAnimationTextNavMicha();
+  close_multistep_form();
+  // scrollAnimationTextNav();
+  scrollAnimationTextNavRefactored();
+})(jQuery);
+
+document.addEventListener("DOMContentLoaded", function () {
+  let isProcessing = false;
+
+  function handleButtonAnimation(button, status) {
+    if (isProcessing) return;
+
+    isProcessing = true;
+    const circle = button.querySelector(".progress-ring circle");
+    const submitText = button.querySelector(".submit-text");
+    const circumference = 125.6;
+
+    // Hide submit text immediately
+    submitText.style.opacity = "0";
+
+    // Start loading animation
+    button.classList.add("loading");
+    circle.style.strokeDashoffset = circumference;
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 2;
+      const offset = circumference - (progress / 100) * circumference;
+      circle.style.strokeDashoffset = offset;
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        button.classList.remove("loading");
+
+        if (status === "success") {
+          button.classList.add("success");
+        } else if (status === "error") {
+          button.classList.add("error");
+        }
+
+        // Reset button after delay
+        setTimeout(() => {
+          button.classList.remove("success", "error");
+          circle.style.strokeDashoffset = circumference;
+          submitText.style.opacity = "1";
+          button.style.width = "150px";
+          isProcessing = false;
+        }, 2000);
+      }
+    }, 10);
+  }
+
+  // Menangani submit form
+  const wpcf7Forms = document.querySelectorAll(".wpcf7-form");
+  wpcf7Forms.forEach((form) => {
+    // Mencegah default submit
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const button = form.querySelector(".submit-btn");
+      handleButtonAnimation(button, "loading");
+    });
+  });
+
+  // Contact Form 7 event listeners
+  document.addEventListener("wpcf7beforesubmit", function (event) {
+    const button = event.target.querySelector(".submit-btn");
+    handleButtonAnimation(button, "loading");
+  });
+
+  document.addEventListener("wpcf7invalid", function (event) {
+    const button = event.target.querySelector(".submit-btn");
+    handleButtonAnimation(button, "error");
+  });
+
+  document.addEventListener("wpcf7spam", function (event) {
+    const button = event.target.querySelector(".submit-btn");
+    handleButtonAnimation(button, "error");
+  });
+
+  document.addEventListener("wpcf7mailfailed", function (event) {
+    const button = event.target.querySelector(".submit-btn");
+    handleButtonAnimation(button, "error");
+  });
+
+  document.addEventListener("wpcf7mailsent", function (event) {
+    const button = event.target.querySelector(".submit-btn");
+    handleButtonAnimation(button, "success");
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(".budi-icon-list__section");
+  if (sections.length) {
+      const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  const currentSection = entry.target;
+
+                  setTimeout(() => {
+                      let items = currentSection.querySelectorAll(".budi-icon-lists__item");
+
+                      // Check if the screen width is less than or equal to 767px
+                      if (window.innerWidth <= 767) {
+                          // Show items in order for mobile view
+                          items.forEach((li, i) => {
+                              setTimeout(() => li.classList.add("show"), i * 150);
+                          });
+                      } else {
+                          // Original staggered effect for larger screens
+                          items.forEach((li, i) => {
+                              let delay = ((i % 2 === 0 ? i / 2 : Math.floor(items.length / 2) + (i - 1) / 2)) * 150;
+                              setTimeout(() => li.classList.add("show"), delay);
+                          });
+                      }
+
+                      observer.unobserve(currentSection);
+                  }, 500);
+              }
+          });
+      }, { threshold: 0.2 });
+
+      sections.forEach(section => observer.observe(section));
+  }
+
+  if (typeof jQuery !== "undefined") {
+      jQuery(document).ready(function ($) {
+          $(".budi-box-list-services.has-description .budi-content-box__description p").hide();
+
+          $(".budi-box-list-services.has-description")
+              .on("mouseenter", function () {
+                  let $desc = $(this).find(".budi-content-box__description p");
+
+                  if (!$desc.is(":visible") && !$desc.is(":animated")) {
+                      $desc.stop(true, true).slideDown(300);
+                  }
+              })
+              .on("mouseleave", function () {
+                  let $desc = $(this).find(".budi-content-box__description p");
+
+                  setTimeout(() => {
+                      if ($desc.is(":visible") && !$desc.is(":hover")) {
+                          $desc.stop(true, true).slideUp(300);
+                      }
+                  }, 150);
+              });
+      });
+  }
+});

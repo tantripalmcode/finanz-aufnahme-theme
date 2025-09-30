@@ -1,0 +1,11 @@
+.budi-icon-box-grid__item-image{
+    max-width: 90px;
+}
+
+.budi-icon-box-grid__item-header{
+    gap: 10px;
+}
+
+.budi-icon-box-grid__item-content{
+    margin-top: 20px;
+}

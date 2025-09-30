@@ -1,0 +1,9 @@
+.budi-image-slider__wrapper img {
+    width: auto;
+}
+
+.budi-slider-content__column-overlay{
+    width: 100vw;
+    top: -1px;
+    height: calc(100% + 2px);
+}

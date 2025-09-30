@@ -1,0 +1,455 @@
+.budi-job-search-grid__wrapper {
+    position: relative;
+    padding-top: 20px;
+}
+
+.budi-job-search-grid__wrapper::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    max-height: 520px;
+    background: linear-gradient(180deg, rgba(83, 135, 193, 0.12) -108.82%, rgba(255, 255, 255, 0.6) 100%);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 1;
+}
+
+.budi-job-search-grid__wrapper .container {
+    z-index: 2;
+    position: relative;
+}
+
+/* Search Form Styles */
+.budi-job-search-grid__form-wrapper {
+    margin-bottom: 80px;
+}
+
+.budi-job-search-grid__form-container {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px #0000001A;
+    padding: 12px;
+}
+
+.budi-job-search-grid__form-item {
+    position: relative;
+    flex: 1;
+    border-right: 1px solid #53535340;
+}
+
+.budi-job-search-grid__form-item:last-child,
+.budi-job-search-grid__form-item:nth-last-child(2) {
+    border-right: none;
+}
+
+.budi-job-search-grid__form-item .form-control {
+    border: none;
+    background: transparent;
+    padding: 20px 24px;
+    font-size: 16px;
+    color: #374151;
+    background-repeat: no-repeat;
+    background-position: 20px center;
+    background-size: 20px;
+    padding-left: 56px;
+}
+
+.budi-job-search-grid__form-item .form-control:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.budi-job-search-grid__form-item .form-control::placeholder {
+    color: #9CA3AF;
+    font-weight: 500;
+}
+
+.budi-job-search-grid__content {
+    max-width: 1046px;
+    margin-inline: auto;
+}
+
+/* Job Category Field */
+.budi-job-category .form-control {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_173_3044)'%3E%3Cpath d='M13.3333 2.29167C13.3333 4.09417 10.9833 6.33417 9.8125 7.27333C9.62929 7.42021 9.40149 7.50026 9.16667 7.50026C8.93185 7.50026 8.70404 7.42021 8.52083 7.27333C7.35 6.33333 5 4.09417 5 2.29167C4.97372 1.71185 5.17815 1.14522 5.56858 0.715755C5.95901 0.286284 6.50364 0.0289321 7.08333 0C7.66302 0.0289321 8.20766 0.286284 8.59809 0.715755C8.98851 1.14522 9.19295 1.71185 9.16667 2.29167C9.14038 1.71185 9.34482 1.14522 9.73525 0.715755C10.1257 0.286284 10.6703 0.0289321 11.25 0C11.8297 0.0289321 12.3743 0.286284 12.7648 0.715755C13.1552 1.14522 13.3596 1.71185 13.3333 2.29167ZM19.4483 10.2917L13.0317 17.2992C12.2504 18.151 11.3005 18.831 10.2424 19.296C9.18417 19.761 8.04083 20.0007 6.885 20H3.33333C2.44928 20 1.60143 19.6488 0.976311 19.0237C0.35119 18.3986 0 17.5507 0 16.6667V12.5C0 11.6159 0.35119 10.7681 0.976311 10.143C1.60143 9.51786 2.44928 9.16667 3.33333 9.16667H9.8225C10.098 9.1672 10.3698 9.22929 10.6182 9.34841C10.8666 9.46753 11.0852 9.64066 11.258 9.85513C11.4309 10.0696 11.5536 10.32 11.6173 10.588C11.6809 10.856 11.6838 11.1349 11.6258 11.4042C11.5356 11.7809 11.3324 12.121 11.0435 12.3789C10.7545 12.6369 10.3936 12.8004 10.0092 12.8475L6.54 13.3333C6.32135 13.3647 6.1241 13.4816 5.99159 13.6583C5.85908 13.835 5.80216 14.0572 5.83333 14.2758C5.8645 14.4946 5.9813 14.6921 6.15806 14.8248C6.33481 14.9575 6.55703 15.0145 6.77583 14.9833L10.3192 14.4833C11.1537 14.3604 11.9166 13.9426 12.4696 13.3055C13.0226 12.6685 13.329 11.8544 13.3333 11.0108C13.3293 10.8325 13.3111 10.6547 13.2792 10.4792L16.2308 7.365C16.6201 6.94354 17.1603 6.69321 17.7334 6.6687C18.3066 6.64419 18.8662 6.84747 19.29 7.23417C19.7116 7.6206 19.9645 8.15725 19.9942 8.72842C20.0238 9.2996 19.8277 9.85953 19.4483 10.2875V10.2917Z' fill='%23535353'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_173_3044'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+}
+
+/* Location Field */
+.budi-job-location .form-control {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_173_3095)'%3E%3Cpath d='M10 0.0350342C7.79495 0.0374601 5.68089 0.91443 4.12161 2.47356C2.56232 4.03269 1.68514 6.14665 1.6825 8.3517C1.6825 10.4934 3.34083 13.845 6.61166 18.3134C7.00105 18.8468 7.51088 19.2808 8.09966 19.58C8.68845 19.8791 9.33956 20.0351 10 20.0351C10.6604 20.0351 11.3115 19.8791 11.9003 19.58C12.4891 19.2808 12.9989 18.8468 13.3883 18.3134C16.6592 13.845 18.3175 10.4934 18.3175 8.3517C18.3148 6.14665 17.4377 4.03269 15.8784 2.47356C14.3191 0.91443 12.205 0.0374601 10 0.0350342ZM10 11.6667C9.34072 11.6667 8.69626 11.4712 8.1481 11.1049C7.59993 10.7387 7.17269 10.2181 6.9204 9.60898C6.6681 8.99989 6.60209 8.32967 6.73071 7.68307C6.85933 7.03646 7.1768 6.44252 7.64297 5.97635C8.10915 5.51017 8.70309 5.1927 9.34969 5.06408C9.9963 4.93547 10.6665 5.00148 11.2756 5.25377C11.8847 5.50606 12.4053 5.9333 12.7716 6.48147C13.1378 7.02963 13.3333 7.6741 13.3333 8.33337C13.3333 9.21742 12.9821 10.0653 12.357 10.6904C11.7319 11.3155 10.8841 11.6667 10 11.6667Z' fill='%23535353'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_173_3095'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+}
+
+/* Custom Dropdown Styles */
+.budi-job-custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.budi-job-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    padding-left: 56px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #374151;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 20px center;
+    background-size: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_173_3042)'%3E%3Cpath d='M6.66667 9.99417L9.61333 7.1125C10.4 6.32583 10.8333 5.28 10.8333 4.16667C10.8333 3.05333 10.4 2.0075 9.61333 1.22083C8.82583 0.434167 7.78 0 6.66667 0C5.55333 0 4.5075 0.434167 3.72 1.22083C2.9325 2.0075 2.5 3.05333 2.5 4.16667C2.5 5.28 2.93333 6.32583 3.72667 7.11917L6.66667 9.99417ZM6.66667 2.5C7.5875 2.5 8.33333 3.24583 8.33333 4.16667C8.33333 5.0875 7.5875 5.83333 6.66667 5.83333C5.74583 5.83333 5 5.0875 5 4.16667C5 3.24583 5.74583 2.5 6.66667 2.5ZM20 5.83333C20 5.83333 18.3275 9.1975 18.3333 9.58333C18.3408 10.0625 18.3333 10.8333 18.3333 11.6667C18.3333 12.0833 18.05 12.3375 17.875 12.6417C17.56 13.1892 17.0383 13.8 16.7458 14.3575C16.7108 14.4233 16.6842 14.5008 16.6667 14.5825C16.62 14.795 16.6292 15.0417 16.6992 15.2217C16.9133 15.7683 17.1825 16.2758 17.4617 16.7967C17.7075 17.2567 17.8458 17.7375 17.6917 18.3358L16.6667 18.3325C16.3442 17.9883 15.8333 17.2125 15.8333 16.6658C15.8333 15.8325 14.6808 15.8325 14.1667 15.8325C13.3333 15.8325 13.3333 16.6658 13.3333 16.6658H11.6667C11.1667 17.0275 10 19.9992 10 19.9992C10 19.9992 8.75 18.7808 8.33333 17.9475C8.13 17.5417 7.25 17.495 6.8575 17.495C6.74083 17.495 6.66667 17.4992 6.66667 17.4992C6.66667 17.4992 6.46167 17.0392 6.25 16.6658C5.82667 15.9192 4.23083 15.1483 2.91667 14.9992C2.49167 14.9992 1.96833 15.215 1.66667 15.4158C0.833333 14.1658 0 12.1308 0 10.4317V9.385C0 7.78583 0.833333 4.99917 0.833333 4.99917H0.9C1.07833 6.2425 1.64583 7.39333 2.56167 8.31L6.66667 12.325L10.7917 8.29C11.66 7.42167 12.2158 6.32583 12.4142 5.13833C13.7183 5.48417 15.0008 5.8325 15.0008 5.8325V8.10917C15.0008 8.27083 15.1067 8.3325 15.2508 8.3325C15.4767 8.3325 15.7958 8.18083 15.9383 8.02917C16.3792 7.5625 17.5008 5.8325 17.5008 5.8325C18.0167 5.79583 18.2975 5.5225 18.3342 4.99917C18.3533 4.7175 18.3 3.61333 18.3342 3.3325C18.3442 3.32917 19.1575 3.33583 19.1675 3.3325C19.4417 3.69917 20.0008 5.09917 20.0008 5.09917V5.8325L20 5.83333Z' fill='%23535353'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_173_3042'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    transition: all 0.3s ease;
+}
+
+.budi-job-dropdown-trigger:hover {
+    color: var(--color-main);
+}
+
+.budi-job-dropdown-text {
+    flex: 1;
+    text-align: left;
+}
+
+.budi-job-dropdown-arrow {
+    transition: transform 0.3s ease;
+    color: #535353;
+}
+
+.budi-job-custom-dropdown.active .budi-job-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.budi-job-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Custom Scrollbar for Dropdown Menu */
+.budi-job-dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.budi-job-dropdown-menu::-webkit-scrollbar-track {
+    background: #F3F4F6;
+    border-radius: 3px;
+}
+
+.budi-job-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 3px;
+    transition: background 0.3s ease;
+}
+
+.budi-job-dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+}
+
+/* Firefox scrollbar styling */
+.budi-job-dropdown-menu {
+    scrollbar-width: thin;
+    scrollbar-color: #D1D5DB #F3F4F6;
+}
+
+.budi-job-custom-dropdown.active .budi-job-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.budi-job-dropdown-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #374151;
+    font-size: 16px;
+}
+
+.budi-job-dropdown-item:hover {
+    background-color: #F3F4F6;
+}
+
+.budi-job-dropdown-item.selected {
+    background-color: var(--color-main);
+    color: white;
+}
+
+.budi-job-dropdown-item:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.budi-job-dropdown-item:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+/* Submit Button */
+.budi-job-submit {
+    flex: 0 0 auto;
+    min-width: 140px;
+}
+
+.budi-job-search-grid__form-wrapper button.budi-search-btn {
+    background: linear-gradient(270deg, #BD0926 0%, #E7623A 100%) !important;
+    background-size: 100%;
+    background-position: center center;
+    border: none;
+    color: white;
+    padding: 16px 36px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: 100%;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.budi-job-search-grid__form-wrapper button.budi-search-btn:hover {
+    background-size: 300% !important;
+    background-position: right center !important;
+}
+
+/* Job Grid Styles */
+
+.budi-job-search-grid__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 26px;
+    margin-bottom: 40px;
+}
+
+.budi-job-search-grid__grid.bj-not-found{
+    display: block;
+}
+
+/* Job Item Styles */
+.budi-job-search-grid__item {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 23px 18px 16px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0px 3px 20px 0px #00000026;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.budi-job-search-grid__item:hover {
+    background: #03346BE5;
+    text-decoration: none;
+    color: inherit;
+}
+
+.budi-job-search-grid__item:hover .budi-job-search-grid__item-icon img {
+    filter: brightness(0) invert(1);
+}
+
+.budi-job-search-grid__item:hover .budi-job-search-grid__item-content * {
+    color: white !important;
+}
+
+.budi-job-search-grid__item:hover .budi-job-search-grid__item-arrow svg path {
+    fill: white;
+}
+
+/* Job Item Icon */
+.budi-job-search-grid__item-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Job Item Content */
+.budi-job-search-grid__item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.budi-job-search-grid__item-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 13px 0;
+    color: var(--color-main);
+    line-height: 1.3;
+}
+
+.budi-job-search-grid__item--highlighted .budi-job-search-grid__item-title {
+    color: white;
+}
+
+.budi-job-search-grid__item-subtitle {
+    font-size: 16px;
+    color: var(--body-text-color);
+    margin: 0 0 10px 0;
+}
+
+.budi-job-search-grid__item--highlighted .budi-job-search-grid__item-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.budi-job-search-grid__item-location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    color: #03346BB2;
+    font-weight: 500;
+}
+
+.budi-job-search-grid__item--highlighted .budi-job-search-grid__item-location {
+    color: white;
+}
+
+/* Job Item Arrow */
+.budi-job-search-grid__item-arrow {
+    flex-shrink: 0;
+    color: #E0163C;
+    transition: transform 0.3s ease;
+    position: absolute;
+    bottom: 17px;
+    right: 20px;
+}
+
+.budi-job-search-grid__item--highlighted .budi-job-search-grid__item-arrow {
+    color: white;
+}
+
+/* Load More Button */
+.budi-job-search-grid__load-more {
+    display: flex;
+    justify-content: center;
+}
+
+.budi-job-search-grid__load-more button.budi-load-more-btn {
+    background: transparent !important;
+    border: 1px solid var(--color-main) !important;
+    color: var(--color-main) !important;
+    padding: 7px 22px;
+    border-radius: 100px !important;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.budi-job-search-grid__load-more button.budi-load-more-btn:hover {
+    background: var(--color-main) !important;
+    color: white !important;
+}
+
+.budi-job-search-grid__load-more button.budi-load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Not Found Styles */
+.budi-job-search-grid__not-found {
+    text-align: center;
+    padding: 30px 20px;
+    color: #6B7280;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Loading State */
+.budi-job-search-grid__grid.budi-processing {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.budi-job-search-grid__grid.budi-processing::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--color-main);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .budi-job-search-grid__form-wrapper {
+        margin-bottom: 55px;
+    }
+
+    .budi-job-search-grid__form-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 26px 20px;
+    }
+
+    .budi-job-search-grid__form-item {
+        width: 100%;
+        border-right: 0 !important;
+    }
+
+    .budi-job-search-grid__form-item:not(.budi-job-submit) {
+        box-shadow: 0px 0px 10px 0px #00000014;
+        border-radius: 5px;
+    }
+
+    .budi-job-search-grid__grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 26px;
+    }
+
+    .budi-job-search-grid__form-item .form-control{
+        height: 53px;
+    }
+
+    .budi-job-dropdown-trigger{
+        padding-block: 15px;
+    }
+
+    .budi-job-search-grid__item{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 13px 20px;
+        gap: 11px;
+    }
+}

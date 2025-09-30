@@ -1,0 +1,16 @@
+.budi-image-slider-new__wrapper img {
+    width: auto;
+    border-radius: 20px;
+    border-top: 4px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.budi-image-slider-new__wrapper img:hover{
+    border-color: var(--color-sub);
+}
+
+.budi-slider-content__column-overlay{
+    width: 100vw;
+    top: -1px;
+    height: calc(100% + 2px);
+}
