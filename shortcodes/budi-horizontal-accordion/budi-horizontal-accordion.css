@@ -1,0 +1,242 @@
+.budi-horizontal-accordion__item-content-inner,
+.budi-horizontal-accordion__item-quote-icon {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease 0.3s;
+}
+
+.budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-content-inner,
+.budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-number-normal,
+.budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-quote-icon {
+    width: auto;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+}
+
+@media only screen and (min-width: 768px) {
+    .budi-horizontal-accordion__item {
+        height: 600px;
+        padding-left: 30px;
+        padding-bottom: 20px;
+        background-color: #000;
+    }
+
+    .budi-horizontal-accordion__item-number-normal {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease 0.3s;
+        top: -15px;
+    }
+}
+
+.budi-horizontal-accordion__item::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(11, 55, 83, 0.5) 0%, rgba(11, 55, 83, 0.85) 80%);
+    z-index: 2;
+}
+
+
+.budi-horizontal-accordion__item-image {
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.budi-horizontal-accordion__item-image img {
+    object-fit: cover;
+    object-position: top;
+}
+
+.budi-horizontal-accordion__item-content {
+    gap: 20px;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.budi-horizontal-accordion__item-number-rotate,
+.budi-horizontal-accordion__item-number-normal {
+    color: #fff;
+    font-size: 80px;
+    line-height: 1em;
+}
+
+.budi-horizontal-accordion__item-number-rotate {
+    transform: rotate(270deg);
+    position: absolute;
+    bottom: 0;
+    transition: opacity 0.3s ease 0.3s;
+}
+
+.budi-horizontal-accordion__item:first-child .budi-horizontal-accordion__item-number-rotate {
+    right: 10px;
+}
+
+.budi-horizontal-accordion__item-desc {
+    width: 75%;
+    font-style: italic;
+}
+
+.budi-horizontal-accordion__item-icon {
+    width: 40px;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg width='31' height='30' viewBox='0 0 31 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_279_1072)'%3E%3Cg clip-path='url(%23clip1_279_1072)'%3E%3Cg clip-path='url(%23clip2_279_1072)'%3E%3Cpath d='M5.8125 22.5666L80.9858 -40.2087' stroke='%23E0163C' stroke-width='1.95875' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3Cpath d='M15.9922 5.16187L25.6486 6.02972L24.7807 15.6861' stroke='%23E0163C' stroke-width='1.95875' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cdefs%3E%3CclipPath id='clip0_279_1072'%3E%3Crect width='26' height='16' fill='white' transform='translate(0 17.2137) rotate(-39.8644)'/%3E%3C/clipPath%3E%3CclipPath id='clip1_279_1072'%3E%3Crect width='100' height='15.67' fill='white' transform='translate(0 17.2137) rotate(-39.8644)'/%3E%3C/clipPath%3E%3CclipPath id='clip2_279_1072'%3E%3Crect width='99.8962' height='15.67' fill='white' transform='translate(0.0390625 17.1805) rotate(-39.8644)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    bottom: 0;
+    right: -50px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.budi-horizontal-accordion__item-arrow-bottom {
+    top: 19px;
+    right: 17px;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* Opened */
+@media only screen and (min-width: 768px) {
+    .budi-horizontal-accordion__item.budi-opened {
+        padding-bottom: 35px;
+    }
+
+    .budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-content {
+        justify-content: flex-start;
+    }
+
+    .budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-number-rotate {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .budi-horizontal-accordion__item {
+        padding-left: 15px;
+    }
+
+    .budi-horizontal-accordion__item-desc {
+        width: 85%;
+    }
+
+    .budi-horizontal-accordion__item-number-normal {
+        top: 0;
+    }
+
+    .budi-horizontal-accordion__item.budi-opened {
+        padding-right: 15px;
+    }
+
+    /* .budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-content {
+        flex-direction: column;
+    } */
+}
+
+@media only screen and (max-width: 992px) {
+    .budi-unsere-leistungen__item-title {
+        font-size: 20px;
+    }
+
+    .budi-horizontal-accordion__item-content {
+        /* flex-direction: column; */
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .budi-horizontal-accordion__item-quote-icon svg{
+        width: 50px;
+    }
+
+    .budi-horizontal-accordion__item {
+        padding: 15px 20px;
+    }
+
+    .budi-horizontal-accordion__item-number-normal {
+        font-size: 58px;
+    }
+
+    .budi-horizontal-accordion__item-desc {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .budi-horizontal-accordion__item-icon {
+        width: 30px;
+        height: 30px;
+        right: auto;
+        bottom: -10px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .budi-horizontal-accordion__item.budi-opened {
+        padding: 135px 20px 30px;
+    }
+
+    .budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-desc {
+        width: auto;
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-arrow-bottom {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .budi-horizontal-accordion__item.budi-opened .budi-horizontal-accordion__item-icon {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .budi-horizontal-accordion__wrapper{
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .budi-horizontal-accordion__item {
+        border-radius: 20px;
+        min-height: 130px;
+    }
+
+    .budi-horizontal-accordion__item-content {
+        gap: 15px;
+    }
+
+    .budi-horizontal-accordion__item-quote-icon svg {
+        width: 47px;
+    }
+
+    .budi-horizontal-accordion__item-icon{
+        bottom: 30px;
+        left: auto;
+        right: 30px;
+        z-index: 9;
+    }
+}

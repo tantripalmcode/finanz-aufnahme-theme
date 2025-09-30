@@ -1,19 +1,18 @@
 <?php
 global $post;
 $current_post_id       = $post ? $post->ID : null;
-$disable_header_footer = get_field('budi_disable_header_footer', $current_post_id);
+$disable_header_footer = get_post_meta($current_post_id, 'budi_disable_header_footer', true);
 
 if ($disable_header_footer) return;
 
-$site_title         = get_bloginfo('name');
-$company_logo       = get_theme_mod('company_logo');
-$company_logo_white = get_theme_mod('company_logo_white');
-$cta1_text          = get_theme_mod('cta1_text');
-$cta1_url           = get_theme_mod('cta1_url');
-$cta1_target        = get_theme_mod('cta1_target');
-$cta2_text          = get_theme_mod('cta2_text');
-$cta2_url           = get_theme_mod('cta2_url');
-$cta2_target        = get_theme_mod('cta2_target');
+$site_title   = get_bloginfo('name');
+$company_logo = get_theme_mod('company_logo');
+$cta1_text    = get_theme_mod('cta1_text');
+$cta1_url     = get_theme_mod('cta1_url');
+$cta1_target  = get_theme_mod('cta1_target');
+$cta2_text    = get_theme_mod('cta2_text');
+$cta2_url     = get_theme_mod('cta2_url');
+$cta2_target  = get_theme_mod('cta2_target');
 ?>
 <div id="primary-navigation-overlay"></div>
 <header class="simplistic-header d-block w-100 position-fixed" id="simplistic-header">
@@ -33,7 +32,7 @@ $cta2_target        = get_theme_mod('cta2_target');
                         <!-- Company Logo -->
                         <?php if ($company_logo) { ?>
                             <a href="<?php echo esc_url(get_site_url()); ?>">
-                                <img class="logo transition-all-03s" src="<?php echo esc_url($company_logo); ?>" alt="<?php echo esc_attr($site_title); ?>" data-company-logo-color="<?php echo esc_attr($company_logo); ?>" data-company-logo-white="<?php echo esc_attr($company_logo_white); ?>" />
+                                <img class="logo transition-all-03s" src="<?php echo esc_url($company_logo); ?>" alt="<?php echo esc_attr($site_title); ?>" />
                             </a>
                         <?php } ?>
 
@@ -95,18 +94,6 @@ $cta2_target        = get_theme_mod('cta2_target');
 
         </div>
     </div>
-
-    <?php
-    $cta_datas = [
-        'cta1_text'   => $cta1_text,
-        'cta1_url'    => $cta1_url,
-        'cta1_target' => $cta1_target,
-        'cta2_text'   => $cta2_text,
-        'cta2_url'    => $cta2_url,
-        'cta2_target' => $cta2_target,
-    ];
-    get_template_part('template-parts/header/popup', 'menu', $cta_datas);
-    ?>
 
 </header>
 
