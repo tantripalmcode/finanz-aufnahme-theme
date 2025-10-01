@@ -267,6 +267,35 @@
   }
 
   /**
+   * Heartbeat Button JS
+   */
+  function heartbeatButton() {
+    $(".btn-heartbeat").each(function () {
+      var $btn = $(this);
+      var isHovering = false;
+
+      // Hover masuk → tandai sedang hover
+      $btn.on("mouseenter", function () {
+        isHovering = true;
+      });
+
+      // Hover keluar → reset
+      $btn.on("mouseleave", function () {
+        isHovering = false;
+        $btn.css("animation-play-state", "running");
+      });
+
+      // Saat animasi selesai 1 loop
+      $btn.on("animationiteration webkitAnimationIteration", function () {
+        if (isHovering) {
+          $btn.css("animation-play-state", "paused");
+          $btn.css("transform", "scale(1)"); // pastikan berhenti normal
+        }
+      });
+    });
+  }
+
+  /**
    * Initialize JS Function
    */
   setBodyClassOnScroll();
@@ -277,4 +306,5 @@
   popupMenuHamburgerMenu();
   setMarginTopForMainContent();
   rellaxJs();
+  heartbeatButton();
 })(jQuery);

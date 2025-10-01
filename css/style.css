@@ -7,6 +7,10 @@ GLOBAL STYLE
 :root {
     --placeholder-color: rgba(17, 17, 18, 0.6);
     --outline-focus-visible: 2px auto blue !important;
+    --btn-primary-bg: linear-gradient(17deg, rgba(115, 81, 89, 0.20) -2.96%, rgba(254, 162, 183, 0.20) 70.34%, rgba(255, 255, 255, 0.20) 84.25%), #F7567C;
+    --btn-primary-shadow: 0 12px 24.8px 0 rgba(242, 80, 116, 0.44);
+    --btn-primary-shadow-beat1: 0 12px 32px 0 rgba(242, 80, 116, 0.55);
+    --btn-primary-shadow-beat2: 0 12px 40px 0 rgba(242, 80, 116, 0.65);
 }
 
 /* Password Page */
@@ -352,37 +356,67 @@ h6,
 /* Button */
 div.budi-button-container a.btn,
 div.budi-button-container .btn {
-    font-size: 18px !important;
+    font-size: 24px !important;
     font-weight: 500;
     line-height: normal;
-    padding: 10px 18px !important;
+    padding: 18px 32px !important;
     align-items: center;
     position: relative;
     border-radius: 100px;
     border: 2px solid;
     cursor: pointer;
-    text-transform: capitalize;
     transition: all 0.3s ease !important;
 }
 
-.budi-button-image__wrapper svg path {
+/* .budi-button-image__wrapper svg path {
     fill: white !important;
+} */
+
+div.budi-button-container a.btn.btn-heartbeat,
+div.budi-button-container .btn.btn-heartbeat {
+    animation: btn-heartbeat 1.8s infinite;
+    transition: all 0.35s ease-out; 
+}
+
+/* div.budi-button-container a.btn.btn-heartbeat:hover,
+div.budi-button-container .btn.btn-heartbeat:hover {
+    animation-play-state: paused;
+} */
+
+@keyframes btn-heartbeat {
+    0% {
+        transform: scale(1);
+        box-shadow: var(--btn-primary-shadow);
+    }
+    14% {
+        transform: scale(1.02);
+        box-shadow: var(--btn-primary-shadow-beat1);
+    }
+    28% {
+        transform: scale(1);
+        box-shadow: var(--btn-primary-shadow);
+    }
+    42% {
+        transform: scale(1.05);
+        box-shadow: var(--btn-primary-shadow-beat2);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: var(--btn-primary-shadow);
+    }
 }
 
 /* Primary Button */
 div.budi-button-container a.btn.btn-primary,
 div.budi-button-container .btn.btn-primary {
     color: #FFF;
-    background: linear-gradient(270deg, #BD0926 0%, #E7623A 100%);
-    background-size: 100%;
-    background-position: center center;
-    border: none;
+    background: var(--btn-primary-bg);
+    box-shadow: var(--btn-primary-shadow);
+    border: 2px solid #FFA3B9;
 }
 
 div.budi-button-container a.btn.btn-primary:hover,
 div.budi-button-container .btn.btn-primary:hover {
-    background-size: 300%;
-    background-position: right center;
 }
 
 /* Secondary Button */
