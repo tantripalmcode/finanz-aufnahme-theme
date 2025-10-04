@@ -194,13 +194,13 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
                         const $slider = $($widget_id + ' .budi-testimonial-slider');
 
                         let settings = {
-                            slidesPerView: 3,
+                            slidesPerView: 'auto',
                             spaceBetween: 24,
                             loop: false,
                             speed: 800,
                             effect: 'slide',
                             autoplay: {
-                                delay: 3000,
+                                delay: 5000,
                                 disableOnInteraction: false,
                                 pauseOnMouseEnter: true,
                                 enabled: false // Start with autoplay disabled
@@ -211,22 +211,12 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
                             },
                             pagination: false,
                             breakpoints: {
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 10
-                                },
                                 768: {
-                                    slidesPerView: 2,
                                     spaceBetween: 15
                                 },
                                 1024: {
-                                    slidesPerView: 3,
                                     spaceBetween: 20
                                 },
-                                1200: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 20
-                                }
                             },
                             grabCursor: true,
                             freeMode: {

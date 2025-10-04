@@ -27,13 +27,13 @@ form.post-password-form {
 }
 
 /* Counter Element Timer */
-.counter-element .counter-element-timer::before {
+/* .counter-element .counter-element-timer::before {
     margin-right: 8px;
 }
 
 .counter-element .counter-element-timer::after {
     margin-left: 8px;
-}
+} */
 
 /* html,body {
 scroll-behavior: auto;
@@ -190,28 +190,28 @@ h6,
 .h6 {
     margin: 0;
     text-align: inherit;
-    color: var(--body-text-color);
-    line-height: 1.1em;
+    line-height: 1.1;
+    color: var(--color-custom);
 }
 
 h1,
 .h1 {
-    font-weight: 700;
-    font-size: 48px;
+    font-weight: 600;
+    font-size: 64px;
     margin-bottom: var(--h1-spacing);
 }
 
 h2,
 .h2 {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 40px;
     margin-bottom: var(--h2-spacing);
 }
 
 h3,
 .h3 {
-    font-weight: 700;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 32px;
     margin-bottom: var(--h3-spacing);
 }
 
@@ -221,8 +221,8 @@ h5,
 .h5,
 h6,
 .h6 {
-    font-weight: 700;
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 20px;
     margin-bottom: var(--h4-spacing);
 }
 
@@ -230,19 +230,19 @@ h6,
 
     h1,
     .h1 {
-        font-size: 32px;
+        font-size: 40px;
         margin-bottom: calc(var(--h1-spacing) / 2);
     }
 
     h2,
     .h2 {
-        font-size: 26px;
+        font-size: 32px;
         margin-bottom: calc(var(--h2-spacing) / 2);
     }
 
     h3,
     .h3 {
-        font-size: 20px;
+        font-size: 24px;
         margin-bottom: calc(var(--h3-spacing) / 2);
     }
 
@@ -272,11 +272,7 @@ h6,
 }
 
 .budi-lg-text {
-    font-size: 25px;
-}
-
-.budi-h2-small {
-    font-size: 34px;
+    font-size: 32px;
 }
 
 @media (max-width: 767px) {
@@ -377,11 +373,6 @@ div.budi-button-container .btn.btn-heartbeat {
     animation: btn-heartbeat 1.8s infinite;
     transition: all 0.35s ease-out; 
 }
-
-/* div.budi-button-container a.btn.btn-heartbeat:hover,
-div.budi-button-container .btn.btn-heartbeat:hover {
-    animation-play-state: paused;
-} */
 
 @keyframes btn-heartbeat {
     0% {
@@ -550,7 +541,8 @@ div.budi-button-container .btn.btn-secondary-white:hover {
 
 .simplistic-headline span,
 .budi-headline__title span:not(.budi-line-through) {
-    color: var(--color-sub) !important;
+    color: var(--color-main) !important;
+    font-weight: 700;
 }
 
 /* Max Width */
@@ -812,4 +804,67 @@ div[role="radio"]:focus-visible,
 #sb_instagram .sbi_photo:focus-visible {
     outline: var(--outline-focus-visible) !important;
     outline-offset: 2px;
+}
+
+/*
+========================================================================
+STARTSEITE
+========================================================================
+*/
+/* Counter Element */
+.budi-counter__wrapper > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-radius: 100px;
+    border: 2px solid rgba(143, 223, 187, 0.47);
+    background: #FFF;
+    box-shadow: 0 27px 68.3px 0 rgba(45, 128, 227, 0.27);
+    padding: 24px 56px;
+    overflow: hidden;
+}
+
+.budi-counter__wrapper .counter-element {    
+    display: grid;
+    grid-template-columns: 55px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 24px;
+    row-gap: 5px;
+    padding: 0;
+    width: fit-content;
+    margin: 0;
+    justify-items: start;
+    background-color: #FFF !important;
+}
+
+.budi-counter__wrapper .counter-element img {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    max-width: unset !important;
+    width: 55px;
+    height: 55px;
+}
+
+.budi-counter__wrapper .counter-element p.counter-element-timer {
+    grid-column: 2;
+    grid-row: 1;
+
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+}
+
+.budi-counter__wrapper .counter-element p.counter-element-description {
+    grid-column: 2;
+    grid-row: 2;
+
+    color: var(--body-text-color);
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    text-align: left;
 }

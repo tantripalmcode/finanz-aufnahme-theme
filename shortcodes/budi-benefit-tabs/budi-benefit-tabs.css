@@ -236,3 +236,53 @@ button.budi-benefit-tabs__nav-item {
     opacity: 1;
     transition: opacity 0.2s ease;
 }
+
+/* Parallax Animation Styles */
+.budi-benefit-tabs__floating-icon {
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+.budi-benefit-tabs__floating-icon-img {
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+/* Parallax animation classes */
+.budi-benefit-tabs__floating-icon.parallax-active {
+    transition: transform 0.1s ease-out;
+}
+
+.budi-benefit-tabs__floating-icon-img.parallax-active {
+    transition: transform 0.1s ease-out;
+}
+
+/* Smooth scrolling optimization */
+.budi-benefit-tabs__wrapper {
+    contain: style;
+}
+
+/* Performance optimizations for parallax */
+@media (prefers-reduced-motion: reduce) {
+    .budi-benefit-tabs__floating-icon {
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .budi-benefit-tabs__floating-icon-img {
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* Hardware acceleration for smooth parallax */
+.budi-benefit-tabs__floating-icon.parallax-active {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.budi-benefit-tabs__floating-icon-img.parallax-active {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}

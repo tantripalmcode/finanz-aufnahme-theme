@@ -25,14 +25,11 @@ header.simplistic-header {
 
 header.simplistic-header .simplistic-header-inner {
     background-color: #ffffff;
-    padding: 20px 0;
+    padding: 24px 0;
     transition: all 0.3s ease;
     box-shadow: 0px 0px 0px 0px transparent;
+    border-bottom: 1px solid rgba(143,223,187, 0.4);
     z-index: 100;
-}
-
-body.budi-popup-menu-open header.simplistic-header .simplistic-header-inner {
-    box-shadow: 0px 4px 15px 0px #0000000D;
 }
 
 header.simplistic-header img.logo {
@@ -49,63 +46,13 @@ body.admin-bar header.simplistic-header {
     }
 }
 
-.budi-simplistic-contact-info {
-    background-color: #ffffff;
-}
-
 header.simplistic-header .container {
     z-index: 10;
-}
-
-header.simplistic-header .simplistic-menu {
-    flex-basis: auto;
-}
-
-header.simplistic-header .budi-simplistic-header-cta-menu__wrapper {
-    gap: 30px;
 }
 
 header.simplistic-header .simplistic-cta {
     flex-basis: auto;
     gap: 30px;
-}
-
-header.simplistic-header .budi-simplistic-contact-info {
-    gap: 30px;
-}
-
-header.simplistic-header .budi-simplistic-contact-info a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-header.simplistic-header .budi-simplistic-contact-info a::before {
-    content: '';
-    position: relative;
-    width: 17px;
-    height: 17px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    display: inline-block;
-    transition: all 0.3s ease;
-}
-
-header.simplistic-header .budi-simplistic-contact-info .company-phone-class::before {
-    background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.9638 13.1727C16.9158 13.0278 16.6098 12.8143 16.0462 12.5329C15.8936 12.4441 15.676 12.3236 15.3945 12.1706C15.1128 12.0176 14.8571 11.8767 14.6278 11.7478C14.3981 11.6191 14.1828 11.4943 13.9818 11.3737C13.9496 11.3496 13.849 11.2793 13.68 11.1623C13.5108 11.0456 13.3681 10.9591 13.2511 10.9026C13.1344 10.8465 13.0197 10.8182 12.907 10.8182C12.746 10.8182 12.5449 10.933 12.3035 11.1623C12.0622 11.3918 11.8407 11.6412 11.6396 11.9111C11.4384 12.1809 11.225 12.4302 10.9999 12.6596C10.7744 12.8892 10.5891 13.0038 10.4444 13.0038C10.3717 13.0038 10.2811 12.9836 10.1726 12.9436C10.0641 12.9034 9.9815 12.8689 9.92483 12.8411C9.86867 12.8127 9.77229 12.7566 9.63535 12.6718C9.49816 12.5872 9.42186 12.5409 9.40579 12.5329C8.30305 11.9209 7.35729 11.2206 6.56834 10.432C5.77965 9.64292 5.07923 8.69724 4.46748 7.59437C4.45945 7.57826 4.41305 7.50175 4.3286 7.36498C4.24401 7.22809 4.18764 7.13162 4.15947 7.07512C4.13131 7.01883 4.0971 6.93628 4.05692 6.82763C4.01674 6.71898 3.99657 6.62848 3.99657 6.55595C3.99657 6.41115 4.1113 6.22591 4.34073 6.0005C4.57012 5.77521 4.81973 5.56181 5.08929 5.36072C5.35907 5.15962 5.60842 4.93818 5.83789 4.69678C6.06728 4.45526 6.18197 4.25412 6.18197 4.09316C6.18197 3.98054 6.1538 3.86572 6.09752 3.74904C6.04118 3.6321 5.95466 3.48941 5.83789 3.32029C5.72108 3.15125 5.65067 3.05072 5.62647 3.01837C5.50586 2.81728 5.38123 2.60197 5.25228 2.37254C5.12333 2.14315 4.98259 1.88746 4.82958 1.60576C4.6767 1.32418 4.55604 1.10676 4.4674 0.953837C4.18582 0.390475 3.97255 0.0844557 3.82761 0.0363282C3.77124 0.0121799 3.68666 0 3.57408 0C3.35662 0 3.07293 0.0401767 2.7228 0.120784C2.37254 0.201264 2.09693 0.285678 1.89566 0.374362C1.49318 0.543316 1.06659 1.03432 0.615761 1.8472C0.20524 2.6037 0 3.35247 0 4.09295C0 4.31012 0.014083 4.5214 0.042249 4.72685C0.070415 4.93209 0.120742 5.16355 0.193271 5.42119C0.265674 5.67875 0.324078 5.87007 0.36823 5.99466C0.412425 6.11934 0.494935 6.34268 0.615719 6.66477C0.736333 6.98677 0.808863 7.18389 0.833011 7.25634C1.11471 8.04524 1.44877 8.74952 1.8351 9.36938C2.47074 10.3997 3.33818 11.4644 4.43691 12.5633C5.53568 13.662 6.60023 14.5294 7.63062 15.1653C8.2504 15.5516 8.95493 15.8856 9.7437 16.1675C9.81619 16.1915 10.0133 16.2639 10.3352 16.3849C10.6572 16.5056 10.8806 16.5881 11.0053 16.6324C11.13 16.6767 11.3214 16.7352 11.5787 16.8077C11.8366 16.8802 12.0679 16.9306 12.2731 16.9589C12.4785 16.9867 12.6898 17.0011 12.907 17.0011C13.6474 17.0011 14.3962 16.7957 15.1529 16.3852C15.9657 15.9346 16.4566 15.5079 16.6256 15.1051C16.7145 14.904 16.7987 14.6283 16.8792 14.2781C16.9599 13.928 17 13.6444 17 13.4269C17.0002 13.3139 16.9881 13.2295 16.9638 13.1727Z' fill='%2303346B'/%3E%3C/svg%3E%0A");
-}
-
-header.simplistic-header .budi-simplistic-contact-info .company-phone-class:hover:before {
-    background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.9638 13.1727C16.9158 13.0278 16.6098 12.8143 16.0462 12.5329C15.8936 12.4441 15.676 12.3236 15.3945 12.1706C15.1128 12.0176 14.8571 11.8767 14.6278 11.7478C14.3981 11.6191 14.1828 11.4943 13.9818 11.3737C13.9496 11.3496 13.849 11.2793 13.68 11.1623C13.5108 11.0456 13.3681 10.9591 13.2511 10.9026C13.1344 10.8465 13.0197 10.8182 12.907 10.8182C12.746 10.8182 12.5449 10.933 12.3035 11.1623C12.0622 11.3918 11.8407 11.6412 11.6396 11.9111C11.4384 12.1809 11.225 12.4302 10.9999 12.6596C10.7744 12.8892 10.5891 13.0038 10.4444 13.0038C10.3717 13.0038 10.2811 12.9836 10.1726 12.9436C10.0641 12.9034 9.9815 12.8689 9.92483 12.8411C9.86867 12.8127 9.77229 12.7566 9.63535 12.6718C9.49816 12.5872 9.42186 12.5409 9.40579 12.5329C8.30305 11.9209 7.35729 11.2206 6.56834 10.432C5.77965 9.64292 5.07923 8.69724 4.46748 7.59437C4.45945 7.57826 4.41305 7.50175 4.3286 7.36498C4.24401 7.22809 4.18764 7.13162 4.15947 7.07512C4.13131 7.01883 4.0971 6.93628 4.05692 6.82763C4.01674 6.71898 3.99657 6.62848 3.99657 6.55595C3.99657 6.41115 4.1113 6.22591 4.34073 6.0005C4.57012 5.77521 4.81973 5.56181 5.08929 5.36072C5.35907 5.15962 5.60842 4.93818 5.83789 4.69678C6.06728 4.45526 6.18197 4.25412 6.18197 4.09316C6.18197 3.98054 6.1538 3.86572 6.09752 3.74904C6.04118 3.6321 5.95466 3.48941 5.83789 3.32029C5.72108 3.15125 5.65067 3.05072 5.62647 3.01837C5.50586 2.81728 5.38123 2.60197 5.25228 2.37254C5.12333 2.14315 4.98259 1.88746 4.82958 1.60576C4.6767 1.32418 4.55604 1.10676 4.4674 0.953837C4.18582 0.390475 3.97255 0.0844557 3.82761 0.0363282C3.77124 0.0121799 3.68666 0 3.57408 0C3.35662 0 3.07293 0.0401767 2.7228 0.120784C2.37254 0.201264 2.09693 0.285678 1.89566 0.374362C1.49318 0.543316 1.06659 1.03432 0.615761 1.8472C0.20524 2.6037 0 3.35247 0 4.09295C0 4.31012 0.014083 4.5214 0.042249 4.72685C0.070415 4.93209 0.120742 5.16355 0.193271 5.42119C0.265674 5.67875 0.324078 5.87007 0.36823 5.99466C0.412425 6.11934 0.494935 6.34268 0.615719 6.66477C0.736333 6.98677 0.808863 7.18389 0.833011 7.25634C1.11471 8.04524 1.44877 8.74952 1.8351 9.36938C2.47074 10.3997 3.33818 11.4644 4.43691 12.5633C5.53568 13.662 6.60023 14.5294 7.63062 15.1653C8.2504 15.5516 8.95493 15.8856 9.7437 16.1675C9.81619 16.1915 10.0133 16.2639 10.3352 16.3849C10.6572 16.5056 10.8806 16.5881 11.0053 16.6324C11.13 16.6767 11.3214 16.7352 11.5787 16.8077C11.8366 16.8802 12.0679 16.9306 12.2731 16.9589C12.4785 16.9867 12.6898 17.0011 12.907 17.0011C13.6474 17.0011 14.3962 16.7957 15.1529 16.3852C15.9657 15.9346 16.4566 15.5079 16.6256 15.1051C16.7145 14.904 16.7987 14.6283 16.8792 14.2781C16.9599 13.928 17 13.6444 17 13.4269C17.0002 13.3139 16.9881 13.2295 16.9638 13.1727Z' fill='%23bd0926'/%3E%3C/svg%3E%0A");
-}
-
-header.simplistic-header .budi-simplistic-contact-info .company-email-class::before {
-    background-image: url("data:image/svg+xml,%3Csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10.0001C0 11.0966 0.902191 11.9975 1.99868 11.9975H14.0012C15.0977 11.9975 15.9999 11.0966 15.9999 10.0001V3.88801C15.9999 3.82451 15.9344 3.78219 15.8765 3.80789L9.67578 6.57436C8.64128 7.03654 7.45635 7.04634 6.41799 6.57436L0.123185 3.71112C0.0654843 3.68491 0 3.72622 0 3.79047V10.0001Z' fill='%2303346B'/%3E%3Cpath d='M1.99868 7.68944e-05C0.902191 7.68944e-05 0 0.900986 0 1.99745V2.05743C2.06169e-06 2.09777 0.0115991 2.13728 0.0334491 2.17119C0.055299 2.20511 0.0864499 2.23199 0.123185 2.24866L6.96879 5.35935C7.65381 5.67071 8.44024 5.66935 9.13413 5.35935L15.8765 2.34686C15.9133 2.33042 15.9445 2.30365 15.9664 2.26985C15.9883 2.23604 16 2.19663 16 2.15635V1.99737C16 0.900909 15.0977 0 14.0013 0L1.99868 7.68944e-05Z' fill='%2303346B'/%3E%3C/svg%3E%0A");
-}
-
-header.simplistic-header .budi-simplistic-contact-info .company-email-class:hover:before {
-    background-image: url("data:image/svg+xml,%3Csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10.0001C0 11.0966 0.902191 11.9975 1.99868 11.9975H14.0012C15.0977 11.9975 15.9999 11.0966 15.9999 10.0001V3.88801C15.9999 3.82451 15.9344 3.78219 15.8765 3.80789L9.67578 6.57436C8.64128 7.03654 7.45635 7.04634 6.41799 6.57436L0.123185 3.71112C0.0654843 3.68491 0 3.72622 0 3.79047V10.0001Z' fill='%23bd0926'/%3E%3Cpath d='M1.99868 7.68944e-05C0.902191 7.68944e-05 0 0.900986 0 1.99745V2.05743C2.06169e-06 2.09777 0.0115991 2.13728 0.0334491 2.17119C0.055299 2.20511 0.0864499 2.23199 0.123185 2.24866L6.96879 5.35935C7.65381 5.67071 8.44024 5.66935 9.13413 5.35935L15.8765 2.34686C15.9133 2.33042 15.9445 2.30365 15.9664 2.26985C15.9883 2.23604 16 2.19663 16 2.15635V1.99737C16 0.900909 15.0977 0 14.0013 0L1.99868 7.68944e-05Z' fill='%23bd0926'/%3E%3C/svg%3E%0A");
 }
 
 header.simplistic-header .budi-hamburger-menu-button {
@@ -122,195 +69,51 @@ header.simplistic-header .budi-hamburger-menu-button .line {
     transform-origin: center;
 }
 
-/* Scrolled effect */
-body.budi-scrolled header.simplistic-header {
-    box-shadow: 0px 4px 15px 0px #0000000D;
+/* Main Menu */
+.budi-simplistic-header-cta-menu__wrapper .main-menu{
+    gap: 32px;
 }
 
+.budi-simplistic-header-cta-menu__wrapper .main-menu a{
+    font-size: 18px;
+    color: var(--color-custom);
+    font-weight: 400;
+}
+
+.budi-simplistic-header-cta-menu__wrapper .main-menu a:hover{
+    color: var(--color-main);
+    text-shadow: 0 0 0.2px currentColor, 0 0 0.2px currentColor;
+}
+
+.simplistic-cta-header{
+    margin-left: 50px;
+}
+
+.simplistic-header .simplistic-outline-button{
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Scrolled effect */
 body.budi-scrolled header.simplistic-header img.logo {
-    max-width: 80px;
+    max-width: 140px;
 }
 
 body.budi-scrolled header.simplistic-header .simplistic-header-inner {
+    background-color: rgba(255, 255, 255, 0.7);
     padding-block: 15px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
-@media screen and (min-width: 1199px) {
-    body.budi-popup-menu-open header.simplistic-header {
-        box-shadow: 0px 4px 15px 0px #0000000D;
-    }
+body.budi-scrolled .budi-simplistic-header-cta-menu__wrapper .main-menu a{
+    font-size: 16px;
 }
 
-@media screen and (max-width: 767px) {
-    header.simplistic-header .simplistic-header-inner {
-        background-color: transparent;
-    }
 
-    header.simplistic-header .simplistic-header-inner {
-        background-color: transparent;
-    }
-
-    header.simplistic-header .simplistic-header-inner {
-        padding-top: 0 !important;
-    }
-
-    body.budi-scrolled header.simplistic-header .simplistic-header-inner {
-        background-color: #ffffff;
-    }
-
-    header.simplistic-header .budi-simplistic-contact-info {
-        padding: 15px;
-    }
-
-    header.simplistic-header .budi-simplistic-contact-info a {
-        font-size: 14px;
-    }
-
-    header.simplistic-header .budi-simplistic-contact-info a::before {
-        width: 11px;
-        height: 11px;
-    }
-
-    header.simplistic-header .simplistic-cta {
-        gap: 12px;
-    }
-
-    header.simplistic-header .simplistic-cta a.btn {
-        min-width: 204px;
-    }
-
-    body:not(.budi-scrolled) header.simplistic-header .budi-hamburger-menu-button .line {
-        background-color: #ffffff;
-    }
-}
-
-/* Hamburger Menu Animation - Transform to X */
-body.budi-popup-menu-open .budi-hamburger-menu-button .line:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-body.budi-popup-menu-open .budi-hamburger-menu-button .line:nth-child(2) {
-    opacity: 0;
-    transform: scale(0);
-}
-
-body.budi-popup-menu-open .budi-hamburger-menu-button .line:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* Popup Menu */
-.budi-simplistic-popup-menu__wrapper {
-    background-color: #ffffff;
-    padding: 65px 0 50px;
-    z-index: 99;
-    display: none;
-}
-
-.budi-simplistic-popup-menu__wrapper .container {
-    max-width: 1120px;
-}
-
-.budi-simplistic-popup-menu__inner {
-    margin-bottom: 80px;
-}
-
-.budi-simplistic-popup-menu {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-.budi-simplistic-popup-menu>li {
-    max-width: 150px;
-}
-
-.budi-simplistic-popup-menu>li>a {
-    display: inline-block;
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.budi-simplistic-popup-menu>li.current-menu-item>a,
-.budi-simplistic-popup-menu>li.current-menu-parent>a,
-.budi-simplistic-popup-menu .sub-menu>li.current-menu-item>a {
-    color: var(--color-sub);
-}
-
-.budi-simplistic-popup-menu>li .sub-menu {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-.budi-simplistic-popup-menu>li .sub-menu>li {
-    margin-bottom: 5px;
-}
-
-.budi-simplistic-popup-menu__close-button {
-    background: transparent !important;
-    padding: 0 !important;
-    z-index: 999;
-    right: 30px;
-    top: 20px;
-    display: none;
-}
-
-.budi-simplistic-popup-menu__close-button svg {
-    stroke: var(--color-main);
-}
-
-@media screen and (max-width: 767px) {
-    .budi-simplistic-popup-menu__wrapper {
-        height: 100vh;
-        overflow-y: auto;
-        padding-inline: 15px;
-        z-index: 105;
-    }
-
-    .budi-simplistic-popup-menu {
-        flex-direction: column;
-    }
-
-    .budi-simplistic-popup-menu>li>a {
-        margin-bottom: 8px;
-        font-size: 22px;
-    }
-
-    .budi-simplistic-popup-menu__inner {
-        margin-bottom: 30px;
-    }
-
-    .budi-simplistic-popup-menu__close-button {
-        display: block;
-    }
-}
-
-/* Social Media */
-.budi__socialmedia {
-    gap: 14px;
-}
-
-.budi__socialmedia>li>a {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: #03346B26;
-    transform: translateY(0);
-    transition: transform 0.3s ease-in-out;
-}
-
-.budi__socialmedia>li>a:hover {
-    transform: translateY(-3px);
-}
-
-@media screen and (max-width: 767px) {
-    .budi-simplistic-popup-social-media {
-        margin-top: 36px;
-    }
+body.budi-scrolled .simplistic-header .simplistic-outline-button{
+    font-size: 14px;
 }
 
 /* Skip To Main Content */

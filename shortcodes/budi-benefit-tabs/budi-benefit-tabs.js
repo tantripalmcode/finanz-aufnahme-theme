@@ -1,6 +1,165 @@
 (function ($) {
   "use strict";
 
+  // Parallax Animation Handler
+  class ParallaxHandler {
+    constructor() {
+      this.parallaxElements = [];
+      this.isScrolling = false;
+      this.ticking = false;
+      this.init();
+    }
+
+    init() {
+      this.bindEvents();
+      this.findParallaxElements();
+    }
+
+    bindEvents() {
+      // Throttled scroll event for better performance
+      $(window).on('scroll', () => {
+        if (!this.ticking) {
+          requestAnimationFrame(() => {
+            this.handleScroll();
+            this.ticking = false;
+          });
+          this.ticking = true;
+        }
+      });
+
+      // Handle resize events
+      $(window).on('resize', () => {
+        this.updateElementPositions();
+      });
+    }
+
+    findParallaxElements() {
+      $('.budi-benefit-tabs__floating-icon').each((index, element) => {
+        const $element = $(element);
+        const $container = $element.closest('.budi-benefit-tabs__wrapper');
+        
+        if ($container.length) {
+          this.parallaxElements.push({
+            element: $element,
+            container: $container,
+            containerOffset: $container.offset().top,
+            containerHeight: $container.outerHeight(),
+            parallaxSpeed: 0.2, // Adjust this value to control parallax intensity
+            isVisible: false
+          });
+        }
+      });
+    }
+
+    handleScroll() {
+      const scrollTop = $(window).scrollTop();
+      const windowHeight = $(window).height();
+      const documentHeight = $(document).height();
+
+      this.parallaxElements.forEach(item => {
+        this.updateParallaxElement(item, scrollTop, windowHeight);
+      });
+    }
+
+    updateParallaxElement(item, scrollTop, windowHeight) {
+      const { element, container, containerOffset, containerHeight, parallaxSpeed } = item;
+      
+      // Check if element is in viewport
+      const elementTop = containerOffset;
+      const elementBottom = containerOffset + containerHeight;
+      const viewportTop = scrollTop;
+      const viewportBottom = scrollTop + windowHeight;
+
+      const isInViewport = elementBottom > viewportTop && elementTop < viewportBottom;
+      
+      if (isInViewport && !item.isVisible) {
+        element.addClass('parallax-active');
+        item.isVisible = true;
+      } else if (!isInViewport && item.isVisible) {
+        element.removeClass('parallax-active');
+        item.isVisible = false;
+        return;
+      }
+
+      if (!isInViewport) return;
+
+      // Calculate parallax offset relative to when element first enters viewport
+      const scrolled = scrollTop - elementTop;
+      const parallaxOffset = scrolled * parallaxSpeed;
+      
+      // Get base transform (original CSS positioning)
+      const baseTransform = this.getBaseTransform(element);
+      
+      // Combine base transform with parallax offset
+      const newTransform = this.combineTransforms(baseTransform, {
+        translateY: parallaxOffset
+      });
+      
+      element.css('transform', newTransform);
+    }
+
+    getBaseTransform($element) {
+      // Get the base transform from data attributes or default positioning
+      const position = $element.hasClass('budi-benefit-tabs__floating-icon--right') ? 'right' : 'left';
+      
+      if (position === 'right') {
+        return 'translateX(50%)';
+      } else {
+        return 'translateY(-50%) translateX(-50%)';
+      }
+    }
+
+    combineTransforms(baseTransform, parallaxTransform) {
+      // Parse and combine transforms
+      const transforms = [];
+      
+      // Add base transform
+      if (baseTransform && baseTransform !== 'none') {
+        transforms.push(baseTransform);
+      }
+      
+      // Add parallax transform
+      if (parallaxTransform.translateY !== undefined) {
+        transforms.push(`translateY(${parallaxTransform.translateY}px)`);
+      }
+      
+      return transforms.join(' ');
+    }
+
+    updateElementPositions() {
+      this.parallaxElements.forEach(item => {
+        item.containerOffset = item.container.offset().top;
+        item.containerHeight = item.container.outerHeight();
+      });
+    }
+
+    // Method to add new parallax elements dynamically
+    addParallaxElement($element) {
+      const $container = $element.closest('.budi-benefit-tabs__wrapper');
+      
+      if ($container.length) {
+        this.parallaxElements.push({
+          element: $element,
+          container: $container,
+          containerOffset: $container.offset().top,
+          containerHeight: $container.outerHeight(),
+          parallaxSpeed: 0.2,
+          isVisible: false
+        });
+      }
+    }
+
+    // Method to remove parallax elements
+    removeParallaxElement($element) {
+      this.parallaxElements = this.parallaxElements.filter(item => 
+        !item.element.is($element)
+      );
+    }
+  }
+
+  // Initialize global parallax handler
+  const parallaxHandler = new ParallaxHandler();
+
   $(document).ready(function () {
     // Function to update floating icon based on active tab
     function updateFloatingIcon($wrapper, $activeContent) {
@@ -17,11 +176,44 @@
           const iconHtml = `<div class="budi-benefit-tabs__floating-icon budi-benefit-tabs__floating-icon--${iconPosition}" style="--icon-width: ${iconWidth};">
                         <img src="${floatingIconId}" class="budi-benefit-tabs__floating-icon-img" style="max-width: ${iconWidth};" alt="Floating Icon">
                     </div>`;
-          $iconContainer.html(iconHtml).fadeIn(200);
+          $iconContainer.html(iconHtml).fadeIn(200, function() {
+            // Add the new floating icon to parallax handler after it's rendered
+            const $newIcon = $iconContainer.find('.budi-benefit-tabs__floating-icon');
+            if ($newIcon.length) {
+              // Set initial transform to prevent glitch
+              const baseTransform = parallaxHandler.getBaseTransform($newIcon);
+              $newIcon.css('transform', baseTransform);
+              
+              // Add to parallax handler
+              parallaxHandler.addParallaxElement($newIcon);
+              
+              // Immediately apply current scroll position to prevent glitch
+              const scrollTop = $(window).scrollTop();
+              const containerOffset = $wrapper.offset().top;
+              const scrolled = scrollTop - containerOffset;
+              const parallaxOffset = scrolled * 0.2; // Use same speed as parallax
+              
+              // Only apply parallax if we're scrolled past the container start
+              if (scrolled > 0) {
+                const newTransform = parallaxHandler.combineTransforms(baseTransform, {
+                  translateY: parallaxOffset
+                });
+                $newIcon.css('transform', newTransform);
+              } else {
+                // Keep original CSS positioning when at the top
+                $newIcon.css('transform', baseTransform);
+              }
+            }
+          });
         });
       } else {
         // Hide floating icon if none for this tab
         $iconContainer.fadeOut(200, function () {
+          // Remove from parallax handler before clearing
+          const $currentIcon = $iconContainer.find('.budi-benefit-tabs__floating-icon');
+          if ($currentIcon.length) {
+            parallaxHandler.removeParallaxElement($currentIcon);
+          }
           $iconContainer.empty();
         });
       }
@@ -179,5 +371,24 @@
         observer.observe(this);
       });
     }
+
+    // Performance optimization: Pause parallax on reduced motion preference
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      parallaxHandler.parallaxElements.forEach(item => {
+        item.parallaxSpeed = 0;
+      });
+    }
+
+    // Performance optimization: Pause parallax when tab is not in focus
+    $(document).on('visibilitychange', function() {
+      if (document.hidden) {
+        parallaxHandler.isScrolling = false;
+      }
+    });
+
+    // Performance optimization: Clean up on page unload
+    $(window).on('beforeunload', function() {
+      parallaxHandler.parallaxElements = [];
+    });
   });
 })(jQuery);

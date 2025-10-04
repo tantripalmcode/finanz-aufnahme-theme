@@ -42,12 +42,18 @@ $cta2_target  = get_theme_mod('cta2_target');
                     <div class="col-4 col-md-10">
 
                         <div class="budi-simplistic-header-cta-menu__wrapper d-flex align-items-center justify-content-end">
-                            <div class="budi-simplistic-contact-info budi-simplistic-contact-info-desktop d-none d-md-flex align-items-center">
-                                <?php echo do_shortcode('[company-phone-link]'); ?>
-                                <?php echo do_shortcode('[company-email-link]'); ?>
-                            </div>
 
-                            <div class="simplistic-cta simplistic-cta-header budi-button-container d-xl-flex d-none justify-content-start">
+                            <?php
+                            wp_nav_menu(
+                                array(
+                                    'theme_location' => 'haupt-menu',
+                                    'menu_class' => 'list-unstyled m-0 pl-0 d-flex align-items-center main-menu',
+                                    'container_id' => 'mainmenu',
+                                )
+                            );
+                            ?>
+
+                            <div class="simplistic-cta simplistic-cta-header d-xl-flex d-none justify-content-start">
 
                                 <?php if ($cta1_text): ?>
 
@@ -57,7 +63,7 @@ $cta2_target  = get_theme_mod('cta2_target');
                                     $link_target = $cta1_target;
                                     ?>
 
-                                    <a class="simplistic-outline-button btn btn-primary" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                    <a class="simplistic-outline-button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                                         <span class="budi-button-text"><?php echo ($link_title); ?></span>
                                     </a>
 
@@ -71,14 +77,14 @@ $cta2_target  = get_theme_mod('cta2_target');
                                     $link_target = $cta2_target;
                                     ?>
 
-                                    <a class="simplistic-outline-button btn btn-secondary" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                    <a class="simplistic-outline-button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                                         <span class="budi-button-text"><?php echo ($link_title); ?></span>
                                     </a>
 
                                 <?php endif; ?>
 
                             </div>
-                            <div class="simplistic-menu">
+                            <!-- <div class="simplistic-menu">
                                 <div class="simplistic-menu-mobile-hamburger d-flex justify-content-end">
                                     <button class="budi-hamburger-menu-button position-relative d-flex flex-column p-0">
                                         <span class="line"></span>
@@ -86,7 +92,7 @@ $cta2_target  = get_theme_mod('cta2_target');
                                         <span class="line"></span>
                                     </button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
