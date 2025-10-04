@@ -159,17 +159,19 @@
       let headerHeight = 0;
       let wpAdminBarHeight = 0;
 
+      // Always get header height regardless of screen size
+      headerHeight = $header.length > 0 ? $header.outerHeight() : 0;
+      
+      // Get WP admin bar height only on desktop
       if (window.innerWidth >= 768) {
-        headerHeight = $header.length > 0 ? $header.outerHeight() : 0;
         const $wpAdminBar = $("#wpadminbar");
-        wpAdminBarHeight =
-          $wpAdminBar.length > 0 ? $wpAdminBar.outerHeight() : 0;
-      } else {
-        headerHeight = 0;
-        wpAdminBarHeight = 0; // Do not add wp admin bar height on mobile
+        wpAdminBarHeight = $wpAdminBar.length > 0 ? $wpAdminBar.outerHeight() : 0;
       }
 
-      $popupMenu.css("top", headerHeight + wpAdminBarHeight);
+      const totalHeight = headerHeight + wpAdminBarHeight;
+      
+      // Set CSS custom property for header height
+      document.documentElement.style.setProperty('--header-height', totalHeight + 'px');
     };
 
     // Initial call
@@ -205,18 +207,37 @@
   function popupMenuHamburgerMenu() {
     const $hamburgerMenu = $(".budi-hamburger-menu-button");
     const $popupMenu = $(".budi-simplistic-popup-menu__wrapper");
-    const $popupMenuCloseButton = $(
-      ".budi-simplistic-popup-menu__close-button"
-    );
+    const $overlay = $("#primary-navigation-overlay");
+    
     $hamburgerMenu.on("click", function () {
-      $popupMenu.slideToggle(300);
-      $("body").toggleClass("budi-popup-menu-open");
-      setTopPositionPopupMenu();
+      const isOpen = $popupMenu.hasClass("show");
+      
+      if (isOpen) {
+        // Close menu
+        $popupMenu.removeClass("show");
+        $("body").removeClass("budi-popup-menu-open");
+        $hamburgerMenu.removeClass("active");
+      } else {
+        // Open menu
+        $popupMenu.addClass("show");
+        $("body").addClass("budi-popup-menu-open");
+        $hamburgerMenu.addClass("active");
+        setTopPositionPopupMenu();
+      }
     });
 
-    $popupMenuCloseButton.on("click", function () {
-      $popupMenu.slideUp(300);
+    // Close menu when clicking on overlay
+    $overlay.on("click", function () {
+      $popupMenu.removeClass("show");
       $("body").removeClass("budi-popup-menu-open");
+      $hamburgerMenu.removeClass("active");
+    });
+
+    // Close menu when clicking on menu links
+    $popupMenu.find("a").on("click", function () {
+      $popupMenu.removeClass("show");
+      $("body").removeClass("budi-popup-menu-open");
+      $hamburgerMenu.removeClass("active");
     });
   }
 

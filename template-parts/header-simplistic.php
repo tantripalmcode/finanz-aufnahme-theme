@@ -18,17 +18,13 @@ $cta2_target  = get_theme_mod('cta2_target');
 <header class="simplistic-header d-block w-100 position-fixed" id="simplistic-header">
     <div class="simplistic-header-inner w-100 position-relative">
 
-        <!-- Contact Info -->
-        <div class="budi-simplistic-contact-info d-flex d-md-none align-items-center justify-content-between">
-            <?php echo do_shortcode('[company-phone-link]'); ?>
-            <?php echo do_shortcode('[company-email-link]'); ?>
-        </div>
         <div class="container position-relative">
             <!-- Header Content -->
-            <div class="simplistic-header-container pt-3 pt-md-0">
+            <div class="simplistic-header-container">
 
                 <div class="row align-items-center">
                     <div class="col-8 col-md-2 budi-simplistic-header-logo">
+                        
                         <!-- Company Logo -->
                         <?php if ($company_logo) { ?>
                             <a href="<?php echo esc_url(get_site_url()); ?>">
@@ -47,7 +43,7 @@ $cta2_target  = get_theme_mod('cta2_target');
                             wp_nav_menu(
                                 array(
                                     'theme_location' => 'haupt-menu',
-                                    'menu_class' => 'list-unstyled m-0 pl-0 d-flex align-items-center main-menu',
+                                    'menu_class' => 'list-unstyled m-0 pl-0 d-none d-md-flex align-items-center main-menu',
                                     'container_id' => 'mainmenu',
                                 )
                             );
@@ -82,9 +78,9 @@ $cta2_target  = get_theme_mod('cta2_target');
                                     </a>
 
                                 <?php endif; ?>
-
                             </div>
-                            <!-- <div class="simplistic-menu">
+
+                            <div class="simplistic-menu d-md-none">
                                 <div class="simplistic-menu-mobile-hamburger d-flex justify-content-end">
                                     <button class="budi-hamburger-menu-button position-relative d-flex flex-column p-0">
                                         <span class="line"></span>
@@ -92,7 +88,7 @@ $cta2_target  = get_theme_mod('cta2_target');
                                         <span class="line"></span>
                                     </button>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,5 +98,37 @@ $cta2_target  = get_theme_mod('cta2_target');
     </div>
 
 </header>
+
+<!-- Mobile Popup Menu -->
+<div class="budi-simplistic-popup-menu__wrapper d-md-none">
+    <div class="budi-simplistic-popup-menu__inner">
+        <div class="budi-simplistic-popup-menu__content">
+            <?php
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'haupt-menu',
+                    'menu_class' => 'budi-popup-menu list-unstyled m-0 pl-0',
+                    'container' => false,
+                )
+            );
+            ?>
+            
+            <!-- CTA Buttons in Mobile Menu -->
+            <div class="budi-popup-menu-cta">
+                <?php if ($cta1_text): ?>
+                    <a class="budi-popup-cta-button" href="<?php echo esc_url($cta1_url); ?>" target="<?php echo esc_attr($cta1_target); ?>">
+                        <span class="budi-button-text"><?php echo ($cta1_text); ?></span>
+                    </a>
+                <?php endif; ?>
+
+                <?php if ($cta2_text): ?>
+                    <a class="budi-popup-cta-button" href="<?php echo esc_url($cta2_url); ?>" target="<?php echo esc_attr($cta2_target); ?>">
+                        <span class="budi-button-text"><?php echo ($cta2_text); ?></span>
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="budi-main-content" class="sr-only sr-only-focusable"></div>
