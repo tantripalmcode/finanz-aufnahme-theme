@@ -13,6 +13,27 @@
 ?>
 </div> <!-- /#container aus header.php -->
 
+<footer class="footer" id="footer">
+	<div class="footer-inner px-0"> <!-- bestimmt max-width, boxed, full width -->
+		<?php
+		/*
+			Footer Template part aus Ordner template-parts/ laden
+			*/
+		$footer_setting = get_theme_mod('footer_type');
+		get_template_part('template-parts/footer', $footer_setting);
+		?>
+	</div>
+	<div class="footer-legal">
+		<div class="footer-legal-inner">
+			<!-- legal row -->
+			<?php if (do_shortcode(get_theme_mod('copyright_text'))) { ?>
+				<?php get_template_part('template-parts/footer', 'legal'); ?>
+			<?php } ?>
+
+		</div>
+	</div>
+</footer>
+
 <?php
 /*
 		Scroll to Top anzeigen wenn im Customizer aktiviert

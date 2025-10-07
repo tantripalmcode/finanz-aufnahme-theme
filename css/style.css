@@ -495,6 +495,14 @@ div.budi-button-container .btn.btn-secondary-white:hover {
     border-color: #BD0926;
 }
 
+@media (max-width: 767px) {
+    div.budi-button-container a.btn,
+    div.budi-button-container .btn {
+        font-size: 16px !important;   
+        padding: 14px 24px !important;
+    }
+}
+
 /* Fill Color */
 .fill-row_color-main {
     background-color: var(--color-main) !important;
@@ -867,4 +875,263 @@ STARTSEITE
     font-weight: 400;
     margin: 0;
     text-align: left;
+}
+
+/* Steps Section */
+.budi-circle-bg::before {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 60%;
+    max-width: 1440px;
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    background-color: var(--color-main);
+    border-radius: 100%;
+    opacity: 0.25;
+    filter: blur(150px);
+}
+
+.budi-steps__wrapper > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    border-radius: 60px;
+    background: #FFF;
+    padding: 24px 40px 40px 40px;
+    margin: 25px 0 40px 0;
+}
+
+.budi-steps__wrapper img {
+    height: 240px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.budi-steps__wrapper .budi-headline__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--body-text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: -28px;
+    hyphens: auto;
+}
+
+.budi-steps__wrapper .budi-headline__title span {
+    font-size: 56px;
+    font-weight: 700;
+}
+
+.budi-steps__wrapper .budi-content-box__wrapper p {
+    font-size: 16px;
+    max-width: 240px;
+    margin: 0 auto;
+    color: var(--body-text-color);
+    font-weight: 400;
+    line-height: 1.7em;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .budi-steps__wrapper > .wpb_column > .vc_column-inner > .wpb_wrapper {
+        padding: 24px 24px 32px 24px;
+    }
+
+    .budi-steps__wrapper .budi-headline__title {
+        margin-bottom: -20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .budi-steps__wrapper > .wpb_column > .vc_column-inner > .wpb_wrapper {
+        margin: 0 10px 24px 10px;
+    }
+
+    .budi-steps__wrapper img {
+        height: 200px;
+    }
+
+    .budi-circle-bg::before {
+        left: 70%;
+        height: 70%;
+    }
+}
+
+/* Insurance Section */
+.budi-linear-bg::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: linear-gradient(0deg, #FFF 0%, #B7F0D6 53.41%, #FFF 100%);
+}
+
+.budi-insurance-slider .budi-swiper-arrow-new {
+    margin: 0 !important; 
+}
+
+/* Comparison Section */
+.budi-comparison-list__wrapper > .vc_column-inner > .wpb_wrapper {
+    border-radius: 60px;
+    border: 2px solid rgba(143, 223, 187, 0.47);
+    background: #FFF;
+    box-shadow: 0 27px 68.3px 0 rgba(45, 128, 227, 0.27);
+    padding: 40px 48px 64px 48px;
+    margin-top: 32px;
+    margin-bottom: 80px;
+}
+
+.budi-comparison-list__wrapper .vc_single_image-wrapper img {
+    width: 100%;
+    height: 225px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.budi-comparison-list__wrapper .budi-icon-lists__icon img,
+.budi-comparison-list__wrapper .budi-icon-lists__icon svg{
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.budi-comparison-list__wrapper .budi-icon-lists__item-inner {
+    align-items: center;
+}
+
+.budi-comparison-list__headline {
+    margin-bottom: 32px;
+}
+
+.budi-comparison-list__headline .budi-icon-lists__item {
+    display: flex;
+    justify-content: center;
+}
+
+.budi-comparison-list__headline .budi-icon-lists__text {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--body-text-color);
+}
+
+.budi-comparison-list__headline .budi-icon-lists__item-inner {
+    gap: 12px;
+}
+
+.budi-comparison-list__body {
+    margin-top: 48px;
+    margin-bottom: 0px;
+}
+
+.budi-comparison-list__body li:not(:last-child) {
+    margin-bottom: 32px;
+}
+
+.budi-comparison-list__body .budi-icon-lists__text {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--body-text-color);
+}
+
+@media (max-width: 767px) {
+    .budi-comparison-list__wrapper > .vc_column-inner > .wpb_wrapper {
+        padding: 40px 32px;
+        margin-top: 10px;
+        margin-bottom: 16px;
+        border-radius: 40px;
+    }
+
+    .budi-comparison-list__wrapper .vc_single_image-wrapper img {
+        height: 215px;
+    }
+
+    .budi-comparison-list__headline .budi-icon-lists__text {
+        font-size: 20px;
+    }
+}
+
+/* Benefits Section */
+.budi-benefits-section {
+    margin-top: 32px;
+}
+
+.budi-benefits-section > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+}
+
+.budi-benefits-section .budi-content-box__wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 40px 48px;
+    border-radius: 60px;
+    border: 2px solid rgba(143, 223, 187, 0.47);
+    background: #FFF;
+    box-shadow: 0 27px 68.3px 0 rgba(45, 128, 227, 0.27);
+    scale: 1;
+    transition: all 0.5s ease;
+}
+
+.budi-benefits-section .budi-content-box__wrapper:hover {
+    scale: 1.1;
+}
+
+.budi-benefits-section .budi-content-box__wrapper .budi-content-box__image {
+    margin-bottom: 0px !important;
+}
+
+.budi-benefits-section .budi-content-box__wrapper img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.budi-benefits-section .budi-content-box__wrapper .budi-content-box__title {
+    margin-bottom: 24px !important;
+    text-align: center;
+    color: var(--body-text-color);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.budi-benefits-section .budi-content-box__wrapper .budi-content-box__description p {
+    font-size: 16px;
+    color: var(--body-text-color);
+    font-weight: 400;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .budi-benefits-section > .wpb_column > .vc_column-inner > .wpb_wrapper {
+        gap: 16px;
+    }
+
+    .budi-benefits-section .budi-content-box__wrapper img {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 767px) {
+    .budi-benefits-section {
+        margin-top: 0px;
+    }
+
+    .budi-benefits-section > .wpb_column > .vc_column-inner > .wpb_wrapper {
+        flex-direction: column;
+    }
+
+    .budi-benefits-section .budi-content-box__wrapper {
+        border-radius: 40px;
+    }
 }
