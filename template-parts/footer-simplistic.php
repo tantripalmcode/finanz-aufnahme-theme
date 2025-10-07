@@ -7,7 +7,7 @@
             <?php dynamic_sidebar("footer_2"); ?>
         </div>
         <div class="col-md-5">
-            <div class="d-flex flex-column align-items-md-end align-items-center">
+            <div class="d-flex justify-content-end align-items-center budi-footer-rating__box flex-wrap">
                 <?php dynamic_sidebar("footer_3"); ?>
             </div>
         </div>

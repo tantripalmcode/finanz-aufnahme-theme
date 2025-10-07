@@ -242,15 +242,15 @@ footer.footer .company-email-class::before {
 }
 
 footer.footer .company-phone-class::before {
-    background-image: url('../images/phone-icon.png');
+    background-image: url('../images/phone-icon.webp');
 }
 
 footer.footer .company-address::before {
-    background-image: url('../images/map-point-icon.png');
+    background-image: url('../images/map-point-icon.webp');
 }
 
 footer.footer .company-email-class::before {
-    background-image: url('../images/email-icon.png');
+    background-image: url('../images/email-icon.webp');
 }
 
 footer.footer ul {
@@ -270,6 +270,15 @@ footer.footer .budi-footer-legal{
     color: var(--body-text-color);
     font-size: 16px;
     font-weight: 500;
+}
+
+footer.footer .budi-footer-rating__box{
+    gap: 26px;
+}
+
+footer.footer .footer_3 img{
+    max-height: 60px;
+    width: auto;
 }
 
 /* Footer Legal Menu */
