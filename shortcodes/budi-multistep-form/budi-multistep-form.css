@@ -1,0 +1,512 @@
+/* Budi Multistep Form Styles */
+.budi-multistep-form-widget{
+    position: relative;
+    box-shadow: 0px 27px 68.3px 0px #2D80E345;
+    border-radius: 80px;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.budi-multistep-form-widget::before{
+    border-radius: 80px;
+}
+
+.budi-multistep-form-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    position: relative;
+    z-index: 3;
+    background-color: #ffffff;
+    border-radius: 80px;
+}
+
+.budi-multistep-form-title {
+    margin-bottom: 20px;
+}
+
+.budi-multistep-form-title h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1B1B1B;
+}
+
+.budi-multistep-form-description {
+    margin-bottom: 30px;
+}
+
+.budi-multistep-form-description p {
+    margin: 0;
+    font-size: 16px;
+    color: #1B1B1B73;
+    line-height: 1.5;
+}
+
+.budi-multistep-form-wrapper {
+    position: relative;
+}
+
+/* Contact Form 7 Integration Styles */
+.budi-multistep-form-wrapper .wpcf7 {
+    margin: 0;
+}
+
+/* Progress Indicator */
+.fieldset-cf7mls-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b9d 0%, #ff8fab 100%);
+    border-radius: 2px;
+}
+
+.fieldset-cf7mls-wrapper {
+    position: relative;
+    padding-top: 40px;
+}
+
+/* Progress Dots */
+.fieldset-cf7mls-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 8px;
+    background: url("data:image/svg+xml,%3Csvg width='120' height='8' viewBox='0 0 120 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='4' fill='%2300d4aa'/%3E%3Ccircle cx='30' cy='4' r='4' fill='%23e2e8f0'/%3E%3Ccircle cx='56' cy='4' r='4' fill='%23e2e8f0'/%3E%3Ccircle cx='82' cy='4' r='4' fill='%23e2e8f0'/%3E%3Ccircle cx='108' cy='4' r='4' fill='%23e2e8f0'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+}
+
+/* Custom Progress Dots */
+.progress-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.progress-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.progress-dots .dot.active {
+    background: #00d4aa;
+    transform: scale(1.2);
+}
+
+/* Form Steps */
+.fieldset-cf7mls {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.fieldset-cf7mls.cf7mls_current_fs {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Step Titles */
+.fieldset-cf7mls h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a202c;
+    text-align: center;
+    margin: 0 0 40px 0;
+    line-height: 1.2;
+}
+
+/* Radio Button Wrapper */
+.budi-cf7-radio-button__wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+/* Radio Button Cards */
+.budi-cf7-radio-button__wrapper .wpcf7-list-item {
+    flex: 1;
+    min-width: 180px;
+    max-width: 220px;
+    margin-left: 0;
+    border-radius: 40px;
+    position: relative;
+    box-shadow: 0px 12px 24.8px 0px #2D80E345;
+}
+
+.budi-cf7-radio-button__wrapper .wpcf7-list-item::before{
+    content: '';
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(294.09deg, rgba(143, 223, 187, 0.47) 9.56%, rgba(183, 240, 214, 0.76) 85.06%);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    border-radius: 40px;
+    z-index: 1;
+}
+
+.budi-cf7-radio-button__wrapper .wpcf7-list-item::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 40px;
+    z-index: 2;
+}
+
+.budi-cf7-radio-button__wrapper .wpcf7-list-item label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 32px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 140px;
+    justify-content: center;
+    z-index: 3;
+}
+
+
+.budi-cf7-radio-button__wrapper .wpcf7-list-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.budi-cf7-radio-button__wrapper .wpcf7-list-item input[type="radio"]:checked + label,
+.budi-cf7-radio-button__wrapper .wpcf7-list-item input[type="radio"]:checked ~ label,
+.budi-cf7-radio-button__wrapper .wpcf7-list-item label.active {
+    border-color: #00d4aa;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 212, 170, 0.2);
+}
+
+.budi-cf7-radio-button__wrapper .wpcf7-list-item label.active::before {
+    background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+}
+
+/* Icon Styling */
+.budi-cf7-radio-button__wrapper .wpcf7-list-item label::before {
+    content: '';
+    width: 32px;
+    height: 32px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.budi-cf7-radio-button__wrapper .wpcf7-list-item label::after{
+    content: '';
+    width: 52px;
+    height: 52px;
+    border-radius: 100%;
+    background: var(--color-light);
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+/* Specific Icons by Input Value - Target the label that contains the input */
+.budi-cf7-radio-button__wrapper label:has(input[value="Angestellt"])::before{
+    background-image: url('images/angestellt.webp');
+}
+
+.budi-cf7-radio-button__wrapper label:has(input[value="Selbstständig"])::before{
+    background-image: url('images/selbstständig.webp');
+}
+
+.budi-cf7-radio-button__wrapper label:has(input[value="Azubi"])::before{
+    background-image: url('images/azubi.webp');
+}
+
+/* Label Text */
+.budi-cf7-radio-button__wrapper .wpcf7-list-item-label {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--body-text-color);
+    text-align: center;
+    margin-top: 28px;
+}
+
+/* Text Input Fields */
+.budi-cf7-forms {
+    margin: 40px 0;
+}
+
+.budi-cf7-forms label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 12px;
+}
+
+.budi-cf7-forms .wpcf7-form-control {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #1a202c;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.budi-cf7-forms .wpcf7-form-control:focus {
+    outline: none;
+    border-color: #00d4aa;
+    box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+}
+
+.budi-cf7-forms .wpcf7-form-control::placeholder {
+    color: #a0aec0;
+    font-style: italic;
+}
+
+.budi-multistep-form-wrapper .wpcf7-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.budi-multistep-form-wrapper .wpcf7-form p {
+    margin: 0;
+}
+
+.budi-multistep-form-wrapper .wpcf7-form-control-wrap {
+    display: block;
+    width: 100%;
+}
+
+.budi-multistep-form-wrapper .wpcf7-form-control.budi-radio-button-field {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 16px;
+    color: #1B1B1B73;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.budi-multistep-form-wrapper .wpcf7-form-control:focus {
+    outline: none;
+    border-color: #e63946;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.1);
+}
+
+.budi-multistep-form-wrapper .wpcf7-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.budi-multistep-form-wrapper .wpcf7-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 1L7 7L1 1' stroke='%231B1B1B' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    padding-right: 40px;
+}
+
+.budi-multistep-form-wrapper .wpcf7-acceptance .wpcf7-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.budi-multistep-form-wrapper .wpcf7-acceptance .wpcf7-list-item label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #1B1B1B73;
+}
+
+.budi-multistep-form-wrapper .wpcf7-acceptance input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Navigation Buttons */
+.cf7mls-btns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 40px;
+    gap: 20px;
+    min-height: auto !important;
+}
+
+.cf7mls-btns:has(.cf7mls_back){
+    justify-content: space-between;
+}
+
+.cf7mls_btn, .cf7mls_back {
+    padding: 16px 32px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.cf7mls-btns button.cf7mls_back{
+    background: transparent;
+    margin-block: 0 !important;
+    padding: 11px 28px !important;
+    border: 2px solid var(--color-main) !important;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-main);
+}
+
+.cf7mls-btns button.cf7mls_next {
+    background: var(--color-main);
+    border: 2px solid var(--color-main) !important;
+    color: #ffffff;
+    margin-left: auto;
+    margin-block: 0 !important;
+    padding: 11px 28px !important;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cf7mls_next:hover {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 212, 170, 0.4);
+}
+
+.cf7mls_back {
+    background: #ffffff;
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cf7mls_back:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cf7mls_next::after {
+    content: '→';
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cf7mls_back::before {
+    content: '←';
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Loading State */
+.cf7mls_btn img {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+}
+
+.cf7mls_btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cf7mls_btn:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+}
+
+/* Response Messages */
+.budi-multistep-form-wrapper .wpcf7-response-output {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.budi-multistep-form-wrapper .wpcf7-mail-sent-ok {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.budi-multistep-form-wrapper .wpcf7-validation-errors {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.budi-multistep-form-wrapper .wpcf7-spam-blocked {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.budi-multistep-form-wrapper .wpcf7-not-valid {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Loading State */
+.budi-multistep-form-wrapper .wpcf7-submit:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}

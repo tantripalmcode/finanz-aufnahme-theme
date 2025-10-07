@@ -29,7 +29,7 @@ function sc_budi_benefit_tabs($atts, $content = null)
 
     if ($sc_benefit_tabs) { ?>
 
-        <div id="<?php echo esc_attr($widget_id); ?>" class="budi-benefit-tabs__wrapper <?php echo esc_attr($widget_class); ?>">
+        <div id="<?php echo esc_attr($widget_id); ?>" class="budi-benefit-tabs__wrapper budi-linear-background <?php echo esc_attr($widget_class); ?>">
 
             <div class="budi-benefit-tabs__container">
 

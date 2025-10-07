@@ -371,7 +371,7 @@ div.budi-button-container .btn {
 div.budi-button-container a.btn.btn-heartbeat,
 div.budi-button-container .btn.btn-heartbeat {
     animation: btn-heartbeat 1.8s infinite;
-    transition: all 0.35s ease-out; 
+    transition: all 0.35s ease-out;
 }
 
 @keyframes btn-heartbeat {
@@ -379,18 +379,22 @@ div.budi-button-container .btn.btn-heartbeat {
         transform: scale(1);
         box-shadow: var(--btn-primary-shadow);
     }
+
     14% {
         transform: scale(1.02);
         box-shadow: var(--btn-primary-shadow-beat1);
     }
+
     28% {
         transform: scale(1);
         box-shadow: var(--btn-primary-shadow);
     }
+
     42% {
         transform: scale(1.05);
         box-shadow: var(--btn-primary-shadow-beat2);
     }
+
     100% {
         transform: scale(1);
         box-shadow: var(--btn-primary-shadow);
@@ -407,8 +411,7 @@ div.budi-button-container .btn.btn-primary {
 }
 
 div.budi-button-container a.btn.btn-primary:hover,
-div.budi-button-container .btn.btn-primary:hover {
-}
+div.budi-button-container .btn.btn-primary:hover {}
 
 /* Secondary Button */
 div.budi-button-container a.btn.btn-secondary,
@@ -496,9 +499,10 @@ div.budi-button-container .btn.btn-secondary-white:hover {
 }
 
 @media (max-width: 767px) {
+
     div.budi-button-container a.btn,
     div.budi-button-container .btn {
-        font-size: 16px !important;   
+        font-size: 16px !important;
         padding: 14px 24px !important;
     }
 }
@@ -814,13 +818,26 @@ div[role="radio"]:focus-visible,
     outline-offset: 2px;
 }
 
+/* Budi Linear Background */
+
+.budi-linear-background::before {
+    content: '';
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(294.09deg, rgba(143, 223, 187, 0.47) 9.56%, rgba(183, 240, 214, 0.76) 85.06%);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: 1;
+}
+
 /*
 ========================================================================
 STARTSEITE
 ========================================================================
 */
 /* Counter Element */
-.budi-counter__wrapper > .wpb_column > .vc_column-inner > .wpb_wrapper {
+.budi-counter__wrapper>.wpb_column>.vc_column-inner>.wpb_wrapper {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -835,7 +852,7 @@ STARTSEITE
     overflow: hidden;
 }
 
-.budi-counter__wrapper .counter-element {    
+.budi-counter__wrapper .counter-element {
     display: grid;
     grid-template-columns: 55px 1fr;
     grid-template-rows: auto auto;
@@ -895,7 +912,7 @@ STARTSEITE
     filter: blur(150px);
 }
 
-.budi-steps__wrapper > .wpb_column > .vc_column-inner > .wpb_wrapper {
+.budi-steps__wrapper>.wpb_column>.vc_column-inner>.wpb_wrapper {
     border-radius: 60px;
     background: #FFF;
     padding: 24px 40px 40px 40px;
@@ -935,7 +952,7 @@ STARTSEITE
 }
 
 @media (max-width: 1024px) {
-    .budi-steps__wrapper > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    .budi-steps__wrapper>.wpb_column>.vc_column-inner>.wpb_wrapper {
         padding: 24px 24px 32px 24px;
     }
 
@@ -945,7 +962,7 @@ STARTSEITE
 }
 
 @media (max-width: 767px) {
-    .budi-steps__wrapper > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    .budi-steps__wrapper>.wpb_column>.vc_column-inner>.wpb_wrapper {
         margin: 0 10px 24px 10px;
     }
 
@@ -972,11 +989,11 @@ STARTSEITE
 }
 
 .budi-insurance-slider .budi-swiper-arrow-new {
-    margin: 0 !important; 
+    margin: 0 !important;
 }
 
 /* Comparison Section */
-.budi-comparison-list__wrapper > .vc_column-inner > .wpb_wrapper {
+.budi-comparison-list__wrapper>.vc_column-inner>.wpb_wrapper {
     border-radius: 60px;
     border: 2px solid rgba(143, 223, 187, 0.47);
     background: #FFF;
@@ -994,7 +1011,7 @@ STARTSEITE
 }
 
 .budi-comparison-list__wrapper .budi-icon-lists__icon img,
-.budi-comparison-list__wrapper .budi-icon-lists__icon svg{
+.budi-comparison-list__wrapper .budi-icon-lists__icon svg {
     width: 32px;
     height: 32px;
     object-fit: contain;
@@ -1040,7 +1057,7 @@ STARTSEITE
 }
 
 @media (max-width: 767px) {
-    .budi-comparison-list__wrapper > .vc_column-inner > .wpb_wrapper {
+    .budi-comparison-list__wrapper>.vc_column-inner>.wpb_wrapper {
         padding: 40px 32px;
         margin-top: 10px;
         margin-bottom: 16px;
@@ -1061,7 +1078,7 @@ STARTSEITE
     margin-top: 32px;
 }
 
-.budi-benefits-section > .wpb_column > .vc_column-inner > .wpb_wrapper {
+.budi-benefits-section>.wpb_column>.vc_column-inner>.wpb_wrapper {
     display: flex;
     flex-direction: row;
     gap: 48px;
@@ -1112,7 +1129,7 @@ STARTSEITE
 }
 
 @media (max-width: 1024px) {
-    .budi-benefits-section > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    .budi-benefits-section>.wpb_column>.vc_column-inner>.wpb_wrapper {
         gap: 16px;
     }
 
@@ -1127,7 +1144,7 @@ STARTSEITE
         margin-top: 0px;
     }
 
-    .budi-benefits-section > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    .budi-benefits-section>.wpb_column>.vc_column-inner>.wpb_wrapper {
         flex-direction: column;
     }
 
