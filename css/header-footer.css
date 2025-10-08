@@ -582,10 +582,10 @@ body.budi-popup-menu-open #primary-navigation-overlay {
 .budigital-child .wpcf7 .wpcf7-textarea,
 .budigital-child .wpcf7 .wpcf7-select {
     width: 100%;
-    border: 0 !important;
     padding: 16px 16px !important;
     background-color: #E6EDF699 !important;
     color: #1B1B1B73;
+    border-width: 1px !important;
 }
 
 .budigital-child .wpcf7 .wpcf7-textarea {
@@ -627,21 +627,21 @@ body.budi-popup-menu-open #primary-navigation-overlay {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #1B1B1B80;
-    border-radius: 0;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #8699AF;
     cursor: pointer;
     position: relative;
     background: #fff;
     margin: 0;
+    border-radius: 6px;
 }
 
 /* Checked state with tick */
 .budigital-child .wpcf7 .wpcf7-form-control.wpcf7-acceptance input[type="checkbox"]:checked {
-    background-color: #e63946;
+    background-color: var(--color-main);
     /* change to your brand color */
-    border-color: #e63946;
+    border-color: var(--color-main);
 }
 
 .budigital-child .wpcf7 .wpcf7-form-control.wpcf7-acceptance input[type="checkbox"]:checked::after {
@@ -650,7 +650,7 @@ body.budi-popup-menu-open #primary-navigation-overlay {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -55%);
-    font-size: 14px;
+    font-size: 15px;
     color: #fff;
 }
 
@@ -661,14 +661,16 @@ body.budi-popup-menu-open #primary-navigation-overlay {
 }
 
 .budigital-child .wpcf7 .wpcf7-submit {
-    width: 100%;
-    background: linear-gradient(270deg, #BD0926 0%, #E7623A 100%);
-    background-size: 100%;
-    background-position: center center;
-    border-radius: 100px !important;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background: var(--color-main);
+    border: 2px solid var(--color-main) !important;
+    color: #ffffff;
+    margin-block: 0 !important;
+    padding: 11px 24px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    border-radius: var(--button-corners) !important;
+    position: relative !important;
+    top: 20px !important;
 }
 
 .budigital-child .wpcf7 .wpcf7-submit:hover {
@@ -676,8 +678,21 @@ body.budi-popup-menu-open #primary-navigation-overlay {
     background-position: right center !important;
 }
 
+.budigital-child .wpcf7 .wpcf7-submit:disabled{
+    opacity: 0.5 !important;
+    background-color: var(--color-main) !important;
+}
+
 .budigital-child .wpcf7 .wpcf7-spinner {
     position: absolute;
     right: 0;
     margin-top: 8px;
+}
+
+.fieldset-cf7mls-wrapper .fieldset-cf7mls{
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    transform: none !important;
+    display: block !important;
 }
