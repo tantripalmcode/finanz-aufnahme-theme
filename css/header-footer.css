@@ -95,6 +95,7 @@ header.simplistic-header .budi-hamburger-menu-button.active .line:nth-child(3) {
     font-weight: 400;
 }
 
+.budi-simplistic-header-cta-menu__wrapper .main-menu .menu-item.budi-active a,
 .budi-simplistic-header-cta-menu__wrapper .main-menu a:hover {
     color: var(--color-main);
     text-shadow: 0 0 0.2px currentColor, 0 0 0.2px currentColor;

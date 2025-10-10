@@ -323,6 +323,78 @@
   }
 
   /**
+   * Set active menu item based on scroll position
+   */
+  function setActiveMenuItemOnScroll() {
+    const $menuItems = $('.main-menu a[href*="#"]');
+    const $menuListItems = $('.main-menu li');
+    let scrollTimeout;
+    let currentActiveItem = null;
+
+    function updateActiveMenuItem() {
+      const scrollTop = $window.scrollTop();
+      const windowHeight = $window.height();
+      const documentHeight = $(document).height();
+      
+      let newActiveItem = null;
+
+      // If we're at the bottom of the page, activate the last menu item
+      if (scrollTop + windowHeight >= documentHeight - 10) {
+        newActiveItem = $menuListItems.last();
+      } else {
+        // Check each menu item's target section
+        $menuItems.each(function() {
+          const $menuItem = $(this);
+          const href = $menuItem.attr('href');
+          
+          if (href && href.includes('#')) {
+            const sectionId = href.split('#')[1];
+            const $targetSection = $('#' + sectionId);
+            
+            if ($targetSection.length) {
+              const sectionTop = $targetSection.offset().top;
+              const sectionHeight = $targetSection.outerHeight();
+              
+              // Check if section is in viewport
+              if (scrollTop >= sectionTop - 100 && scrollTop < sectionTop + sectionHeight - 100) {
+                newActiveItem = $menuItem.closest('li');
+              }
+            }
+          }
+        });
+      }
+
+      // Only update if the active item has changed
+      if (newActiveItem && newActiveItem[0] !== currentActiveItem) {
+        // Remove active class from current item
+        if (currentActiveItem) {
+          currentActiveItem.removeClass('budi-active');
+        }
+        
+        // Add active class to new item
+        newActiveItem.addClass('budi-active');
+        currentActiveItem = newActiveItem;
+      } else if (!newActiveItem && currentActiveItem) {
+        // No section in view, remove active class
+        currentActiveItem.removeClass('budi-active');
+        currentActiveItem = null;
+      }
+    }
+
+    // Throttled scroll handler
+    function handleScroll() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateActiveMenuItem, 10);
+    }
+
+    // Initial call
+    updateActiveMenuItem();
+
+    // Bind scroll event
+    $window.on('scroll', handleScroll);
+  }
+
+  /**
    * Initialize JS Function
    */
   setBodyClassOnScroll();
@@ -332,6 +404,7 @@
   autoSelectedJobForm();
   popupMenuHamburgerMenu();
   setMarginTopForMainContent();
+  setActiveMenuItemOnScroll();
   rellaxJs();
   heartbeatButton();
 })(jQuery);
