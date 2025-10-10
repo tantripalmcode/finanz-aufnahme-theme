@@ -688,11 +688,3 @@ body.budi-popup-menu-open #primary-navigation-overlay {
     right: 0;
     margin-top: 8px;
 }
-
-.fieldset-cf7mls-wrapper .fieldset-cf7mls{
-    opacity: 1 !important;
-    visibility: visible !important;
-    position: relative !important;
-    transform: none !important;
-    display: block !important;
-}

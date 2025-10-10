@@ -11,6 +11,11 @@ GLOBAL STYLE
     --btn-primary-shadow: 0 12px 24.8px 0 rgba(242, 80, 116, 0.44);
     --btn-primary-shadow-beat1: 0 12px 32px 0 rgba(242, 80, 116, 0.55);
     --btn-primary-shadow-beat2: 0 12px 40px 0 rgba(242, 80, 116, 0.65);
+
+    --btn-purple-bg: linear-gradient(17.45deg, rgba(94, 81, 115, 0.2) -2.96%, rgba(205, 162, 254, 0.2) 70.34%, rgba(255, 255, 255, 0.2) 84.25%), #6E56F7;
+    --btn-purple-shadow: 0px 12px 24.8px 0px rgba(150, 80, 242, 0.44);
+    --btn-purple-shadow-beat1: 0 12px 32px 0 rgba(150, 80, 242, 0.55);
+    --btn-purple-shadow-beat2: 0 12px 40px 0 rgba(150, 80, 242, 0.65);
 }
 
 /* Password Page */
@@ -128,6 +133,16 @@ strong {
     margin-bottom: 0;
 }
 
+/* Filter Dropshadow */
+.budi-filter-dropshadow__image {
+    filter: drop-shadow(0px 12px 24.8px #67D1A15E);
+}
+
+.budi-filter-dropshadow__image-pink {
+    filter: drop-shadow(0px 12px 24.8px #F46D7057);
+
+}
+
 /* Background Setting */
 .bg-norepeat,
 .bg-norepeat::before,
@@ -205,6 +220,7 @@ h2,
 .h2 {
     font-weight: 500;
     font-size: 40px;
+    line-height: 1.3em;
     margin-bottom: var(--h2-spacing);
 }
 
@@ -216,7 +232,11 @@ h3,
 }
 
 h4,
-.h4,
+.h4 {
+    margin-bottom: var(--h4-spacing);
+    font-size: 24px;
+}
+
 h5,
 .h5,
 h6,
@@ -276,6 +296,10 @@ h6,
 }
 
 @media (max-width: 767px) {
+    .budi-lg-text {
+        font-size: 20px;
+    }
+
     .budi-h2-small {
         font-size: 26px;
     }
@@ -339,6 +363,14 @@ h6,
     color: var(--abn-light-white) !important;
 }
 
+.wpb_text_column strong {
+    font-weight: 600;
+}
+
+.wpb_text_column span {
+    color: var(--color-main) !important;
+}
+
 /* Transition Settings */
 .transition-all-03s {
     transition: all 0.3s;
@@ -347,6 +379,10 @@ h6,
 /* Overflow */
 .overflow-visible {
     overflow: visible !important;
+}
+
+.budi-icon-lists__wrapper {
+    font-size: 16px;
 }
 
 /* Button */
@@ -370,11 +406,11 @@ div.budi-button-container .btn {
 
 div.budi-button-container a.btn.btn-heartbeat,
 div.budi-button-container .btn.btn-heartbeat {
-    animation: btn-heartbeat 1.8s infinite;
+    animation: btn-heartbeat-primary 1.8s infinite;
     transition: all 0.35s ease-out;
 }
 
-@keyframes btn-heartbeat {
+@keyframes btn-heartbeat-primary {
     0% {
         transform: scale(1);
         box-shadow: var(--btn-primary-shadow);
@@ -410,8 +446,8 @@ div.budi-button-container .btn.btn-primary {
     border: 2px solid #FFA3B9;
 }
 
-div.budi-button-container a.btn.btn-primary:hover,
-div.budi-button-container .btn.btn-primary:hover {}
+/* div.budi-button-container a.btn.btn-primary:hover,
+div.budi-button-container .btn.btn-primary:hover {} */
 
 /* Secondary Button */
 div.budi-button-container a.btn.btn-secondary,
@@ -437,6 +473,47 @@ div.budi-button-container .btn.btn-secondary:before {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+}
+
+div.budi-button-container a.btn.btn-purple,
+div.budi-button-container .btn.btn-purple {
+    color: #FFF;
+    background: var(--btn-purple-bg);
+    box-shadow: var(--btn-purple-shadow);
+    border: 2px solid #C0A3FF;
+}
+
+div.budi-button-container a.btn.btn-purple.btn-heartbeat,
+div.budi-button-container .btn.btn-purple.btn-heartbeat {
+    animation: btn-heartbeat-purple 1.8s infinite 1s;
+    transition: all 0.35s ease-out;
+}
+
+@keyframes btn-heartbeat-purple {
+    0% {
+        transform: scale(1);
+        box-shadow: var(--btn-purple-shadow);
+    }
+
+    14% {
+        transform: scale(1.02);
+        box-shadow: var(--btn-purple-shadow-beat1);
+    }
+
+    28% {
+        transform: scale(1);
+        box-shadow: var(--btn-purple-shadow);
+    }
+
+    42% {
+        transform: scale(1.05);
+        box-shadow: var(--btn-purple-shadow-beat2);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: var(--btn-purple-shadow);
+    }
 }
 
 div.budi-button-container a.btn.btn-secondary .budi-button-image__wrapper svg path,
@@ -554,6 +631,11 @@ div.budi-button-container .btn.btn-secondary-white:hover {
 .simplistic-headline span,
 .budi-headline__title span:not(.budi-line-through) {
     color: var(--color-main) !important;
+    font-weight: 700;
+}
+
+.budi-headline__title.span-color-sub span {
+    color: var(--color-sub) !important;
     font-weight: 700;
 }
 
@@ -819,6 +901,9 @@ div[role="radio"]:focus-visible,
 }
 
 /* Budi Linear Background */
+.budi-linear-background {
+    position: relative;
+}
 
 .budi-linear-background::before {
     content: '';
@@ -828,7 +913,12 @@ div[role="radio"]:focus-visible,
     position: absolute;
     top: -2px;
     left: -2px;
-    z-index: 1;
+    z-index: -1;
+}
+
+.budi-linear-background>* {
+    z-index: 3;
+    position: relative;
 }
 
 /*
@@ -836,6 +926,165 @@ div[role="radio"]:focus-visible,
 STARTSEITE
 ========================================================================
 */
+
+/* Hero */
+.budi-hero__section::before,
+.budi-hero-google-rating::before {
+    content: '';
+    display: block;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -40px;
+    z-index: -1;
+    background-color: var(--color-main);
+    border-radius: 100px;
+    opacity: 0.25;
+    filter: blur(150px);
+}
+
+.budi-hero__section h1.budi-headline__title {
+    hyphens: auto;
+}
+
+/* Hero Google Rating */
+.budi-hero-google-rating {
+    right: 0;
+    top: 20%;
+    transform: translateX(25%);
+}
+
+.budi-hero-google-rating::before {
+    opacity: 0.55;
+    width: 120%;
+    left: -10%;
+}
+
+.budi-hero-certificate img {
+    max-width: 162px;
+}
+
+@media screen and (max-width: 1200px) {
+    .budi-hero-google-rating {
+        transform: translateX(-10px);
+        top: 10%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .budi-hero-google-rating {
+        top: 30%;
+    }
+
+    .budi-hero-certificate img {
+        max-width: 140px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .budi-hero__section {
+        padding-bottom: 80px;
+    }
+
+    .budi-hero-google-rating {
+        top: auto;
+        bottom: 0;
+        transform: translateY(240px) translateX(0);
+        width: 100%;
+    }
+
+    .budi-hero-google-rating .wpb_wrapper {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .budi-hero-certificate img {
+        width: auto;
+        max-height: 58px;
+    }
+}
+
+/* Hero Icon Lists */
+.budi-hero-icon-lists .budi-icon-lists__item:not(:last-child) {
+    margin-bottom: 14px;
+}
+
+.budi-hero-icon-lists .budi-icon-lists__item .budi-icon-lists__item-inner {
+    align-items: center;
+}
+
+.budi-hero-icon-lists .budi-icon-lists__item .budi-icon-lists__icon img {
+    max-width: 24px;
+}
+
+/* Hero Image */
+.budi-hero-image {
+    position: relative;
+}
+
+.budi-hero-image::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 60%;
+    max-width: 1440px;
+    position: absolute;
+    left: -15%;
+    right: 0;
+    margin: 0 auto;
+    top: 15%;
+    z-index: -1;
+    background-color: var(--color-main);
+    border-radius: 100%;
+    opacity: 0.65;
+    filter: blur(150px);
+}
+
+.budi-hero-image img {
+    max-width: 120%;
+    transform: translateX(-20%);
+}
+
+/* Hero Funding Box */
+.budi-hero-funding__box {
+    background-color: #fff;
+    padding: 16px 40px;
+    border-radius: 50px;
+    box-shadow: 0px 12px 24.8px 0px #67D1A15E;
+}
+
+.budi-hero-funding__box::before,
+.budi-hero-funding__box::after {
+    border-radius: 50px;
+}
+
+.budi-hero-funding__box span {
+    color: var(--color-main);
+}
+
+.budi-money-growth-icon {
+    max-width: 70px;
+    right: 6%;
+    top: -17%;
+    z-index: 9;
+}
+
+@media screen and (max-width: 1200px) {
+    .budi-money-growth-icon {
+        right: -20px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .budi-money-growth-icon {
+        right: -30px;
+        top: -50px;
+    }
+}
+
 /* Counter Element */
 .budi-counter__wrapper>.wpb_column>.vc_column-inner>.wpb_wrapper {
     position: relative;
@@ -886,15 +1135,34 @@ STARTSEITE
 .budi-counter__wrapper .counter-element p.counter-element-description {
     grid-column: 2;
     grid-row: 2;
-
-    color: var(--body-text-color);
+    color: var(--body-text-color) !important;
     font-size: 20px;
     font-weight: 400;
     margin: 0;
     text-align: left;
 }
 
+@media screen and (max-width: 992px) {
+    .budi-counter__wrapper>.wpb_column>.vc_column-inner>.wpb_wrapper {
+        padding: 20px 30px;
+    }
+}
+
 /* Steps Section */
+.budi-3-steps-icon {
+    top: 0;
+    left: 0;
+    max-width: 150px;
+    top: 25%;
+    left: -5%;
+}
+
+.budi-growth-chart-icon {
+    max-width: 130px;
+    right: -5%;
+    bottom: 90%;
+}
+
 .budi-circle-bg::before {
     content: '';
     display: block;
@@ -985,7 +1253,7 @@ STARTSEITE
     height: 100%;
     left: 0;
     top: 0;
-    background: linear-gradient(0deg, #FFF 0%, #B7F0D6 53.41%, #FFF 100%);
+    background: linear-gradient(0deg, #FFF 0%, var(--color-custom-2) 53.41%, #FFF 100%);
 }
 
 .budi-insurance-slider .budi-swiper-arrow-new {
@@ -993,6 +1261,18 @@ STARTSEITE
 }
 
 /* Comparison Section */
+.budi-lamp-icon {
+    max-width: 120px;
+    top: 15%;
+    left: 20px;
+}
+
+.budi-piggy-icon {
+    max-width: 145px;
+    right: -5%;
+    bottom: 150%;
+}
+
 .budi-comparison-list__wrapper>.vc_column-inner>.wpb_wrapper {
     border-radius: 60px;
     border: 2px solid rgba(143, 223, 187, 0.47);
@@ -1128,6 +1408,12 @@ STARTSEITE
     text-align: center;
 }
 
+.budi-stethoscope-icon {
+    bottom: -25%;
+    right: -7%;
+    max-width: 170px;
+}
+
 @media (max-width: 1024px) {
     .budi-benefits-section>.wpb_column>.vc_column-inner>.wpb_wrapper {
         gap: 16px;
@@ -1151,4 +1437,167 @@ STARTSEITE
     .budi-benefits-section .budi-content-box__wrapper {
         border-radius: 40px;
     }
+}
+
+/* Health Expert Section */
+.budi-health-expert__container {
+    max-width: 1000px;
+}
+
+.budi-health-expert__container .budi-hero-icon-lists {
+    max-width: 355px;
+}
+
+.budi-health-expert__container .budi-hero-icon-lists .budi-icon-lists__item-inner {
+    align-items: flex-start;
+}
+
+.budi-health-expert__image {
+    max-width: 344px;
+    margin: 0 auto;
+}
+
+.budi-heart-icon {
+    left: -30%;
+    bottom: -7%;
+    max-width: 150px;
+}
+
+/* Referral Section
+================================ */
+
+.budi-referral__content.budi-circle-bg::before {
+    width: 80%;
+    height: 80%;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.budi-referral__content.budi-circle-bg .vc_column-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.budi-referral-badge {
+    width: fit-content;
+    padding: 11px 24px;
+    background-color: var(--color-custom-2);
+    border-radius: 100px;
+    line-height: 1.1em;
+    color: var(--body-text-color);
+}
+
+.budi-referral-icon__lists {
+    gap: 16px;
+}
+
+.budi-referral-icon__lists li {
+    padding: 14px 24px;
+    box-shadow: 0px 12px 24.8px 0px #67D1A15E;
+    background: #ffffff;
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-custom);
+}
+
+.budi-referral-icon__lists .budi-icon-lists__item-inner {
+    align-items: center;
+    gap: 10px;
+}
+
+.budi-referral-icon__lists .budi-icon-lists__icon img {
+    width: 32px;
+    height: 32px;
+}
+
+.budi-amazon-airpods__image {
+    max-width: 255px;
+    right: -5%;
+    bottom: 5%;
+}
+
+.budi-referral-illustration__image {
+    max-width: 435px;
+    margin: 0 auto;
+}
+
+.budi-euro-icon {
+    max-width: 120px;
+    right: -15%;
+    top: -15%;
+}
+
+/* Multistep Form Section
+================================ */
+
+.budi-chart-up-icon {
+    bottom: 20%;
+    left: 3%;
+    max-width: 120px;
+    z-index: 3;
+}
+
+/* Financial Updates Box */
+.budi-financial-updates__box {
+    max-width: 1012px;
+}
+
+.budi-financial-updates__box-container {
+    background-color: var(--color-custom-2);
+    border-radius: 80px;
+    padding: 20px 20px 70px;
+}
+
+@media screen and (min-width: 993px) {
+    .budi-finance-update__buttons a.btn {
+        min-width: 350px;
+        justify-content: center;
+    }
+}
+
+.budi-iphone-mockup {
+    max-width: 200px;
+    bottom: 25px;
+    right: -10px;
+}
+
+.budi-nurse-half {
+    max-width: 255px;
+    left: -50px;
+    top: 12px;
+}
+
+.budi-nurse-using-phone {
+    max-width: 255px;
+    left: -70px;
+    bottom: -70px;
+}
+
+/* Testimonial Section */
+.budi-comment-icon {
+    max-width: 160px;
+    bottom: 8%;
+    left: 0;
+}
+
+/* Consultation Section */
+.budi-teamwork__image {
+    max-width: 434px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.budi-consultation-icon-lists .budi-icon-lists__item:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.budi-consultation-icon-lists .budi-icon-lists__item .budi-icon-lists__item-inner {
+    align-items: center;
+    gap: 16px;
+}
+
+.budi-consultation-icon-lists .budi-icon-lists__item .budi-icon-lists__icon img {
+    max-width: 24px;
 }

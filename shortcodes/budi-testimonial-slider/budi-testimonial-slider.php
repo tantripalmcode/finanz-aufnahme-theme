@@ -116,6 +116,9 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
         $this_widget_id    = $this->get_widget_id(uniqid());
 
         $testimonials = vc_param_group_parse_atts($atts['testimonials']);
+        if (is_array($testimonials) && count($testimonials) > 0 && count($testimonials) < 9) {
+            $testimonials = array_merge($testimonials, $testimonials);
+        }
         $icon = $atts['icon'];
 
         if ($testimonials) { ?>
@@ -196,7 +199,7 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
                         let settings = {
                             slidesPerView: 'auto',
                             spaceBetween: 24,
-                            loop: false,
+                            loop: true,
                             speed: 800,
                             effect: 'slide',
                             autoplay: {

@@ -2,10 +2,12 @@
 .budi-benefit-tabs__wrapper {
     margin: 0 auto;
     position: relative;
+    contain: style;
 }
 
 .budi-benefit-tabs__wrapper::before{
     border-radius: 80px;
+    z-index: 1;
 }
 
 .budi-benefit-tabs__container {
@@ -236,11 +238,6 @@ button.budi-benefit-tabs__nav-item {
 
 .budi-benefit-tabs__floating-icon-img.parallax-active {
     transition: transform 0.1s ease-out;
-}
-
-/* Smooth scrolling optimization */
-.budi-benefit-tabs__wrapper {
-    contain: style;
 }
 
 /* Performance optimizations for parallax */
