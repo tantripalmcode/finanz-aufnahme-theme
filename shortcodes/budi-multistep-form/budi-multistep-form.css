@@ -171,6 +171,10 @@
     border-radius: 40px;
 }
 
+.budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:hover{
+    transform: scale(1.02);
+}
+
 .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label::before {
     content: '';
     display: block;
@@ -207,14 +211,12 @@
 .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:has(input[type="radio"]:focus-visible) {
     transform: translateY(-2px);
 }
-
+/* 
 .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:has(input[type="radio"]:checked) {
     transform: translateY(-2px);
-    /* No box-shadow for checked, only for focus */
-}
+} */
 
-.budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:has(input[type="radio"]:focus-visible)::before,
-.budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:has(input[type="radio"]:focus)::before {
+.budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:has(input[type="radio"]:focus-visible)::before {
     background: linear-gradient(294.09deg, rgba(45, 128, 227, 0.47) 9.56%, rgba(45, 128, 227, 0.76) 85.06%);
     /* Subtle blue highlight for focus */
 }
