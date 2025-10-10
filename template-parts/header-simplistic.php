@@ -27,7 +27,7 @@ $cta2_target  = get_theme_mod('cta2_target');
                         
                         <!-- Company Logo -->
                         <?php if ($company_logo) { ?>
-                            <a href="<?php echo esc_url(get_site_url()); ?>">
+                            <a href="/#">
                                 <img class="logo transition-all-03s" src="<?php echo esc_url($company_logo); ?>" alt="<?php echo esc_attr($site_title); ?>" />
                             </a>
                         <?php } ?>

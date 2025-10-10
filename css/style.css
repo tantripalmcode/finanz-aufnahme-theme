@@ -368,7 +368,7 @@ h6,
 }
 
 .wpb_text_column span {
-    color: var(--color-main) !important;
+    color: var(--color-main);
 }
 
 /* Transition Settings */
@@ -928,6 +928,10 @@ STARTSEITE
 */
 
 /* Hero */
+.budi-hero__section {
+    z-index: 2;
+}
+
 .budi-hero__section::before,
 .budi-hero-google-rating::before {
     content: '';
@@ -1149,12 +1153,17 @@ STARTSEITE
 }
 
 /* Steps Section */
+.budi-3-steps-funding {
+    z-index: 3;
+}
+
 .budi-3-steps-icon {
     top: 0;
     left: 0;
     max-width: 150px;
     top: 25%;
     left: -5%;
+    z-index: 3;
 }
 
 .budi-growth-chart-icon {
@@ -1263,8 +1272,9 @@ STARTSEITE
 /* Comparison Section */
 .budi-lamp-icon {
     max-width: 120px;
-    top: 15%;
+    top: 0;
     left: 20px;
+    z-index: 9;
 }
 
 .budi-piggy-icon {
@@ -1409,9 +1419,10 @@ STARTSEITE
 }
 
 .budi-stethoscope-icon {
-    bottom: -25%;
+    bottom: 10%;
     right: -7%;
     max-width: 170px;
+    z-index: 9;
 }
 
 @media (max-width: 1024px) {
@@ -1459,7 +1470,7 @@ STARTSEITE
 
 .budi-heart-icon {
     left: -30%;
-    bottom: -7%;
+    bottom: 10%;
     max-width: 150px;
 }
 
@@ -1525,7 +1536,7 @@ STARTSEITE
 .budi-euro-icon {
     max-width: 120px;
     right: -15%;
-    top: -15%;
+    top: -8%;
 }
 
 /* Multistep Form Section

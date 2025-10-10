@@ -244,21 +244,43 @@ if (! empty($el_id)) {
 
 // Handle custom attributes
 if (! empty($budi_custom_attributes)) {
-    $custom_attrs = explode("\n", $budi_custom_attributes);
+    // Decode HTML entities that might have been encoded by WordPress
+    $decoded_attributes = html_entity_decode($budi_custom_attributes, ENT_QUOTES, 'UTF-8');
+    
+    // Remove any HTML tags that might have been added (like <br> tags)
+    $decoded_attributes = strip_tags($decoded_attributes);
+    
+    $custom_attrs = explode("\n", $decoded_attributes);
+    
     foreach ($custom_attrs as $attr) {
         $attr = trim($attr);
         if (! empty($attr)) {
-            // Parse attribute in format: data-speed="2" or data-delay="100"
-            if (preg_match('/^([a-zA-Z][a-zA-Z0-9_-]*)\s*=\s*["\']([^"\']*)["\']$/', $attr, $matches)) {
-                $attr_name = esc_attr($matches[1]);
-                $attr_value = esc_attr($matches[2]);
-                $wrapper_attributes[] = $attr_name . '="' . $attr_value . '"';
+            // Split by first equals sign to handle both quoted and unquoted values
+            $parts = explode('=', $attr, 2);
+            if (count($parts) === 2) {
+                $attr_name = trim($parts[0]);
+                $attr_value = trim($parts[1]);
+                
+                // Remove quotes if present
+                $attr_value = trim($attr_value, '"\'');
+                
+                // Validate attribute name (basic validation)
+                if (preg_match('/^[a-zA-Z][a-zA-Z0-9_-]*$/', $attr_name)) {
+                    $wrapper_attributes[] = esc_attr($attr_name) . '="' . esc_attr($attr_value) . '"';
+                }
             }
         }
     }
 }
+
+// Build the attributes string
+$attributes_string = '';
+if (! empty($wrapper_attributes)) {
+    $attributes_string = ' ' . implode(' ', $wrapper_attributes);
+}
+
 $output = '
-	<div ' . implode(' ', $wrapper_attributes) . ' class="' . esc_attr(trim($css_class)) . '">
+	<div' . $attributes_string . ' class="' . esc_attr(trim($css_class)) . '">
 		' . wpb_widget_title([
     'title' => $title,
     'extraclass' => 'wpb_singleimage_heading',

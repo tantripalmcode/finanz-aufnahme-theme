@@ -17,7 +17,6 @@
    * Add a class to the body when scrolling
    */
   function setBodyClassOnScroll() {
-    console.log("setBodyClassOnScroll");
     function adjustLogoColor() {
       // Detect screen size and adjust logo color accordingly
       var $logoNew = $(".budi-simplistic-header-logo .logo");
@@ -193,7 +192,6 @@
         }
       } else {
         scrollStatus = false;
-        console.log("scrollStatus", scrollStatus);
         setTimeout(() => {
           updatePosition();
         }, 300);
@@ -275,6 +273,14 @@
     var rellaxVertical = new Rellax(".rellax-vertical", {
       center: false,
       wrapper: null,
+      round: true,
+      vertical: true,
+      horizontal: false,
+    });
+
+    var rellaxVerticalCustomWrapper = new Rellax(".rellax-vertical-custom-wrapper", {
+      center: false,
+      wrapper: '.budi-rellax-custom-wrapper',
       round: true,
       vertical: true,
       horizontal: false,
