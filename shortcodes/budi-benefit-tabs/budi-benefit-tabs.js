@@ -99,13 +99,22 @@
     }
 
     getBaseTransform($element) {
-      // Get the base transform from data attributes or default positioning
-      const position = $element.hasClass('budi-benefit-tabs__floating-icon--right') ? 'right' : 'left';
-      
-      if (position === 'right') {
+      // Get the base transform from the element's class
+      if ($element.hasClass('budi-benefit-tabs__floating-icon--top-left')) {
+        return 'translateX(-50%)';
+      } else if ($element.hasClass('budi-benefit-tabs__floating-icon--top-right')) {
+        return 'translateX(50%)';
+      } else if ($element.hasClass('budi-benefit-tabs__floating-icon--middle-left')) {
+        return 'translateY(-50%) translateX(-50%)';
+      } else if ($element.hasClass('budi-benefit-tabs__floating-icon--middle-right')) {
+        return 'translateY(-50%) translateX(50%)';
+      } else if ($element.hasClass('budi-benefit-tabs__floating-icon--bottom-left')) {
+        return 'translateX(-50%)';
+      } else if ($element.hasClass('budi-benefit-tabs__floating-icon--bottom-right')) {
         return 'translateX(50%)';
       } else {
-        return 'translateY(-50%) translateX(-50%)';
+        // Fallback to top-right for backward compatibility
+        return 'translateX(50%)';
       }
     }
 
@@ -167,14 +176,17 @@
         ".budi-benefit-tabs__floating-icon-container"
       );
       const floatingIconId = $activeContent.data("floating-icon");
-      const iconPosition = $activeContent.data("icon-position") || "right";
+      const iconPosition = $activeContent.data("icon-position") || "top-right";
+      const iconPositionTablet = $activeContent.data("icon-position-tablet") || "top-right";
+      const iconPositionMobile = $activeContent.data("icon-position-mobile") || "top-right";
       const iconWidth = $activeContent.data("icon-width") || "80px";
+      const iconWidthTablet = $activeContent.data("icon-width-tablet") || "100px";
       const iconWidthMobile = $activeContent.data("icon-width-mobile") || "60px";
 
       if (floatingIconId) {
         // Update the floating icon with fade transition
         $iconContainer.fadeOut(200, function () {
-          const iconHtml = `<div class="budi-benefit-tabs__floating-icon budi-benefit-tabs__floating-icon--${iconPosition}" style="--icon-width: ${iconWidth}; --icon-width-mobile: ${iconWidthMobile};">
+          const iconHtml = `<div class="budi-benefit-tabs__floating-icon budi-benefit-tabs__floating-icon--${iconPosition}" style="--icon-width: ${iconWidth}; --icon-width-tablet: ${iconWidthTablet}; --icon-width-mobile: ${iconWidthMobile};" data-icon-position-tablet="${iconPositionTablet}" data-icon-position-mobile="${iconPositionMobile}">
                         <img src="${floatingIconId}" class="budi-benefit-tabs__floating-icon-img" style="max-width: ${iconWidth};" alt="Floating Icon">
                     </div>`;
           $iconContainer.html(iconHtml).fadeIn(200, function() {

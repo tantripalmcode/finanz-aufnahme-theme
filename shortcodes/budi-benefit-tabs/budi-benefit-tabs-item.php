@@ -15,9 +15,14 @@ function sc_budi_benefit_tabs_item( $atts, $content = null ) {
         'image'    => '',
         'image_position' => 'right',
         'image_max_width' => '100%',
+        'image_max_width_tablet' => '100%',
+        'image_max_width_mobile' => '100%',
         'floating_icon' => '',
-        'icon_position' => 'right',
+        'icon_position' => 'top-right',
+        'icon_position_tablet' => 'top-right',
+        'icon_position_mobile' => 'top-right',
         'floating_icon_width' => '80px',
+        'floating_icon_width_tablet' => '100px',
         'floating_icon_width_mobile' => '60px',
     ], $atts );
 
@@ -29,9 +34,14 @@ function sc_budi_benefit_tabs_item( $atts, $content = null ) {
     $image    = $atts['image'];
     $image_position = $atts['image_position'];
     $image_max_width = $atts['image_max_width'];
+    $image_max_width_tablet = $atts['image_max_width_tablet'];
+    $image_max_width_mobile = $atts['image_max_width_mobile'];
     $floating_icon = $atts['floating_icon'];
     $icon_position = $atts['icon_position'];
+    $icon_position_tablet = $atts['icon_position_tablet'];
+    $icon_position_mobile = $atts['icon_position_mobile'];
     $floating_icon_width = $atts['floating_icon_width'];
+    $floating_icon_width_tablet = $atts['floating_icon_width_tablet'];
     $floating_icon_width_mobile = $atts['floating_icon_width_mobile'];
 
     $content_item = [
@@ -44,9 +54,14 @@ function sc_budi_benefit_tabs_item( $atts, $content = null ) {
         'image'    => $image,
         'image_position' => $image_position,
         'image_max_width' => $image_max_width,
+        'image_max_width_tablet' => $image_max_width_tablet,
+        'image_max_width_mobile' => $image_max_width_mobile,
         'floating_icon' => $floating_icon,
         'icon_position' => $icon_position,
+        'icon_position_tablet' => $icon_position_tablet,
+        'icon_position_mobile' => $icon_position_mobile,
         'floating_icon_width' => $floating_icon_width,
+        'floating_icon_width_tablet' => $floating_icon_width_tablet,
         'floating_icon_width_mobile' => $floating_icon_width_mobile,
     ];
 
@@ -111,10 +126,26 @@ add_action( 'vc_before_init', function(){
             ),
             array(
                 'type' => 'textfield',
-                'heading' => __( 'Image Max Width', _BUDI_TEXT_DOMAIN ),
+                'heading' => __( 'Image Max Width (Desktop)', _BUDI_TEXT_DOMAIN ),
                 'param_name' => 'image_max_width',
                 'value' => '100%',
-                'description' => 'Set the maximum width for the image (e.g., 250px, 300px, 50%)',
+                'description' => 'Set the maximum width for the image on desktop (e.g., 250px, 300px, 50%)',
+                'group' => 'Image',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => __( 'Image Max Width (Tablet)', _BUDI_TEXT_DOMAIN ),
+                'param_name' => 'image_max_width_tablet',
+                'value' => '100%',
+                'description' => 'Set the maximum width for the image on tablet devices (768px-1200px) (e.g., 80%, 200px, 60vw)',
+                'group' => 'Image',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => __( 'Image Max Width (Mobile)', _BUDI_TEXT_DOMAIN ),
+                'param_name' => 'image_max_width_mobile',
+                'value' => '100%',
+                'description' => 'Set the maximum width for the image on mobile devices (<768px) (e.g., 90%, 150px, 80vw)',
                 'group' => 'Image',
             ),
             array(
@@ -128,14 +159,50 @@ add_action( 'vc_before_init', function(){
             ),
             array(
                 'type' => 'dropdown',
-                'heading' => __( 'Floating Icon Position', _BUDI_TEXT_DOMAIN ),
+                'heading' => __( 'Floating Icon Position (Desktop)', _BUDI_TEXT_DOMAIN ),
                 'param_name' => 'icon_position',
                 'value' => array(
-                    __( 'Right Side', _BUDI_TEXT_DOMAIN ) => 'right',
-                    __( 'Left Side', _BUDI_TEXT_DOMAIN ) => 'left',
+                    __( 'Top Left', _BUDI_TEXT_DOMAIN ) => 'top-left',
+                    __( 'Top Right', _BUDI_TEXT_DOMAIN ) => 'top-right',
+                    __( 'Middle Left', _BUDI_TEXT_DOMAIN ) => 'middle-left',
+                    __( 'Middle Right', _BUDI_TEXT_DOMAIN ) => 'middle-right',
+                    __( 'Bottom Left', _BUDI_TEXT_DOMAIN ) => 'bottom-left',
+                    __( 'Bottom Right', _BUDI_TEXT_DOMAIN ) => 'bottom-right',
                 ),
-                'std' => 'right',
-                'description' => 'Choose the position of the floating icon relative to the content',
+                'std' => 'top-right',
+                'description' => 'Choose the position of the floating icon on desktop devices',
+                'group' => 'Floating Icon',
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => __( 'Floating Icon Position (Tablet)', _BUDI_TEXT_DOMAIN ),
+                'param_name' => 'icon_position_tablet',
+                'value' => array(
+                    __( 'Top Left', _BUDI_TEXT_DOMAIN ) => 'top-left',
+                    __( 'Top Right', _BUDI_TEXT_DOMAIN ) => 'top-right',
+                    __( 'Middle Left', _BUDI_TEXT_DOMAIN ) => 'middle-left',
+                    __( 'Middle Right', _BUDI_TEXT_DOMAIN ) => 'middle-right',
+                    __( 'Bottom Left', _BUDI_TEXT_DOMAIN ) => 'bottom-left',
+                    __( 'Bottom Right', _BUDI_TEXT_DOMAIN ) => 'bottom-right',
+                ),
+                'std' => 'top-right',
+                'description' => 'Choose the position of the floating icon on tablet devices (768px-1200px)',
+                'group' => 'Floating Icon',
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => __( 'Floating Icon Position (Mobile)', _BUDI_TEXT_DOMAIN ),
+                'param_name' => 'icon_position_mobile',
+                'value' => array(
+                    __( 'Top Left', _BUDI_TEXT_DOMAIN ) => 'top-left',
+                    __( 'Top Right', _BUDI_TEXT_DOMAIN ) => 'top-right',
+                    __( 'Middle Left', _BUDI_TEXT_DOMAIN ) => 'middle-left',
+                    __( 'Middle Right', _BUDI_TEXT_DOMAIN ) => 'middle-right',
+                    __( 'Bottom Left', _BUDI_TEXT_DOMAIN ) => 'bottom-left',
+                    __( 'Bottom Right', _BUDI_TEXT_DOMAIN ) => 'bottom-right',
+                ),
+                'std' => 'top-right',
+                'description' => 'Choose the position of the floating icon on mobile devices (<768px)',
                 'group' => 'Floating Icon',
             ),
             array(
@@ -144,6 +211,14 @@ add_action( 'vc_before_init', function(){
                 'param_name' => 'floating_icon_width',
                 'value' => '80px',
                 'description' => 'Maximum width of the floating icon on desktop (e.g., 80px, 5rem, 10%, 50vw). Default: 80px',
+                'group' => 'Floating Icon',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => __( 'Floating Icon Max Width (Tablet)', _BUDI_TEXT_DOMAIN ),
+                'param_name' => 'floating_icon_width_tablet',
+                'value' => '100px',
+                'description' => 'Maximum width of the floating icon on tablet devices (768px-1200px) (e.g., 100px, 6rem, 12%, 60vw). Default: 100px',
                 'group' => 'Floating Icon',
             ),
             array(

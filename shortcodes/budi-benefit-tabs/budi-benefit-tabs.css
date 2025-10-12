@@ -85,7 +85,8 @@ button.budi-benefit-tabs__nav-item {
 }
 
 .budi-benefit-tabs__description ul {
-    margin: 35px 0 0 0;
+    max-width: fit-content;
+    margin: 35px 0 0;
     padding: 0;
     list-style-type: none;
     font-size: 16px;
@@ -136,7 +137,7 @@ button.budi-benefit-tabs__nav-item {
 }
 
 .budi-benefit-tabs__image {
-    max-width: 100%;
+    max-width: var(--image-width, 100%);
     height: auto;
     transition: transform 0.3s ease;
 }
@@ -192,15 +193,41 @@ button.budi-benefit-tabs__nav-item {
     opacity: 1;
 }
 
-.budi-benefit-tabs__floating-icon--right {
+/* Desktop positioning classes */
+.budi-benefit-tabs__floating-icon--top-left {
+    top: 10px;
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.budi-benefit-tabs__floating-icon--top-right {
     top: 10px;
     right: 0;
     transform: translateX(50%);
 }
 
-.budi-benefit-tabs__floating-icon--left {
+.budi-benefit-tabs__floating-icon--bottom-left {
+    bottom: 10px;
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.budi-benefit-tabs__floating-icon--bottom-right {
+    bottom: 10px;
+    right: 0;
+    transform: translateX(50%);
+}
+
+.budi-benefit-tabs__floating-icon--middle-left {
     top: 50%;
+    left: 0;
     transform: translateY(-50%) translateX(-50%);
+}
+
+.budi-benefit-tabs__floating-icon--middle-right {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(50%);
 }
 
 .budi-benefit-tabs__floating-icon-img {
@@ -265,21 +292,67 @@ button.budi-benefit-tabs__nav-item {
     backface-visibility: hidden;
 }
 
-@media screen and (max-width: 1200px) {
+/* Tablet styles - 768px to 1200px */
+@media screen and (min-width: 768px) and (max-width: 1200px) {
     .budi-benefit-tabs__container {
         padding: 40px 100px 60px;
     }
 
-    .budi-benefit-tabs__floating-icon--right {
-        right: 2%;
-    }
-
-    .budi-benefit-tabs__floating-icon--left {
-        left: 2%;
-    }
-
     .budi-benefit-tabs__floating-icon-img {
-        max-width: 120px !important;
+        max-width: var(--icon-width-tablet, 100px) !important;
+    }
+
+    .budi-benefit-tabs__image {
+        max-width: var(--image-width-tablet, 100%) !important;
+    }
+
+    /* Tablet-specific icon positions */
+    .budi-benefit-tabs__floating-icon[data-icon-position-tablet="top-left"] {
+        top: 10px !important;
+        left: 2% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-tablet="top-right"] {
+        top: 10px !important;
+        right: 2% !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: translateX(50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-tablet="bottom-left"] {
+        bottom: 10px !important;
+        left: 2% !important;
+        right: auto !important;
+        top: auto !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-tablet="bottom-right"] {
+        bottom: 10px !important;
+        right: 2% !important;
+        left: auto !important;
+        top: auto !important;
+        transform: translateX(50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-tablet="middle-left"] {
+        top: 50% !important;
+        left: 2% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translateY(-50%) translateX(-50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-tablet="middle-right"] {
+        top: 50% !important;
+        right: 2% !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: translateY(-50%) translateX(50%) !important;
     }
 }
 
@@ -289,14 +362,21 @@ button.budi-benefit-tabs__nav-item {
         text-align: center;
     }
 
+    .budi-benefit-tabs__content-item[data-image-position="right"] .budi-benefit-tabs__image-wrapper{
+        text-align: center;
+    }
+
     .budi-benefit-tabs__container {
         padding: 50px 40px;
     }
 
-    .budi-benefit-tabs__content-text {
+    .budi-benefit-tabs__title {
         text-align: center;
     }
 
+    .budi-benefit-tabs__description ul{
+        margin-inline: auto;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -328,15 +408,55 @@ button.budi-benefit-tabs__nav-item {
     }
 
     .budi-benefit-tabs__image{
-        max-width: 75% !important;
+        max-width: var(--image-width-mobile, 75%) !important;
     }
 
-    .budi-benefit-tabs__floating-icon--right{
+    /* Mobile-specific icon positions */
+    .budi-benefit-tabs__floating-icon[data-icon-position-mobile="top-left"] {
+        top: 10px !important;
+        left: 2% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-mobile="top-right"] {
+        top: 10% !important;
+        right: 6% !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: translateX(50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-mobile="bottom-left"] {
+        bottom: 10px !important;
+        left: 2% !important;
+        right: auto !important;
         top: auto !important;
-        bottom: 0 !important;
+        transform: translateX(-50%) !important;
     }
 
-    .budi-benefit-tabs__content-item[data-image-position="right"] .budi-benefit-tabs__image-wrapper{
-        text-align: center !important;
+    .budi-benefit-tabs__floating-icon[data-icon-position-mobile="bottom-right"] {
+        bottom: 10px !important;
+        right: 5% !important;
+        left: auto !important;
+        top: auto !important;
+        transform: translateX(50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-mobile="middle-left"] {
+        top: 50% !important;
+        left: 2% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translateY(-50%) translateX(-50%) !important;
+    }
+
+    .budi-benefit-tabs__floating-icon[data-icon-position-mobile="middle-right"] {
+        top: 50% !important;
+        right: 5% !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: translateY(-50%) translateX(50%) !important;
     }
 }
