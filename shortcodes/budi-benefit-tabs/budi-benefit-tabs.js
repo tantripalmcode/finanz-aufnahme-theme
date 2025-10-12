@@ -169,11 +169,12 @@
       const floatingIconId = $activeContent.data("floating-icon");
       const iconPosition = $activeContent.data("icon-position") || "right";
       const iconWidth = $activeContent.data("icon-width") || "80px";
+      const iconWidthMobile = $activeContent.data("icon-width-mobile") || "60px";
 
       if (floatingIconId) {
         // Update the floating icon with fade transition
         $iconContainer.fadeOut(200, function () {
-          const iconHtml = `<div class="budi-benefit-tabs__floating-icon budi-benefit-tabs__floating-icon--${iconPosition}" style="--icon-width: ${iconWidth};">
+          const iconHtml = `<div class="budi-benefit-tabs__floating-icon budi-benefit-tabs__floating-icon--${iconPosition}" style="--icon-width: ${iconWidth}; --icon-width-mobile: ${iconWidthMobile};">
                         <img src="${floatingIconId}" class="budi-benefit-tabs__floating-icon-img" style="max-width: ${iconWidth};" alt="Floating Icon">
                     </div>`;
           $iconContainer.html(iconHtml).fadeIn(200, function() {

@@ -11,7 +11,7 @@
             wp_nav_menu(
                 array(
                     'theme_location' => 'footer-menu',
-                    'menu_class'     => 'budi-footer-legal-menu d-flex justify-content-center justify-content-lg-end mb-0 flex-md-row'
+                    'menu_class'     => 'budi-footer-legal-menu d-flex justify-content-center align-items-center justify-content-lg-end mb-0 flex-md-row'
                 )
             );
             ?>

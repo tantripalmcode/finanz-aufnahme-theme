@@ -55,8 +55,10 @@ function sc_budi_benefit_tabs($atts, $content = null)
                     if ($first_item && isset($first_item['floating_icon']) && $first_item['floating_icon']) {
                         $icon_position = isset($first_item['icon_position']) ? $first_item['icon_position'] : 'right';
                         $floating_icon_width = isset($first_item['floating_icon_width']) ? $first_item['floating_icon_width'] : '80px';
+                        $floating_icon_width_mobile = isset($first_item['floating_icon_width_mobile']) ? $first_item['floating_icon_width_mobile'] : '60px';
                     ?>
-                        <div class="budi-benefit-tabs__floating-icon budi-benefit-tabs__floating-icon--<?php echo esc_attr($icon_position); ?>" style="--icon-width: <?php echo esc_attr($floating_icon_width); ?>;">
+                        <div class="budi-benefit-tabs__floating-icon budi-benefit-tabs__floating-icon--<?php echo esc_attr($icon_position); ?>" 
+                             style="--icon-width: <?php echo esc_attr($floating_icon_width); ?>; --icon-width-mobile: <?php echo esc_attr($floating_icon_width_mobile); ?>;">
                             <?php echo wp_get_attachment_image($first_item['floating_icon'], 'medium', false, ['class' => 'budi-benefit-tabs__floating-icon-img', 'style' => 'max-width: ' . esc_attr($floating_icon_width) . ';']); ?>
                         </div>
                     <?php } ?>
@@ -75,6 +77,7 @@ function sc_budi_benefit_tabs($atts, $content = null)
                         $floating_icon          = isset($item['floating_icon']) ? $item['floating_icon'] : '';
                         $icon_position          = isset($item['icon_position']) ? $item['icon_position'] : 'right';
                         $floating_icon_width    = isset($item['floating_icon_width']) ? $item['floating_icon_width'] : '80px';
+                        $floating_icon_width_mobile = isset($item['floating_icon_width_mobile']) ? $item['floating_icon_width_mobile'] : '60px';
                         $button_alignment       = isset($item['button_alignment']) ? $item['button_alignment'] : 'left';
                         $active_class           = $index === 0 ? 'active' : '';
 
@@ -92,13 +95,14 @@ function sc_budi_benefit_tabs($atts, $content = null)
                             data-floating-icon="<?php echo $floating_icon ? wp_get_attachment_url($floating_icon) : ''; ?>"
                             data-icon-position="<?php echo esc_attr($icon_position); ?>"
                             data-icon-width="<?php echo esc_attr($floating_icon_width); ?>"
+                            data-icon-width-mobile="<?php echo esc_attr($floating_icon_width_mobile); ?>"
                             data-image-position="<?php echo esc_attr($image_position); ?>">
-                            <div class="row ">
+                            <div class="row flex-column-reverse flex-lg-row">
                                 <!-- Content Column -->
                                 <div class="<?php echo $content_col_class; ?>">
                                     <div class="budi-benefit-tabs__content-text h-100 d-flex flex-column position-relative">
 
-                                        <h2 class="budi-benefit-tabs__title">
+                                        <h2 class="budi-benefit-tabs__title h3">
                                             <?php echo do_shortcode($title); ?>
                                         </h2>
 
@@ -107,7 +111,7 @@ function sc_budi_benefit_tabs($atts, $content = null)
                                         </div>
 
                                         <?php if ($button_url && $button_position === 'left') : ?>
-                                            <div class="budi-benefit-tabs__button-wrapper text-<?php echo esc_attr($button_alignment); ?>">
+                                            <div class="budi-benefit-tabs__button-wrapper text-center text-lg-<?php echo esc_attr($button_alignment); ?>">
                                                 <a href="<?php echo esc_url($button_url); ?>"
                                                     class="budi-benefit-tabs__button btn btn-outline-primary"
                                                     <?php if ($button_target) echo 'target="' . esc_attr($button_target) . '"'; ?>>
@@ -128,7 +132,7 @@ function sc_budi_benefit_tabs($atts, $content = null)
                                         </div>
 
                                         <?php if ($button_url && $button_position === 'right') : ?>
-                                            <div class="budi-benefit-tabs__button-wrapper mt-4 text-<?php echo esc_attr($button_alignment); ?>">
+                                            <div class="budi-benefit-tabs__button-wrapper mt-4 text-center text-lg-<?php echo esc_attr($button_alignment); ?>">
                                                 <a href="<?php echo esc_url($button_url); ?>"
                                                     class="budi-benefit-tabs__button btn btn-outline-primary"
                                                     <?php if ($button_target) echo 'target="' . esc_attr($button_target) . '"'; ?>>

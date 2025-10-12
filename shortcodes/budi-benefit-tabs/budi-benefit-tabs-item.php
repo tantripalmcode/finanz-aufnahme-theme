@@ -18,6 +18,7 @@ function sc_budi_benefit_tabs_item( $atts, $content = null ) {
         'floating_icon' => '',
         'icon_position' => 'right',
         'floating_icon_width' => '80px',
+        'floating_icon_width_mobile' => '60px',
     ], $atts );
 
     $tab_text = $atts['tab_text'];
@@ -31,6 +32,7 @@ function sc_budi_benefit_tabs_item( $atts, $content = null ) {
     $floating_icon = $atts['floating_icon'];
     $icon_position = $atts['icon_position'];
     $floating_icon_width = $atts['floating_icon_width'];
+    $floating_icon_width_mobile = $atts['floating_icon_width_mobile'];
 
     $content_item = [
         'tab_text' => $tab_text,
@@ -45,6 +47,7 @@ function sc_budi_benefit_tabs_item( $atts, $content = null ) {
         'floating_icon' => $floating_icon,
         'icon_position' => $icon_position,
         'floating_icon_width' => $floating_icon_width,
+        'floating_icon_width_mobile' => $floating_icon_width_mobile,
     ];
 
     global $sc_benefit_tabs;
@@ -140,7 +143,15 @@ add_action( 'vc_before_init', function(){
                 'heading' => __( 'Floating Icon Max Width', _BUDI_TEXT_DOMAIN ),
                 'param_name' => 'floating_icon_width',
                 'value' => '80px',
-                'description' => 'Maximum width of the floating icon (e.g., 80px, 5rem, 10%, 50vw). Default: 80px',
+                'description' => 'Maximum width of the floating icon on desktop (e.g., 80px, 5rem, 10%, 50vw). Default: 80px',
+                'group' => 'Floating Icon',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => __( 'Floating Icon Max Width (Mobile)', _BUDI_TEXT_DOMAIN ),
+                'param_name' => 'floating_icon_width_mobile',
+                'value' => '60px',
+                'description' => 'Maximum width of the floating icon on mobile devices (e.g., 60px, 4rem, 8%, 40vw). Default: 60px',
                 'group' => 'Floating Icon',
             ),
             array(

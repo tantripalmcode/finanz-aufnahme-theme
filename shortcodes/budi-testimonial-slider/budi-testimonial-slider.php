@@ -173,7 +173,7 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
                     </div>
 
                     <!-- Navigation arrows -->
-                    <div class="budi-testimonial-slider__navigation d-flex align-items-center justify-content-end">
+                    <div class="budi-testimonial-slider__navigation d-flex align-items-center justify-content-md-end justify-content-between">
                         <div class="swiper-button-prev position-relative m-0">
                             <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 7H17M17 7L11 1M17 7L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

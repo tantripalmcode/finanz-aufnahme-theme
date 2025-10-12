@@ -5,7 +5,7 @@
     contain: style;
 }
 
-.budi-benefit-tabs__wrapper::before{
+.budi-benefit-tabs__wrapper::before {
     border-radius: 80px;
     z-index: 1;
 }
@@ -66,7 +66,6 @@ button.budi-benefit-tabs__nav-item {
 
 .budi-benefit-tabs__title {
     font-weight: 600;
-    font-size: 32px;
     color: #4F5665;
     margin-bottom: 35px;
 }
@@ -101,6 +100,7 @@ button.budi-benefit-tabs__nav-item {
     background-repeat: no-repeat;
     background-size: 24px;
     background-position: left center;
+    text-align: left;
 }
 
 /* Button */
@@ -246,7 +246,7 @@ button.budi-benefit-tabs__nav-item {
         transform: none !important;
         transition: none !important;
     }
-    
+
     .budi-benefit-tabs__floating-icon-img {
         transform: none !important;
         transition: none !important;
@@ -263,4 +263,80 @@ button.budi-benefit-tabs__nav-item {
 .budi-benefit-tabs__floating-icon-img.parallax-active {
     transform: translateZ(0);
     backface-visibility: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+    .budi-benefit-tabs__container {
+        padding: 40px 100px 60px;
+    }
+
+    .budi-benefit-tabs__floating-icon--right {
+        right: 2%;
+    }
+
+    .budi-benefit-tabs__floating-icon--left {
+        left: 2%;
+    }
+
+    .budi-benefit-tabs__floating-icon-img {
+        max-width: 120px !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .budi-benefit-tabs__image-wrapper {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .budi-benefit-tabs__container {
+        padding: 50px 40px;
+    }
+
+    .budi-benefit-tabs__content-text {
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .budi-benefits__row {
+        background-color: transparent !important;
+    }
+
+    .budi-benefit-tabs__floating-icon-img {
+        max-width: var(--icon-width-mobile, 60px) !important;
+    }
+
+    .budi-linear-background::before{
+        display: none;
+    }
+
+    .budi-benefit-tabs__container{
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .budi-benefit-tabs__nav{
+        padding: 4px;
+        gap: 2px;
+    }
+
+    button.budi-benefit-tabs__nav-item{
+        font-size: 12px !important;
+        padding: 4px 6px !important;
+    }
+
+    .budi-benefit-tabs__image{
+        max-width: 75% !important;
+    }
+
+    .budi-benefit-tabs__floating-icon--right{
+        top: auto !important;
+        bottom: 0 !important;
+    }
+
+    .budi-benefit-tabs__content-item[data-image-position="right"] .budi-benefit-tabs__image-wrapper{
+        text-align: center !important;
+    }
 }

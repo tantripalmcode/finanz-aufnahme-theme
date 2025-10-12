@@ -1009,6 +1009,24 @@ STARTSEITE
         width: auto;
         max-height: 58px;
     }
+
+    .budi-hero-content__box > .vc_column-inner > .wpb_wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .budi-hero-text-with-arrow{
+        order: 4;
+    }
+    .budi-hero-icon-lists{
+        order: 5;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .budi-hero-google-rating{
+        transform: translateY(270px) translateX(0);
+    }
 }
 
 /* Hero Icon Lists */
@@ -1078,14 +1096,15 @@ STARTSEITE
 
 @media screen and (max-width: 1200px) {
     .budi-money-growth-icon {
-        right: -20px;
+        right: 0;
     }
 }
 
 @media screen and (max-width: 767px) {
     .budi-money-growth-icon {
-        right: -30px;
-        top: -50px;
+        max-width: 60px;
+        right: 0;
+        top: -20px;
     }
 }
 
@@ -1149,6 +1168,11 @@ STARTSEITE
 @media screen and (max-width: 992px) {
     .budi-counter__wrapper>.wpb_column>.vc_column-inner>.wpb_wrapper {
         padding: 20px 30px;
+        column-gap: 15px;
+    }
+
+    .budi-counter__wrapper .counter-element{
+        column-gap: 15px;
     }
 }
 
@@ -1228,13 +1252,24 @@ STARTSEITE
     text-align: center;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .budi-steps__wrapper>.wpb_column>.vc_column-inner>.wpb_wrapper {
         padding: 24px 24px 32px 24px;
     }
 
     .budi-steps__wrapper .budi-headline__title {
         margin-bottom: -20px;
+    }
+
+    .budi-3-steps-icon{
+        max-width: 110px;
+        left: 0;
+    }
+
+    .budi-growth-chart-icon{
+        max-width: 110px;
+        right: 0;
+        bottom: 0%;
     }
 }
 
@@ -1250,6 +1285,17 @@ STARTSEITE
     .budi-circle-bg::before {
         left: 70%;
         height: 70%;
+    }
+
+    .budi-3-steps-icon{
+        max-width: 70px;
+        top: 200%;
+        left: 5%;
+    }
+
+    .budi-growth-chart-icon{
+        max-width: 70px;
+        bottom: 200%;
     }
 }
 
@@ -1346,7 +1392,19 @@ STARTSEITE
     color: var(--body-text-color);
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 1200px) {
+    .budi-lamp-icon {
+        max-width: 100px;
+    }
+
+    .budi-piggy-icon{
+        max-width: 110px;
+        right: 10px;
+        bottom: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
     .budi-comparison-list__wrapper>.vc_column-inner>.wpb_wrapper {
         padding: 40px 32px;
         margin-top: 10px;
@@ -1360,6 +1418,17 @@ STARTSEITE
 
     .budi-comparison-list__headline .budi-icon-lists__text {
         font-size: 20px;
+    }
+
+    .budi-lamp-icon{
+        max-width: 90px;
+        top: 110%;
+        left: -5px;
+    }
+
+    .budi-piggy-icon{
+        bottom: 300%;
+        right: -10px;
     }
 }
 
@@ -1425,18 +1494,28 @@ STARTSEITE
     z-index: 9;
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
     .budi-benefits-section>.wpb_column>.vc_column-inner>.wpb_wrapper {
         gap: 16px;
+    }
+
+    .budi-benefits-section .budi-content-box__wrapper{
+        padding: 25px 33px;
     }
 
     .budi-benefits-section .budi-content-box__wrapper img {
         width: 44px;
         height: 44px;
     }
+
+    .budi-stethoscope-icon{
+        max-width: 130px;
+        right: -20px;
+        bottom: -5%;
+    }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
     .budi-benefits-section {
         margin-top: 0px;
     }
@@ -1447,6 +1526,13 @@ STARTSEITE
 
     .budi-benefits-section .budi-content-box__wrapper {
         border-radius: 40px;
+    }
+
+    .budi-stethoscope-icon{
+        right: auto;
+        left: -15px;
+        max-width: 110px;
+        bottom: -10px;
     }
 }
 
@@ -1472,6 +1558,23 @@ STARTSEITE
     left: -30%;
     bottom: 10%;
     max-width: 150px;
+}
+
+@media screen and (max-width: 1200px) {
+    .budi-heart-icon{
+        max-width: 110px;
+        left: 0;
+        bottom: -5%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .budi-heart-icon{
+        max-width: 90px;
+        left: auto;
+        right: 0;
+        bottom: 40%;
+    }
 }
 
 /* Referral Section
@@ -1539,6 +1642,26 @@ STARTSEITE
     top: -8%;
 }
 
+@media screen and (max-width: 1200px) {
+    .budi-euro-icon{
+        max-width: 100px;
+        right: 0;
+        top: -40%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .budi-euro-icon{
+        max-width: 80px;
+    }
+
+    .budi-amazon-airpods__image{
+        max-width: 200px;
+        right: -50%;
+        bottom: -8%;
+    }
+}
+
 /* Multistep Form Section
 ================================ */
 
@@ -1549,7 +1672,22 @@ STARTSEITE
     z-index: 3;
 }
 
-/* Financial Updates Box */
+
+@media screen and (max-width: 1200px) {
+    .budi-chart-up-icon{
+        max-width: 100px;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .budi-chart-up-icon{
+        max-width: 90px;
+    }
+}
+
+/* Financial Updates Box
+================================ */
 .budi-financial-updates__box {
     max-width: 1012px;
 }
@@ -1585,11 +1723,56 @@ STARTSEITE
     bottom: -70px;
 }
 
+@media screen and (max-width: 992px) {
+    .budi-iphone-mockup{
+        max-width: 150px;
+    }
+
+
+    .budi-nurse-half{
+        display: none;
+    }
+    
+    .budi-nurse-using-phone{
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .budi-financial-updates__box-container{
+        border-radius: 40px;
+        padding: 24px 9px;
+    }
+    
+    .budi-financial-updates__title,
+    .budi-financial-updates__desc{
+        max-width: 70%;
+    }
+
+    .budi-iphone-mockup{
+        max-width: 115px;
+        bottom: auto;
+        top: 30px;
+        right: 20px;
+    }
+
+    .budi-finance-update__buttons a.btn{
+        min-width: 250px;
+    }
+}
+
 /* Testimonial Section */
 .budi-comment-icon {
     max-width: 160px;
     bottom: 8%;
     left: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .budi-comment-icon {
+        max-width: 120px;
+    }
+    
 }
 
 /* Consultation Section */

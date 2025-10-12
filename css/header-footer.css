@@ -282,6 +282,29 @@ footer.footer .footer_3 img{
     width: auto;
 }
 
+@media screen and (max-width: 767px) {
+    footer.footer .budi-footer-rating__box .footer_widget:first-child{
+        display: none;
+    }
+
+    footer.footer .textwidget{
+        font-size: 14px;
+    }
+
+    footer.footer .footer_2 .textwidget ul{
+        gap: 10px;
+    }
+
+    footer.footer .company-phone-class::before, footer.footer .company-address::before, footer.footer .company-email-class::before{
+        width: 16px;
+        height: 16px;
+    }
+
+    footer.footer .budi-footer-legal{
+        font-size: 13px;
+    }
+}
+
 /* Footer Legal Menu */
 footer.footer .footer-legal .budi-footer-legal-menu {
     gap: 80px;
@@ -324,7 +347,7 @@ footer.footer .footer-legal .budi__socialmedia>li>a>svg {
 
 @media screen and (max-width: 767px) {
     footer.footer .footer-inner>.container>.row {
-        gap: 50px;
+        gap: 32px;
     }
 
     footer.footer .footer-legal .budi-footer-legal-menu li:not(:last-child)::after {
@@ -332,7 +355,12 @@ footer.footer .footer-legal .budi__socialmedia>li>a>svg {
     }
 
     footer.footer .footer-legal .budi-footer-legal-menu {
-        gap: 30px;
+        gap: 20px;
+    }
+
+    footer.footer .footer-legal li{
+        line-height: 1.03em;
+        text-align: center;
     }
 
     footer.footer .footer-legal a{

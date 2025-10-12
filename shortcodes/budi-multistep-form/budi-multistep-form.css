@@ -130,9 +130,9 @@
 
 /* Step Titles */
 .budi-multistep-form-widget .fieldset-cf7mls h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #4F5665;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--body-text-color);
     text-align: center;
     margin: 0 0 40px 0;
     line-height: 1.2;
@@ -171,7 +171,7 @@
     border-radius: 40px;
 }
 
-.budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:hover{
+.budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:hover {
     transform: scale(1.02);
 }
 
@@ -211,6 +211,7 @@
 .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:has(input[type="radio"]:focus-visible) {
     transform: translateY(-2px);
 }
+
 /* 
 .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label:has(input[type="radio"]:checked) {
     transform: translateY(-2px);
@@ -323,9 +324,23 @@
     font-weight: 400;
 }
 
+.budi-multistep-form-widget .budi-cf7-forms .wpcf7-date{
+    background: transparent !important;
+    border: 2px solid var(--color-custom-2) !important;
+    color: var(--color-heavy);
+}
+
 .budi-multistep-form-widget .budi-cf7-forms .wpcf7-form-control::placeholder {
     color: #8699AF !important;
     opacity: 1;
+}
+
+.budi-multistep-form-widget .budi-cf7-forms .wpcf7-date::placeholder{
+    color: var(--color-heavy) !important;
+}
+
+.budi-multistep-form-widget .budi-cf7-forms .wpcf7-date:focus{
+    border-color: var(--color-custom-2) !important;
 }
 
 .budi-multistep-form-widget .wpcf7-form {
@@ -511,7 +526,7 @@
     font-weight: 500;
 }
 
-.budi-multistep-form-widget .budi-cf7-forms-note{
+.budi-multistep-form-widget .budi-cf7-forms-note {
     line-height: 1.1em;
 }
 
@@ -520,13 +535,95 @@
     color: #8699AF;
 }
 
-.budi-multistep-form-widget .budi-cf7-forms-checkbox{
+.budi-multistep-form-widget .budi-cf7-forms-checkbox {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.budi-multistep-form-widget .budi-cf7-forms-checkbox label{
+.budi-multistep-form-widget .budi-cf7-forms-checkbox label {
     margin-bottom: 0;
     color: #8699AF;
+}
+
+@media screen and (max-width: 767px) {
+
+    .budi-multistep-form-widget,
+    .budi-multistep-form-widget::before,
+    .budi-multistep-form-container {
+        border-radius: 40px;
+    }
+
+    .budi-multistep-form-container {
+        padding-block: 32px;
+    }
+
+    .budi-multistep-form-widget .fieldset-cf7mls-wrapper {
+        padding: 0 24px;
+    }
+
+    .budi-multistep-form-widget .fieldset-cf7mls h2 {
+        font-size: 20px;
+        margin-bottom: 24px;
+    }
+
+    .budi-cf7-radio-button__wrapper .wpcf7-form-control-wrap{
+        width: 100%;
+    }
+
+    .budi-multistep-form-widget .wpcf7-form-control.budi-radio-button-field{
+        flex-direction: column;
+        padding: 0;
+        gap: 10px;
+    }
+
+    .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item{
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item label{
+        min-height: 72px;
+        padding: 14px 24px;
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+
+    .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item-label{
+        padding-top: 0;
+        padding-left: 60px;
+        font-size: 16px;
+    }
+
+    .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item-label::after{
+        width: 44px;
+        height: 44px;
+        left: 0;
+        right: auto;
+        top: -10px;
+    }
+
+    .budi-multistep-form-widget .budi-cf7-radio-button__wrapper .wpcf7-list-item-label::before{
+        width: 24px;
+        height: 24px;
+        left: 10px;
+        right: auto;
+        top: 0px;
+    }
+
+    .budi-multistep-form-widget .cf7mls-btns{
+        margin-top: 40px;
+    }
+
+    .budi-multistep-form-widget .cf7mls-btns button.cf7mls_next,
+    .budi-multistep-form-widget .cf7mls-btns button.cf7mls_back{
+        text-indent: -9999px;
+        gap: 0;
+        min-width: 60px;
+    }
+    
+    .budi-multistep-form-widget .wpcf7-submit{
+        top: 0 !important;
+        width: auto !important;
+    }
 }
