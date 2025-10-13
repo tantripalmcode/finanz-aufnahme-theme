@@ -15,7 +15,7 @@
 .budi-multistep-form-container {
     width: 100%;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 50px 0;
     position: relative;
     z-index: 3;
     background-color: #ffffff;
@@ -53,36 +53,44 @@
     margin: 0;
 }
 
-/* Progress Indicator */
-.budi-multistep-form-widget .fieldset-cf7mls-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, #ff6b9d 0%, #ff8fab 100%);
-    border-radius: 2px;
-}
-
 .budi-multistep-form-widget .fieldset-cf7mls-wrapper {
     position: relative;
-    padding: 40px;
+    padding: 0 40px 40px;
     overflow: unset;
 }
 
-/* Progress Dots */
+/* Progress Dots Container */
+.budi-progress-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+/* Individual Progress Dot */
+.budi-progress-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: var(--color-custom-2);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+
+/* Current step dot - make it wider like in the image */
+.budi-progress-dot.current {
+    width: 45px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: #00d4aa;
+    transform: none;
+}
+
+/* Progress Dots - Remove old static dots */
 .budi-multistep-form-widget .fieldset-cf7mls-wrapper::after {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 8px;
-    background: url("data:image/svg+xml,%3Csvg width='120' height='8' viewBox='0 0 120 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='4' fill='%2300d4aa'/%3E%3Ccircle cx='30' cy='4' r='4' fill='%23e2e8f0'/%3E%3Ccircle cx='56' cy='4' r='4' fill='%23e2e8f0'/%3E%3Ccircle cx='82' cy='4' r='4' fill='%23e2e8f0'/%3E%3Ccircle cx='108' cy='4' r='4' fill='%23e2e8f0'/%3E%3C/svg%3E") no-repeat center;
-    background-size: contain;
+    display: none;
 }
 
 /* Custom Progress Dots */
@@ -625,5 +633,10 @@
     .budi-multistep-form-widget .wpcf7-submit{
         top: 0 !important;
         width: auto !important;
+    }
+    
+    /* Mobile progress dots */
+    .budi-progress-dots {
+        margin-bottom: 25px;
     }
 }
