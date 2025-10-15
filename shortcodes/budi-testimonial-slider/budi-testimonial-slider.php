@@ -162,7 +162,7 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
                                     <div class="budi-testimonial-slider__content">
 
                                         <?php if ($description): ?>
-                                            <div class="budi-testimonial-slider__description transition-all-03s">
+                                            <div id="<?php echo esc_attr($this_widget_id . '-desc-' . $index); ?>" class="budi-testimonial-slider__description budi-testimonial-slider__description--clamped transition-all-03s">
                                                 <?php echo do_shortcode($description); ?>
                                             </div>
                                         <?php endif; ?>
@@ -200,19 +200,17 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
                             slidesPerView: 'auto',
                             spaceBetween: 24,
                             loop: true,
-                            speed: 800,
+                            speed: 1500,
                             effect: 'slide',
                             autoplay: {
                                 delay: 5000,
-                                disableOnInteraction: false,
                                 pauseOnMouseEnter: true,
-                                enabled: false // Start with autoplay disabled
+                                enabled: true // Start with autoplay disabled
                             },
                             navigation: {
                                 nextEl: '.swiper-button-next',
                                 prevEl: '.swiper-button-prev',
                             },
-                            pagination: false,
                             breakpoints: {
                                 768: {
                                     spaceBetween: 15
@@ -221,22 +219,6 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
                                     spaceBetween: 20
                                 },
                             },
-                            grabCursor: true,
-                            freeMode: {
-                                enabled: false,
-                                sticky: false
-                            },
-                            resistance: true,
-                            resistanceRatio: 0.85,
-                            touchRatio: 1,
-                            touchAngle: 45,
-                            simulateTouch: true,
-                            allowTouchMove: true,
-                            threshold: 5,
-                            touchStartPreventDefault: false,
-                            touchStartForcePreventDefault: false,
-                            touchMoveStopPropagation: false,
-                            touchReleaseOnEdges: false,
                             on: {
                                 init: function() {
                                     $slider.removeClass('loading');
@@ -251,43 +233,39 @@ class BUDI_TESTIMONIAL_SLIDER extends BUDI_SHORTCODE_BASE
 
                         const swiper = new Swiper($slider[0], settings);
 
-                        // Intersection Observer for viewport-based autoplay
-                        const observerOptions = {
-                            root: null,
-                            rootMargin: '0px',
-                            threshold: 0.3 // Start autoplay when 30% of slider is visible
-                        };
+                        // Read more/less toggle for overflowing descriptions
+                        const $descriptions = $($widget_id + ' .budi-testimonial-slider__description');
+                        $descriptions.each(function() {
+                            const $desc = $(this);
+                            const descEl = this;
+                            const $contentWrapper = $desc.closest('.budi-testimonial-slider__content');
 
-                        const observer = new IntersectionObserver((entries) => {
-                            entries.forEach(entry => {
-                                if (entry.isIntersecting) {
-                                    // Start autoplay when slider comes into view
-                                    if (swiper.autoplay) {
-                                        swiper.autoplay.start();
-                                    }
-                                } else {
-                                    // Stop autoplay when slider goes out of view
-                                    if (swiper.autoplay) {
-                                        swiper.autoplay.stop();
-                                    }
+                            // Helper to determine if clamped content overflows
+                            const hasOverflow = () => descEl.scrollHeight > descEl.clientHeight + 1;
+
+                            // Ensure clamped style is applied before measuring
+                            $desc.addClass('budi-testimonial-slider__description--clamped');
+
+                            // Defer measurement to ensure styles/layout are settled
+                            setTimeout(() => {
+                                if (hasOverflow()) {
+                                    const controlId = $desc.attr('id') || '';
+                                    const $toggle = $('<button type="button" class="budi-testimonial-slider__read-more" aria-expanded="false" aria-controls="' + controlId + '">Weiterlesen</button>');
+
+                                    $toggle.on('click', function() {
+                                        const isClamped = $desc.hasClass('budi-testimonial-slider__description--clamped');
+                                        if (isClamped) {
+                                            $desc.removeClass('budi-testimonial-slider__description--clamped');
+                                            $toggle.attr('aria-expanded', 'true').text('Weniger');
+                                        } else {
+                                            $desc.addClass('budi-testimonial-slider__description--clamped');
+                                            $toggle.attr('aria-expanded', 'false').text('Weiterlesen');
+                                        }
+                                    });
+
+                                    $contentWrapper.append($toggle);
                                 }
-                            });
-                        }, observerOptions);
-
-                        // Start observing the slider
-                        observer.observe($slider[0]);
-
-                        // Hover pause functionality
-                        $slider.on('mouseenter', function() {
-                            if (swiper.autoplay && swiper.autoplay.running) {
-                                swiper.autoplay.pause();
-                            }
-                        });
-
-                        $slider.on('mouseleave', function() {
-                            if (swiper.autoplay && swiper.autoplay.paused) {
-                                swiper.autoplay.resume();
-                            }
+                            }, 0);
                         });
                     });
                 })(jQuery);

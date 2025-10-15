@@ -39,6 +39,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    pointer-events: none;
 }
 
 .budi-testimonial-slider__item-inner {
@@ -105,6 +106,34 @@
     margin: 0;
 }
 
+/* Clamp long descriptions to 4 lines by default; toggled via JS */
+.budi-testimonial-slider__description--clamped {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4; /* standard property for compatibility */
+    overflow: hidden;
+}
+
+/* Text-only toggle for read more/less */
+.budi-testimonial-slider__read-more {
+    display: inline;
+    background: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 8px 0 0 0;
+    color: var(--color-main) !important;
+    cursor: pointer;
+    font: inherit;
+    text-decoration: underline;
+    font-size: 16px !important;
+}
+
+.budi-testimonial-slider__read-more:focus,
+.budi-testimonial-slider__read-more:hover {
+    text-decoration: none;
+}
+
 /* Swiper Navigation Styles */
 .budi-testimonial-slider__navigation {
     margin-top: 60px;
@@ -167,29 +196,8 @@
     }
 }
 
-/* Swiper Pagination Styles */
-.swiper-pagination {
-    position: relative;
-    margin-top: 30px;
-}
-
-.swiper-pagination-bullet {
-    background: #99E0D4;
-    opacity: 0.3;
-    width: 12px;
-    height: 12px;
-    margin: 0 6px;
-    transition: all 0.3s ease;
-}
-
-.swiper-pagination-bullet-active {
-    opacity: 1;
-    background: #99E0D4;
-    transform: scale(1.2);
-}
-
 /* Animation for smooth transitions */
-.swiper-slide {
+/* .swiper-slide {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
     backface-visibility: hidden;
@@ -197,14 +205,13 @@
 }
 
 .swiper-slide-active .budi-testimonial-slider__item-inner {
-    transform: scale(1.02);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+} */
 
 /* Enhanced smooth scrolling */
-.swiper-wrapper {
+/* .swiper-wrapper {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
+} */
 
 /* Smooth swiper container */
 .budi-testimonial-slider {
