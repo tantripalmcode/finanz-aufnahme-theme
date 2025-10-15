@@ -71,18 +71,39 @@ jQuery(document).ready(function($) {
         });
     }
     
+    // Auto-trigger next button when radio button is selected
+    function initAutoNextOnRadio() {
+        $('.budi-cf7-radio-button__wrapper').each(function() {
+            var $wrapper = $(this);
+            var $radioButtons = $wrapper.find('input[type="radio"]');
+            var $nextButton = $wrapper.closest('.fieldset-cf7mls').find('.cf7mls_next');
+            
+            if ($radioButtons.length > 0 && $nextButton.length > 0) {
+                $radioButtons.on('change', function() {
+                    // Small delay to ensure the radio button is properly selected
+                    setTimeout(function() {
+                        $nextButton.trigger('click');
+                    }, 100);
+                });
+            }
+        });
+    }
+    
     // Initialize on page load
     initProgressDots();
+    initAutoNextOnRadio();
     
     // Re-initialize if content is dynamically loaded
     $(document).on('DOMNodeInserted', function(e) {
         if ($(e.target).find('.budi-multistep-form-widget').length > 0) {
             initProgressDots();
+            initAutoNextOnRadio();
         }
     });
     
     // Also initialize when CF7 Multi Step plugin loads
     $(document).on('cf7mls_initialized', function() {
         initProgressDots();
+        initAutoNextOnRadio();
     });
 });
