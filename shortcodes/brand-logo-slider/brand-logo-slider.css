@@ -1,0 +1,49 @@
+/* Brand Logo Slider Styles */
+.brand-logo-slider__wrapper {
+    overflow: hidden;
+    padding: 20px 0;
+    pointer-events: none;
+}
+
+.brand-logo-slider {
+    width: 100%;
+    height: auto;
+}
+
+.brand-logo-slider__item {
+    max-width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.brand-logo-slider__image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Smooth transitions for continuous sliding */
+.brand-logo-slider .swiper-wrapper {
+    transition-timing-function: linear;
+}
+
+/* Ensure logos are properly centered */
+.brand-logo-slider__item {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Loading state */
+.brand-logo-slider__wrapper.loading {
+    opacity: 0.7;
+}
+
+.brand-logo-slider__wrapper.loaded {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}

@@ -407,12 +407,27 @@ class BUDI_IMAGE_SLIDER extends BUDI_SHORTCODE_BASE {
                         <?php } ?>
 
                         <?php if ($autoplay === "yes") { ?>
-                            settings = {
-                                ...settings,
-                                autoplay: {
-                                    delay: <?php echo $autoplay_speed; ?>,
-                                },
-                            };
+                            <?php if ($autoplay_speed == 0) { ?>
+                                // Continuous sliding when delay is 0
+                                settings = {
+                                    ...settings,
+                                    autoplay: {
+                                        delay: 1,
+                                        disableOnInteraction: false,
+                                    },
+                                    freeMode: {
+                                        enabled: true,
+                                        momentum: false,
+                                    },
+                                };
+                            <?php } else { ?>
+                                settings = {
+                                    ...settings,
+                                    autoplay: {
+                                        delay: <?php echo $autoplay_speed; ?>,
+                                    },
+                                };
+                            <?php } ?>
                         <?php } ?>
 
                         <?php // get_template_part( 'template-parts/swiper/progress-bar-script' ); ?>
