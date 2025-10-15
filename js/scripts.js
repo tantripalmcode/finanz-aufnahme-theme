@@ -88,7 +88,7 @@
       if ($(window).width() > 767) {
         $hero.css("padding-top", headerHeight);
       } else {
-        $hero.css("padding-top", 0);
+        $hero.css("padding-top", headerHeight - 20);
       }
     }
 
